@@ -1,19 +1,29 @@
 const AGIptrVendors = [
-  { id: "openai", name: "OpenAI", logo: "https://logo.clearbit.com/openai.com", fallback: "OA" },
-  { id: "anthropic", name: "Anthropic", logo: "https://logo.clearbit.com/anthropic.com", fallback: "AN" },
-  { id: "google-deepmind", name: "Google DeepMind", logo: "https://logo.clearbit.com/google.com", fallback: "GD" },
-  { id: "meta", name: "Meta", logo: "https://logo.clearbit.com/meta.com", fallback: "ME" },
-  { id: "xai", name: "xAI", logo: "https://logo.clearbit.com/x.ai", fallback: "xA" },
-  { id: "alibaba", name: "阿里云", logo: "https://logo.clearbit.com/aliyun.com", fallback: "AL" },
-  { id: "baidu", name: "百度", logo: "https://logo.clearbit.com/baidu.com", fallback: "BD" },
-  { id: "tencent", name: "腾讯", logo: "https://logo.clearbit.com/tencent.com", fallback: "TX" },
-  { id: "mistral", name: "Mistral AI", logo: "https://logo.clearbit.com/mistral.ai", fallback: "MI" },
-  { id: "cohere", name: "Cohere", logo: "https://logo.clearbit.com/cohere.com", fallback: "CO" },
-  { id: "moonshot", name: "Moonshot AI", logo: "https://logo.clearbit.com/moonshotai.com", fallback: "MS" },
-  { id: "zhipu", name: "智谱 AI", logo: "https://logo.clearbit.com/zhipuai.cn", fallback: "ZP" },
-  { id: "deepseek", name: "DeepSeek", logo: "https://logo.clearbit.com/deepseek.com", fallback: "DS" },
-  { id: "minimax", name: "MiniMax", logo: "https://logo.clearbit.com/minimax.io", fallback: "MM" },
-  { id: "ai01", name: "01.AI", logo: "https://logo.clearbit.com/01.ai", fallback: "01" }
+  { id: "openai", name: "OpenAI", logo: "./assets/logos/openai.svg", fallback: "OA" },
+  { id: "anthropic", name: "Anthropic", logo: "./assets/logos/anthropic.svg", fallback: "AN" },
+  { id: "google-gemini", name: "Google Gemini", logo: "./assets/logos/google-gemini.svg", fallback: "GG" },
+  { id: "google-deepmind", name: "Google DeepMind", logo: "./assets/logos/google-deepmind.svg", fallback: "GD" },
+  { id: "meta", name: "Meta", logo: "./assets/logos/meta.svg", fallback: "ME" },
+  { id: "xai", name: "xAI", logo: "./assets/logos/xai.svg", fallback: "xA" },
+  { id: "mistral", name: "Mistral AI", logo: "./assets/logos/mistral.svg", fallback: "MI" },
+  { id: "huggingface", name: "Hugging Face", logo: "./assets/logos/huggingface.svg", fallback: "HF" },
+  { id: "perplexity", name: "Perplexity", logo: "./assets/logos/perplexity.svg", fallback: "PX" },
+  { id: "nvidia", name: "NVIDIA", logo: "./assets/logos/nvidia.svg", fallback: "NV" },
+  { id: "alibaba", name: "阿里云", logo: "./assets/logos/alibaba.svg", fallback: "AL" },
+  { id: "baidu", name: "百度", logo: "./assets/logos/baidu.svg", fallback: "BD" },
+  { id: "minimax", name: "MiniMax", logo: "./assets/logos/minimax.svg", fallback: "MM" },
+  { id: "databricks", name: "Databricks", logo: "./assets/logos/databricks.svg", fallback: "DB" },
+  { id: "snowflake", name: "Snowflake", logo: "./assets/logos/snowflake.svg", fallback: "SF" },
+  { id: "cloudflare", name: "Cloudflare", logo: "./assets/logos/cloudflare.svg", fallback: "CF" },
+  { id: "intel", name: "Intel", logo: "./assets/logos/intel.svg", fallback: "IN" },
+  { id: "apple", name: "Apple", logo: "./assets/logos/apple.svg", fallback: "AP" },
+  { id: "samsung", name: "Samsung", logo: "./assets/logos/samsung.svg", fallback: "SS" },
+  { id: "qualcomm", name: "Qualcomm", logo: "./assets/logos/qualcomm.svg", fallback: "QC" },
+  { id: "amd", name: "AMD", logo: "./assets/logos/amd.svg", fallback: "AMD" },
+  { id: "arm", name: "Arm", logo: "./assets/logos/arm.svg", fallback: "ARM" },
+  { id: "bytedance", name: "字节跳动", logo: "./assets/logos/bytedance.svg", fallback: "BD" },
+  { id: "xiaomi", name: "小米", logo: "./assets/logos/xiaomi.svg", fallback: "XM" },
+  { id: "palantir", name: "Palantir", logo: "./assets/logos/palantir.svg", fallback: "PL" }
 ];
 
 const AGIptrModels = [
@@ -25,7 +35,7 @@ const AGIptrModels = [
     architecture: "Dense",
     contextWindow: "1,000,000 tokens",
     releaseDate: "2025-04-14",
-    summary: "OpenAI 面向代码与通用推理的旗舰通用模型。"
+    summary: "OpenAI 面向代码与复杂推理任务的旗舰模型。"
   },
   {
     id: "claude-3-7-sonnet",
@@ -35,17 +45,27 @@ const AGIptrModels = [
     architecture: "Dense",
     contextWindow: "200,000 tokens",
     releaseDate: "2025-02-24",
-    summary: "Anthropic 的混合推理模型，兼顾速度与复杂任务能力。"
+    summary: "Anthropic 的高性价比推理模型，兼顾速度与质量。"
   },
   {
     id: "gemini-2-5-pro",
     name: "Gemini 2.5 Pro",
+    vendorId: "google-gemini",
+    params: "未公开",
+    architecture: "MoE",
+    contextWindow: "2,000,000 tokens",
+    releaseDate: "2025-12-11",
+    summary: "Google Gemini 系列高阶模型，支持复杂多模态任务。"
+  },
+  {
+    id: "deepmind-gemini-2-5-pro",
+    name: "Gemini 2.5 Pro (DeepMind)",
     vendorId: "google-deepmind",
     params: "未公开",
     architecture: "MoE",
     contextWindow: "2,000,000 tokens",
     releaseDate: "2025-12-11",
-    summary: "Google DeepMind 的多模态旗舰模型，覆盖代码与研究场景。"
+    summary: "Google DeepMind 方向下的前沿推理与研究模型。"
   },
   {
     id: "llama-3-3-70b",
@@ -55,7 +75,7 @@ const AGIptrModels = [
     architecture: "Dense",
     contextWindow: "128,000 tokens",
     releaseDate: "2024-12-06",
-    summary: "Meta 面向开源社区的高性能通用模型。"
+    summary: "Meta 面向开源生态的主力通用模型。"
   },
   {
     id: "grok-3",
@@ -65,37 +85,7 @@ const AGIptrModels = [
     architecture: "MoE",
     contextWindow: "131,072 tokens",
     releaseDate: "2025-02-17",
-    summary: "xAI 的新一代模型，强调实时信息与复杂问题求解。"
-  },
-  {
-    id: "qwen-2-5-max",
-    name: "Qwen 2.5 Max",
-    vendorId: "alibaba",
-    params: "未公开",
-    architecture: "MoE",
-    contextWindow: "256,000 tokens",
-    releaseDate: "2025-01-29",
-    summary: "阿里云通义家族旗舰模型，覆盖企业与开发者场景。"
-  },
-  {
-    id: "ernie-4-5-turbo",
-    name: "ERNIE 4.5 Turbo",
-    vendorId: "baidu",
-    params: "未公开",
-    architecture: "MoE",
-    contextWindow: "128,000 tokens",
-    releaseDate: "2025-03-16",
-    summary: "百度文心升级版本，突出中文能力与行业适配。"
-  },
-  {
-    id: "hunyuan-turbo-s",
-    name: "Hunyuan Turbo S",
-    vendorId: "tencent",
-    params: "未公开",
-    architecture: "Dense",
-    contextWindow: "256,000 tokens",
-    releaseDate: "2025-03-01",
-    summary: "腾讯混元系列主力模型，面向高并发在线应用。"
+    summary: "xAI 新一代模型，强调推理与实时信息能力。"
   },
   {
     id: "mistral-large-2",
@@ -105,47 +95,57 @@ const AGIptrModels = [
     architecture: "Dense",
     contextWindow: "128,000 tokens",
     releaseDate: "2024-07-24",
-    summary: "Mistral 的通用旗舰模型，强调推理质量与可部署性。"
+    summary: "Mistral AI 的通用旗舰模型。"
   },
   {
-    id: "command-r-plus",
-    name: "Command R+",
-    vendorId: "cohere",
-    params: "104B",
+    id: "smollm2-1-7b-instruct",
+    name: "SmolLM2 1.7B Instruct",
+    vendorId: "huggingface",
+    params: "1.7B",
+    architecture: "Dense",
+    contextWindow: "8,192 tokens",
+    releaseDate: "2025-01-08",
+    summary: "Hugging Face 开源小参数模型，便于端侧与快速部署。"
+  },
+  {
+    id: "sonar-large",
+    name: "Sonar Large",
+    vendorId: "perplexity",
+    params: "未公开",
     architecture: "Dense",
     contextWindow: "128,000 tokens",
-    releaseDate: "2024-04-04",
-    summary: "Cohere 的企业 RAG 场景模型，擅长检索增强与工具调用。"
+    releaseDate: "2025-01-18",
+    summary: "Perplexity 面向搜索增强场景的模型能力层。"
   },
   {
-    id: "kimi-k1-5",
-    name: "Kimi k1.5",
-    vendorId: "moonshot",
-    params: "未公开",
-    architecture: "MoE",
-    contextWindow: "200,000 tokens",
-    releaseDate: "2025-01-20",
-    summary: "Moonshot AI 的推理模型，强化长上下文和工具协作。"
-  },
-  {
-    id: "glm-4-plus",
-    name: "GLM-4-Plus",
-    vendorId: "zhipu",
+    id: "llama-nemotron-ultra",
+    name: "Llama Nemotron Ultra",
+    vendorId: "nvidia",
     params: "未公开",
     architecture: "MoE",
     contextWindow: "128,000 tokens",
-    releaseDate: "2025-01-15",
-    summary: "智谱新一代 GLM 模型，注重多任务泛化表现。"
+    releaseDate: "2025-10-15",
+    summary: "NVIDIA 面向企业代理与推理优化的模型方案。"
   },
   {
-    id: "deepseek-r1",
-    name: "DeepSeek-R1",
-    vendorId: "deepseek",
-    params: "671B（37B 激活）",
+    id: "qwen-2-5-max",
+    name: "Qwen 2.5 Max",
+    vendorId: "alibaba",
+    params: "未公开",
+    architecture: "MoE",
+    contextWindow: "256,000 tokens",
+    releaseDate: "2025-01-29",
+    summary: "阿里云通义家族旗舰模型。"
+  },
+  {
+    id: "ernie-4-5-turbo",
+    name: "ERNIE 4.5 Turbo",
+    vendorId: "baidu",
+    params: "未公开",
     architecture: "MoE",
     contextWindow: "128,000 tokens",
-    releaseDate: "2025-01-20",
-    summary: "DeepSeek 的强化学习推理模型，擅长数学与代码任务。"
+    releaseDate: "2025-03-16",
+    summary: "百度文心升级版本，突出中文场景适配能力。"
   },
   {
     id: "minimax-text-01",
@@ -155,17 +155,127 @@ const AGIptrModels = [
     architecture: "MoE",
     contextWindow: "1,000,000 tokens",
     releaseDate: "2025-01-15",
-    summary: "MiniMax 的长上下文模型，适合复杂任务链路编排。"
+    summary: "MiniMax 的超长上下文模型。"
   },
   {
-    id: "yi-lightning",
-    name: "Yi-Lightning",
-    vendorId: "ai01",
-    params: "未公开",
+    id: "dbrx-instruct",
+    name: "DBRX Instruct",
+    vendorId: "databricks",
+    params: "132B（36B 激活）",
+    architecture: "MoE",
+    contextWindow: "32,000 tokens",
+    releaseDate: "2024-03-27",
+    summary: "Databricks 的开源 MoE 代表模型。"
+  },
+  {
+    id: "snowflake-arctic-instruct",
+    name: "Snowflake Arctic Instruct",
+    vendorId: "snowflake",
+    params: "480B（17B 激活）",
+    architecture: "MoE",
+    contextWindow: "8,192 tokens",
+    releaseDate: "2024-04-24",
+    summary: "Snowflake 面向企业推理与代码场景的模型。"
+  },
+  {
+    id: "workers-ai-llama-3-1-8b",
+    name: "Workers AI · Llama 3.1 8B",
+    vendorId: "cloudflare",
+    params: "8B",
     architecture: "Dense",
     contextWindow: "128,000 tokens",
-    releaseDate: "2024-10-16",
-    summary: "01.AI 面向低延迟服务场景的轻量高性能模型。"
+    releaseDate: "2025-08-01",
+    summary: "Cloudflare Workers AI 平台常用在线推理模型。"
+  },
+  {
+    id: "neural-chat-7b-v3-1",
+    name: "Neural Chat 7B v3.1",
+    vendorId: "intel",
+    params: "7B",
+    architecture: "Dense",
+    contextWindow: "8,192 tokens",
+    releaseDate: "2024-09-10",
+    summary: "Intel 优化的轻量对话模型方案。"
+  },
+  {
+    id: "apple-foundation-model",
+    name: "Apple Foundation Model",
+    vendorId: "apple",
+    params: "未公开",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-06-10",
+    summary: "Apple Intelligence 所依赖的基础模型体系。"
+  },
+  {
+    id: "samsung-gauss2",
+    name: "Samsung Gauss2",
+    vendorId: "samsung",
+    params: "未公开",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-11-14",
+    summary: "三星面向端侧与企业场景的 Gauss 系列模型。"
+  },
+  {
+    id: "qualcomm-dragonwing-llm",
+    name: "Dragonwing LLM",
+    vendorId: "qualcomm",
+    params: "待更新",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-07-01",
+    summary: "Qualcomm 端侧 AI 生态中的大模型能力组件。"
+  },
+  {
+    id: "amd-instella",
+    name: "Instella",
+    vendorId: "amd",
+    params: "待更新",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-05-20",
+    summary: "AMD AI 生态中用于推理部署的模型方向。"
+  },
+  {
+    id: "arm-llm-reference",
+    name: "Arm LLM Reference",
+    vendorId: "arm",
+    params: "待更新",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-05-12",
+    summary: "Arm 面向端侧优化的模型参考方案。"
+  },
+  {
+    id: "doubao-pro",
+    name: "豆包 Pro",
+    vendorId: "bytedance",
+    params: "未公开",
+    architecture: "MoE",
+    contextWindow: "128,000 tokens",
+    releaseDate: "2025-03-28",
+    summary: "字节跳动豆包系列的高阶能力模型。"
+  },
+  {
+    id: "mimo-2025",
+    name: "MiMo",
+    vendorId: "xiaomi",
+    params: "未公开",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-06-28",
+    summary: "小米大模型方向，服务端云协同与智能终端。"
+  },
+  {
+    id: "palantir-aip-llm",
+    name: "Palantir AIP LLM",
+    vendorId: "palantir",
+    params: "待更新",
+    architecture: "Dense",
+    contextWindow: "待更新",
+    releaseDate: "2025-04-01",
+    summary: "Palantir 在企业 AIP 平台中的模型接入能力。"
   }
 ];
 

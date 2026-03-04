@@ -2,8 +2,9 @@
 
 AGIptr 是一个用于展示「每日更新最新型大模型」的静态网站 Demo，包含：
 
-- 首页：大号艺术字 Logo + 厂商 Logo 矩阵 + Hover 上浮与名称提示
+- 首页：大号艺术字 Logo + 5×5 厂商 Logo 矩阵 + Hover 上浮与名称提示
 - 模型详情页：展示模型名称、编号、参数量、Dense/MoE 等信息
+- Logo 来源：在线检索后使用 `simple-icons` 官方图标库并本地化到 `assets/logos/`
 
 ## 本地运行
 
