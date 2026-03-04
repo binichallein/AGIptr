@@ -499,6 +499,7 @@ body.lightbox-open {
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 14px;
+  overflow: hidden;
 }
 
 .vendor-year-title {
@@ -514,12 +515,15 @@ body.lightbox-open {
 
 .vendor-table-wrap {
   overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #f0f0f4;
+  border-radius: 10px;
 }
 
 .vendor-table {
-  width: 100%;
+  width: max(1240px, 100%);
   border-collapse: collapse;
-  min-width: 1100px;
 }
 
 .vendor-table th,
@@ -529,6 +533,14 @@ body.lightbox-open {
   border-bottom: 1px solid #f0f0f4;
   font-size: 13px;
   vertical-align: middle;
+  white-space: nowrap;
+}
+
+.vendor-table td:nth-child(2),
+.vendor-table td:nth-child(3) {
+  max-width: 360px;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .vendor-table th {
