@@ -32,6 +32,11 @@ function readRequestedVendorId() {
   return model ? model.vendorId : "alibaba";
 }
 
+function readRequestedModelId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("model") || params.get("id");
+}
+
 function architectureChip(model) {
   const architecture = model.architecture || "未公开";
   const lowerArchitecture = architecture.toLowerCase();
@@ -49,7 +54,19 @@ function createSelectOptions(select, values, allLabel) {
   select.innerHTML = options.join("");
 }
 
-function renderYearSection(year, models) {
+function updateBackLink(vendorId, isModelDetail) {
+  const backLink = document.querySelector(".back-link");
+  if (!backLink) return;
+  if (isModelDetail) {
+    backLink.href = `./model.html?vendor=${encodeURIComponent(vendorId)}`;
+    backLink.textContent = "← 返回厂家详情";
+    return;
+  }
+  backLink.href = "./index.html";
+  backLink.textContent = "← 返回首页";
+}
+
+function renderYearSection(year, models, vendorId) {
   if (!models.length) {
     return `
       <section class="vendor-year-block">
@@ -63,7 +80,7 @@ function renderYearSection(year, models) {
     .map((model) => `
       <tr>
         <td>${escapeHtml(formatDateLabel(model.releaseDate))}</td>
-        <td>${escapeHtml(model.name)}</td>
+        <td><a class="model-link" href="./model.html?vendor=${encodeURIComponent(vendorId)}&model=${encodeURIComponent(model.id)}">${escapeHtml(model.name)}</a></td>
         <td>${escapeHtml(model.id)}</td>
         <td>${escapeHtml(model.params || "未公开")}</td>
         <td>${architectureChip(model)}</td>
@@ -101,14 +118,126 @@ function renderYearSection(year, models) {
 function renderUnsupportedVendor(vendorId) {
   const root = document.getElementById("model-detail");
   if (!root) return;
+  updateBackLink(vendorId, false);
   const vendor = findVendorById(vendorId);
   const vendorName = vendor ? vendor.name : vendorId;
   root.innerHTML = `<p class="empty-state">${escapeHtml(vendorName)} 详情页待完善，当前先支持 Qwen 厂家详情（vendor=alibaba）。</p>`;
 }
 
+function findModelInVendor(vendorDetail, modelId) {
+  const allModels = vendorDetail.allModels || vendorDetail.models || [];
+  return allModels.find((item) => item.id === modelId) || null;
+}
+
+function findBaseModelForTarget(targetModel, vendorDetail) {
+  const coreModels = vendorDetail.models || [];
+  if (!targetModel) return null;
+  if (!targetModel.isDerived) return targetModel;
+
+  const candidates = coreModels.filter((model) => targetModel.name.startsWith(`${model.name}-`) || targetModel.name === model.name);
+  if (!candidates.length) return targetModel;
+  candidates.sort((a, b) => b.name.length - a.name.length);
+  return candidates[0];
+}
+
+function findDerivedModels(baseModel, vendorDetail) {
+  if (!baseModel) return [];
+  const allModels = vendorDetail.allModels || [];
+  return allModels
+    .filter((model) => model.id !== baseModel.id && model.name.startsWith(`${baseModel.name}-`))
+    .sort((a, b) => {
+      const dateDiff = new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+      if (dateDiff !== 0) return dateDiff;
+      return b.name.localeCompare(a.name, "zh-CN");
+    });
+}
+
+function renderModelDetail(vendorId, vendorDetail, modelId) {
+  const root = document.getElementById("model-detail");
+  if (!root) return;
+
+  updateBackLink(vendorId, true);
+  const targetModel = findModelInVendor(vendorDetail, modelId);
+  if (!targetModel) {
+    root.innerHTML = `<p class="empty-state">未找到该模型，请返回厂家详情重新选择。</p>`;
+    return;
+  }
+
+  const baseModel = findBaseModelForTarget(targetModel, vendorDetail);
+  const derivedModels = findDerivedModels(baseModel, vendorDetail);
+  const selectedIsDerived = targetModel.id !== baseModel.id;
+
+  const derivedRows = derivedModels
+    .map((model) => `
+      <tr class="${model.id === targetModel.id ? "is-current" : ""}">
+        <td>${escapeHtml(formatDateLabel(model.releaseDate))}</td>
+        <td><a class="model-link" href="./model.html?vendor=${encodeURIComponent(vendorId)}&model=${encodeURIComponent(model.id)}">${escapeHtml(model.name)}</a></td>
+        <td>${escapeHtml(model.id)}</td>
+        <td>${escapeHtml(model.params || "未公开")}</td>
+        <td>${architectureChip(model)}</td>
+      </tr>
+    `)
+    .join("");
+
+  root.innerHTML = `
+    <section class="model-detail-panel">
+      <h1 class="detail-title">${escapeHtml(baseModel.name)} 模型详情</h1>
+      <p class="detail-id">当前查看：${escapeHtml(targetModel.name)}${selectedIsDerived ? "（衍生版本）" : "（主模型）"}</p>
+      <div class="model-detail-grid">
+        <article class="model-detail-item">
+          <span class="model-detail-label">模型编号 ID</span>
+          <p class="model-detail-value">${escapeHtml(baseModel.id)}</p>
+        </article>
+        <article class="model-detail-item">
+          <span class="model-detail-label">发布日期</span>
+          <p class="model-detail-value">${escapeHtml(formatDateLabel(baseModel.releaseDate))}</p>
+        </article>
+        <article class="model-detail-item">
+          <span class="model-detail-label">模型参数</span>
+          <p class="model-detail-value">${escapeHtml(baseModel.params || "未公开")}</p>
+        </article>
+        <article class="model-detail-item">
+          <span class="model-detail-label">模型类型</span>
+          <p class="model-detail-value">${escapeHtml(baseModel.type || "通用")}</p>
+        </article>
+        <article class="model-detail-item">
+          <span class="model-detail-label">MLP 结构</span>
+          <p class="model-detail-value">${escapeHtml(baseModel.mlpStructure || "未公开")}</p>
+        </article>
+        <article class="model-detail-item">
+          <span class="model-detail-label">注意力结构</span>
+          <p class="model-detail-value">${escapeHtml(baseModel.attentionStructure || "未公开")}</p>
+        </article>
+      </div>
+    </section>
+    <section class="model-derived-panel">
+      <h2 class="vendor-year-title">衍生模型版本 · ${derivedModels.length} 个</h2>
+      ${derivedModels.length
+        ? `
+          <div class="vendor-table-wrap">
+            <table class="vendor-table">
+              <thead>
+                <tr>
+                  <th>发布日期</th>
+                  <th>模型名称</th>
+                  <th>编号 ID</th>
+                  <th>参数量</th>
+                  <th>架构</th>
+                </tr>
+              </thead>
+              <tbody>${derivedRows}</tbody>
+            </table>
+          </div>
+        `
+        : '<p class="vendor-year-empty">暂无衍生模型版本。</p>'}
+    </section>
+  `;
+}
+
 function renderVendorDetail(vendorId, vendorDetail) {
   const root = document.getElementById("model-detail");
   if (!root) return;
+  updateBackLink(vendorId, false);
 
   const vendorMeta = findVendorById(vendorId);
   const headerName = vendorDetail.name || (vendorMeta ? vendorMeta.name : vendorId);
@@ -241,7 +370,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
     });
 
     summaryNode.textContent = `筛选结果：${filteredModels.length} / ${totalModels} 个模型`;
-    timelineNode.innerHTML = targetYears.map((year) => renderYearSection(year, modelMap.get(year))).join("");
+    timelineNode.innerHTML = targetYears.map((year) => renderYearSection(year, modelMap.get(year), vendorId)).join("");
   }
 
   [yearSelect, typeSelect, paramSelect, mlpSelect, attentionSelect].forEach((selectNode) => {
@@ -262,10 +391,15 @@ function renderVendorDetail(vendorId, vendorDetail) {
 
 function renderDetailPage() {
   const vendorId = readRequestedVendorId();
+  const modelId = readRequestedModelId();
   const vendorDetails = window.AGIptrVendorDetails || {};
   const vendorDetail = vendorDetails[vendorId];
   if (!vendorDetail) {
     renderUnsupportedVendor(vendorId);
+    return;
+  }
+  if (modelId) {
+    renderModelDetail(vendorId, vendorDetail, modelId);
     return;
   }
   renderVendorDetail(vendorId, vendorDetail);

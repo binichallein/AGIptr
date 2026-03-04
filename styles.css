@@ -257,6 +257,53 @@ body {
   font-size: 13px;
 }
 
+.model-detail-panel,
+.model-derived-panel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.model-derived-panel {
+  margin-top: 16px;
+}
+
+.model-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.model-detail-item {
+  border: 1px solid #eceef5;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.model-detail-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+
+.model-detail-value {
+  margin: 0;
+  font-size: 14px;
+  color: #202028;
+  font-weight: 600;
+}
+
+.model-link {
+  color: #3340e0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.model-link:hover {
+  text-decoration: underline;
+}
+
 .vendor-year-block {
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -301,6 +348,10 @@ body {
 
 .vendor-table tr:last-child td {
   border-bottom: 0;
+}
+
+.vendor-table tr.is-current td {
+  background: #eef2ff;
 }
 
 .chip {

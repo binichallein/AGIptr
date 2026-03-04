@@ -314,18 +314,13 @@ function inferQwenParamTag(params) {
   return "100B+";
 }
 
-function buildQwenModels(rawTimeline) {
+function buildQwenAllModels(rawTimeline) {
   return rawTimeline
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
       const [releaseDate, name] = line.split("|");
-      return { releaseDate, name };
-    })
-    .filter((item) => !isDerivedVariantModel(item.name))
-    .map((line) => {
-      const { releaseDate, name } = line;
       const { params, architecture } = inferQwenParamsAndArchitecture(name);
       const type = inferQwenType(name);
       return {
@@ -337,10 +332,17 @@ function buildQwenModels(rawTimeline) {
         type,
         mlpStructure: inferQwenMlpStructure(architecture),
         attentionStructure: inferQwenAttentionStructure(type),
-        paramTag: inferQwenParamTag(params)
+        paramTag: inferQwenParamTag(params),
+        isDerived: isDerivedVariantModel(name)
       };
     });
 }
+
+function buildQwenCoreModels(allModels) {
+  return allModels.filter((model) => !model.isDerived);
+}
+
+const QWEN_ALL_MODELS = buildQwenAllModels(QWEN_RELEASE_TIMELINE_RAW);
 
 const AGIptrVendorDetails = {
   alibaba: {
@@ -354,7 +356,8 @@ const AGIptrVendorDetails = {
       "Flash 版本",
       "衍生版本（Chat / Instruct / Base / Thinking 等）"
     ],
-    models: buildQwenModels(QWEN_RELEASE_TIMELINE_RAW)
+    models: buildQwenCoreModels(QWEN_ALL_MODELS),
+    allModels: QWEN_ALL_MODELS
   }
 };
 
