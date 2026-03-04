@@ -259,6 +259,61 @@ function inferQwenType(modelName) {
   return "通用";
 }
 
+function isDerivedVariantModel(modelName) {
+  const lowerName = modelName.toLowerCase();
+  const derivedKeywords = [
+    "-chat",
+    "-instruct",
+    "-base",
+    "-thinking",
+    "-preview",
+    "-captioner",
+    "customvoice",
+    "voicedesign",
+    "prm",
+    "-rm",
+    "helpsteer",
+    "ultrafeedback",
+    "rlhflow",
+    "saferl",
+    "-gen-",
+    "-stream-",
+    "-edit",
+    "layered"
+  ];
+  return derivedKeywords.some((keyword) => lowerName.includes(keyword));
+}
+
+function inferQwenMlpStructure(architecture) {
+  const lowerArchitecture = String(architecture || "").toLowerCase();
+  if (lowerArchitecture.includes("moe")) return "MoE MLP";
+  if (lowerArchitecture.includes("dense")) return "Dense MLP";
+  return "未公开";
+}
+
+function inferQwenAttentionStructure(modelType) {
+  if (modelType === "视觉/多模态" || modelType === "全模态" || modelType === "语音/音频" || modelType === "图像") {
+    return "多模态注意力";
+  }
+  if (modelType === "Embedding" || modelType === "Reranker") {
+    return "检索/交叉注意力";
+  }
+  return "文本自注意力";
+}
+
+function inferQwenParamTag(params) {
+  if (!params || params === "未公开") return "未公开";
+  const match = params.match(/(\d+(?:\.\d+)?)B/i);
+  if (!match) return "未公开";
+  const value = Number(match[1]);
+  if (!Number.isFinite(value)) return "未公开";
+  if (value < 1) return "<1B";
+  if (value < 10) return "1B-10B";
+  if (value < 50) return "10B-50B";
+  if (value < 100) return "50B-100B";
+  return "100B+";
+}
+
 function buildQwenModels(rawTimeline) {
   return rawTimeline
     .split("\n")
@@ -266,14 +321,23 @@ function buildQwenModels(rawTimeline) {
     .filter(Boolean)
     .map((line) => {
       const [releaseDate, name] = line.split("|");
+      return { releaseDate, name };
+    })
+    .filter((item) => !isDerivedVariantModel(item.name))
+    .map((line) => {
+      const { releaseDate, name } = line;
       const { params, architecture } = inferQwenParamsAndArchitecture(name);
+      const type = inferQwenType(name);
       return {
         id: `Qwen/${name}`,
         name,
         releaseDate,
         params,
         architecture,
-        type: inferQwenType(name)
+        type,
+        mlpStructure: inferQwenMlpStructure(architecture),
+        attentionStructure: inferQwenAttentionStructure(type),
+        paramTag: inferQwenParamTag(params)
       };
     });
 }
@@ -287,7 +351,8 @@ const AGIptrVendorDetails = {
     source: "Hugging Face · Qwen 官方账号（统计时间：2026-03-04）",
     excludes: [
       "量化版本（AWQ / GPTQ / GGUF / Int4 / Int8 / FP8 / MLX / 4bit / 6bit / 8bit）",
-      "Flash 版本"
+      "Flash 版本",
+      "衍生版本（Chat / Instruct / Base / Thinking 等）"
     ],
     models: buildQwenModels(QWEN_RELEASE_TIMELINE_RAW)
   }

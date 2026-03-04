@@ -41,6 +41,14 @@ function architectureChip(model) {
   return `<span class="chip ${chipClass}">${escapeHtml(architecture)}</span>`;
 }
 
+function createSelectOptions(select, values, allLabel) {
+  const options = [
+    `<option value="all">${escapeHtml(allLabel)}</option>`,
+    ...values.map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`)
+  ];
+  select.innerHTML = options.join("");
+}
+
 function renderYearSection(year, models) {
   if (!models.length) {
     return `
@@ -51,16 +59,20 @@ function renderYearSection(year, models) {
     `;
   }
 
-  const rows = models.map((model) => `
-    <tr>
-      <td>${escapeHtml(formatDateLabel(model.releaseDate))}</td>
-      <td>${escapeHtml(model.name)}</td>
-      <td>${escapeHtml(model.id)}</td>
-      <td>${escapeHtml(model.params || "未公开")}</td>
-      <td>${architectureChip(model)}</td>
-      <td>${escapeHtml(model.type || "通用")}</td>
-    </tr>
-  `).join("");
+  const rows = models
+    .map((model) => `
+      <tr>
+        <td>${escapeHtml(formatDateLabel(model.releaseDate))}</td>
+        <td>${escapeHtml(model.name)}</td>
+        <td>${escapeHtml(model.id)}</td>
+        <td>${escapeHtml(model.params || "未公开")}</td>
+        <td>${architectureChip(model)}</td>
+        <td>${escapeHtml(model.type || "通用")}</td>
+        <td>${escapeHtml(model.mlpStructure || "未公开")}</td>
+        <td>${escapeHtml(model.attentionStructure || "未公开")}</td>
+      </tr>
+    `)
+    .join("");
 
   return `
     <section class="vendor-year-block">
@@ -74,7 +86,9 @@ function renderYearSection(year, models) {
               <th>编号 ID</th>
               <th>参数量</th>
               <th>架构</th>
-              <th>类型</th>
+              <th>模型类型</th>
+              <th>MLP 结构</th>
+              <th>注意力结构</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>
@@ -100,30 +114,22 @@ function renderVendorDetail(vendorId, vendorDetail) {
   const headerName = vendorDetail.name || (vendorMeta ? vendorMeta.name : vendorId);
   const headerLogo = vendorDetail.logo || (vendorMeta ? vendorMeta.logo : "");
   const years = Array.isArray(vendorDetail.years) && vendorDetail.years.length
-    ? vendorDetail.years
+    ? [...vendorDetail.years]
     : [2022, 2023, 2024, 2025, 2026];
+  const yearsDesc = [...years].sort((a, b) => b - a);
 
-  const validModels = (vendorDetail.models || []).filter((model) => {
-    const parsedYear = Number(model.releaseDate?.slice(0, 4));
-    return Number.isInteger(parsedYear) && parsedYear >= 2022 && parsedYear <= 2026;
-  });
-
-  const modelsByYear = new Map(years.map((year) => [year, []]));
-  validModels.forEach((model) => {
-    const year = Number(model.releaseDate.slice(0, 4));
-    if (!modelsByYear.has(year)) return;
-    modelsByYear.get(year).push(model);
-  });
-
-  years.forEach((year) => {
-    modelsByYear.get(year).sort((a, b) => {
+  const models = (vendorDetail.models || [])
+    .filter((model) => {
+      const parsedYear = Number(model.releaseDate?.slice(0, 4));
+      return Number.isInteger(parsedYear) && parsedYear >= 2022 && parsedYear <= 2026;
+    })
+    .sort((a, b) => {
       const dateDiff = new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
       if (dateDiff !== 0) return dateDiff;
-      return a.name.localeCompare(b.name, "zh-CN");
+      return b.name.localeCompare(a.name, "zh-CN");
     });
-  });
 
-  const totalModels = years.reduce((sum, year) => sum + modelsByYear.get(year).length, 0);
+  const totalModels = models.length;
   const excludes = (vendorDetail.excludes || []).map((item) => escapeHtml(item)).join("；");
 
   root.innerHTML = `
@@ -131,15 +137,127 @@ function renderVendorDetail(vendorId, vendorDetail) {
       <img class="vendor-detail-logo" src="${escapeHtml(headerLogo)}" alt="${escapeHtml(headerName)} logo" />
       <div class="vendor-detail-copy">
         <h1 class="detail-title">${escapeHtml(headerName)} 厂家详情</h1>
-        <p class="detail-id">统计区间：2022 - 2026 · 当前收录 ${totalModels} 个模型</p>
+        <p class="detail-id">统计区间：2022 - 2026 · 当前收录 ${totalModels} 个非衍生模型</p>
         <p class="vendor-detail-tip">已排除：${excludes || "无"}</p>
         <p class="vendor-detail-source">数据来源：${escapeHtml(vendorDetail.source || "待补充")}</p>
       </div>
     </header>
-    <div class="vendor-timeline">
-      ${years.map((year) => renderYearSection(year, modelsByYear.get(year))).join("")}
-    </div>
+    <section class="vendor-filter-panel">
+      <div class="vendor-filter-item">
+        <label for="filter-year">时间</label>
+        <select id="filter-year"></select>
+      </div>
+      <div class="vendor-filter-item">
+        <label for="filter-type">模型类型</label>
+        <select id="filter-type"></select>
+      </div>
+      <div class="vendor-filter-item">
+        <label for="filter-param">模型参数</label>
+        <select id="filter-param"></select>
+      </div>
+      <div class="vendor-filter-item">
+        <label for="filter-mlp">MLP 结构</label>
+        <select id="filter-mlp"></select>
+      </div>
+      <div class="vendor-filter-item">
+        <label for="filter-attention">注意力结构</label>
+        <select id="filter-attention"></select>
+      </div>
+      <button class="vendor-filter-reset" id="filter-reset" type="button">重置筛选</button>
+    </section>
+    <p class="vendor-filter-summary" id="vendor-filter-summary"></p>
+    <div class="vendor-timeline" id="vendor-timeline"></div>
   `;
+
+  const yearSelect = document.getElementById("filter-year");
+  const typeSelect = document.getElementById("filter-type");
+  const paramSelect = document.getElementById("filter-param");
+  const mlpSelect = document.getElementById("filter-mlp");
+  const attentionSelect = document.getElementById("filter-attention");
+  const resetButton = document.getElementById("filter-reset");
+  const timelineNode = document.getElementById("vendor-timeline");
+  const summaryNode = document.getElementById("vendor-filter-summary");
+
+  if (
+    !yearSelect
+    || !typeSelect
+    || !paramSelect
+    || !mlpSelect
+    || !attentionSelect
+    || !resetButton
+    || !timelineNode
+    || !summaryNode
+  ) {
+    return;
+  }
+
+  createSelectOptions(yearSelect, yearsDesc.map(String), "全部时间");
+
+  const typeOptions = [...new Set(models.map((model) => model.type || "通用"))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  createSelectOptions(typeSelect, typeOptions, "全部类型");
+
+  const paramPriority = ["<1B", "1B-10B", "10B-50B", "50B-100B", "100B+", "未公开"];
+  const paramOptions = [...new Set(models.map((model) => model.paramTag || "未公开"))]
+    .sort((left, right) => paramPriority.indexOf(left) - paramPriority.indexOf(right));
+  createSelectOptions(paramSelect, paramOptions, "全部参数");
+
+  const mlpOptions = [...new Set(models.map((model) => model.mlpStructure || "未公开"))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  createSelectOptions(mlpSelect, mlpOptions, "全部 MLP 结构");
+
+  const attentionOptions = [...new Set(models.map((model) => model.attentionStructure || "未公开"))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  createSelectOptions(attentionSelect, attentionOptions, "全部注意力结构");
+
+  function applyFilters() {
+    const selectedYear = yearSelect.value;
+    const selectedType = typeSelect.value;
+    const selectedParam = paramSelect.value;
+    const selectedMlp = mlpSelect.value;
+    const selectedAttention = attentionSelect.value;
+
+    const filteredModels = models.filter((model) => {
+      const year = model.releaseDate.slice(0, 4);
+      if (selectedYear !== "all" && year !== selectedYear) return false;
+      if (selectedType !== "all" && (model.type || "通用") !== selectedType) return false;
+      if (selectedParam !== "all" && (model.paramTag || "未公开") !== selectedParam) return false;
+      if (selectedMlp !== "all" && (model.mlpStructure || "未公开") !== selectedMlp) return false;
+      if (selectedAttention !== "all" && (model.attentionStructure || "未公开") !== selectedAttention) return false;
+      return true;
+    });
+
+    const targetYears = selectedYear === "all" ? yearsDesc : [Number(selectedYear)];
+    const modelMap = new Map(targetYears.map((year) => [year, []]));
+    filteredModels.forEach((model) => {
+      const year = Number(model.releaseDate.slice(0, 4));
+      if (!modelMap.has(year)) return;
+      modelMap.get(year).push(model);
+    });
+
+    targetYears.forEach((year) => {
+      modelMap.get(year).sort((a, b) => {
+        const dateDiff = new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+        if (dateDiff !== 0) return dateDiff;
+        return b.name.localeCompare(a.name, "zh-CN");
+      });
+    });
+
+    summaryNode.textContent = `筛选结果：${filteredModels.length} / ${totalModels} 个模型`;
+    timelineNode.innerHTML = targetYears.map((year) => renderYearSection(year, modelMap.get(year))).join("");
+  }
+
+  [yearSelect, typeSelect, paramSelect, mlpSelect, attentionSelect].forEach((selectNode) => {
+    selectNode.addEventListener("change", applyFilters);
+  });
+
+  resetButton.addEventListener("click", () => {
+    yearSelect.value = "all";
+    typeSelect.value = "all";
+    paramSelect.value = "all";
+    mlpSelect.value = "all";
+    attentionSelect.value = "all";
+    applyFilters();
+  });
+
+  applyFilters();
 }
 
 function renderDetailPage() {
