@@ -374,7 +374,7 @@ const QWEN_MAJOR_VERSION_DETAILS = {
     architectureCaption: "架构图（按 Transformer 论文风格重绘，结构参数依据 Qwen 官方模型卡 Hidden Layout）",
     blogUrl: "https://qwen.ai/blog?id=qwen3.5",
     docsUrl: "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
-    sourceNote: "官方来源：Qwen Hugging Face 模型卡 + 官方博客入口（统计日期：2026-03-04）",
+    sourceNote: "官方来源：Qwen Hugging Face 模型卡 + 官方博客入口（统计日期：2026-03-05）",
     metricsByModelId: {
       "Qwen/Qwen3.5-397B-A17B": {
         modelType: "Causal Language Model with Vision Encoder",
@@ -466,7 +466,7 @@ const AGIptrVendorDetails = {
     name: "Qwen（通义千问）",
     logo: "./assets/logos/alibaba.png",
     years: [2022, 2023, 2024, 2025, 2026],
-    source: "Hugging Face · Qwen 官方账号（统计时间：2026-03-04）",
+    source: "Hugging Face · Qwen 官方账号（统计时间：2026-03-05）",
     excludes: [
       "量化版本（AWQ / GPTQ / GGUF / Int4 / Int8 / FP8 / MLX / 4bit / 6bit / 8bit）",
       "Flash 版本",
