@@ -351,7 +351,7 @@ const QWEN_MAJOR_VERSION_DETAILS = {
     title: "Qwen3.5 架构与技术细节",
     summary: "Qwen3.5 采用 Gated DeltaNet 与 Gated Attention 交替堆叠，并结合稀疏 MoE（A 系列）或 Dense FFN（Dense 系列）。",
     architectureDiagram: "./assets/diagrams/qwen3_5_architecture.svg",
-    architectureCaption: "架构示意图（依据 Qwen 官方模型卡中的 Hidden Layout 与结构参数整理）",
+    architectureCaption: "架构图（按 Transformer 论文风格重绘，结构参数依据 Qwen 官方模型卡 Hidden Layout）",
     blogUrl: "https://qwen.ai/blog?id=qwen3.5",
     docsUrl: "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
     sourceNote: "官方来源：Qwen Hugging Face 模型卡 + 官方博客入口（统计日期：2026-03-04）",
