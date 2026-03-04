@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGIptr · 每日更新最新型大模型</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Orbitron:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1 class="hero-logo">AGIptr</h1>
+        <p class="hero-subtitle">每日更新最新型大模型</p>
+        <p class="hero-date">最后更新：<span id="today-date"></span></p>
+      </header>
+
+      <section class="vendor-section" aria-label="模型厂商矩阵">
+        <h2 class="section-title">模型厂商矩阵</h2>
+        <div class="vendor-grid" id="vendor-grid"></div>
+      </section>
+    </main>
+
+    <script src="./model-data.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

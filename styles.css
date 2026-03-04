@@ -1,0 +1,235 @@
+:root {
+  --bg: #ffffff;
+  --text-main: #101010;
+  --text-sub: #52525b;
+  --line: #ececf2;
+  --line-hover: #d1d1dc;
+  --shadow: 0 14px 35px rgba(17, 17, 20, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  background: var(--bg);
+  font-family: "Noto Sans SC", system-ui, -apple-system, sans-serif;
+}
+
+.page {
+  width: min(1080px, calc(100vw - 48px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.hero-logo {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(74px, 15vw, 180px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  background: linear-gradient(125deg, #111111 12%, #5f5f5f 46%, #111111 82%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 18px 30px rgba(17, 17, 17, 0.14);
+}
+
+.hero-subtitle {
+  margin: 12px 0 8px;
+  color: var(--text-main);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hero-date {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 14px;
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.vendor-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.vendor-card {
+  position: relative;
+  height: 120px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.vendor-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow);
+  border-color: var(--line-hover);
+}
+
+.vendor-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: contrast(1.08);
+}
+
+.vendor-initial {
+  width: 52px;
+  height: 52px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #f4f4f7;
+  color: #2b2b31;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.vendor-card.logo-fallback .vendor-logo {
+  display: none;
+}
+
+.vendor-card.logo-fallback .vendor-initial {
+  display: inline-flex;
+}
+
+.vendor-name {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #101010;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #f0f0f4;
+  border-radius: 999px;
+  padding: 5px 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.vendor-card:hover .vendor-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-page {
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #1e1e22;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.detail-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.detail-title {
+  margin: 0 0 8px;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.2;
+}
+
+.detail-id {
+  margin: 0 0 20px;
+  color: var(--text-sub);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.detail-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.detail-item-label {
+  display: block;
+  color: var(--text-sub);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.detail-item-value {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #dbdde7;
+}
+
+.chip.moe {
+  color: #4756ff;
+  border-color: #c6ccff;
+  background: #f3f5ff;
+}
+
+.chip.dense {
+  color: #025f2f;
+  border-color: #bde0cb;
+  background: #f1faf5;
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--text-sub);
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(1080px, calc(100vw - 28px));
+    padding-top: 28px;
+  }
+
+  .vendor-card {
+    height: 108px;
+  }
+}
