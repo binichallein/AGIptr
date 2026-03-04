@@ -66,6 +66,83 @@ function updateBackLink(vendorId, isModelDetail) {
   backLink.textContent = "← 返回首页";
 }
 
+const ARCHITECTURE_LIGHTBOX_ID = "architecture-lightbox";
+
+function closeArchitectureLightbox() {
+  const lightbox = document.getElementById(ARCHITECTURE_LIGHTBOX_ID);
+  if (!lightbox) return;
+  lightbox.classList.remove("is-open");
+  document.body.classList.remove("lightbox-open");
+}
+
+function ensureArchitectureLightbox() {
+  const existing = document.getElementById(ARCHITECTURE_LIGHTBOX_ID);
+  if (existing) return existing;
+
+  const lightbox = document.createElement("div");
+  lightbox.id = ARCHITECTURE_LIGHTBOX_ID;
+  lightbox.className = "architecture-lightbox";
+  lightbox.innerHTML = `
+    <div class="architecture-lightbox-backdrop" data-lightbox-close="true"></div>
+    <figure class="architecture-lightbox-panel" role="dialog" aria-modal="true" aria-label="模型架构图放大预览">
+      <button class="architecture-lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <img class="architecture-lightbox-image" alt="" />
+      <figcaption class="architecture-lightbox-caption"></figcaption>
+    </figure>
+  `;
+  document.body.appendChild(lightbox);
+
+  const closeButton = lightbox.querySelector(".architecture-lightbox-close");
+  if (closeButton) {
+    closeButton.addEventListener("click", closeArchitectureLightbox);
+  }
+  lightbox.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (target.dataset.lightboxClose === "true") {
+      closeArchitectureLightbox();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeArchitectureLightbox();
+    }
+  });
+
+  return lightbox;
+}
+
+function openArchitectureLightbox(image, alt, caption) {
+  if (!image) return;
+  const lightbox = ensureArchitectureLightbox();
+  const imageNode = lightbox.querySelector(".architecture-lightbox-image");
+  const captionNode = lightbox.querySelector(".architecture-lightbox-caption");
+  if (!(imageNode instanceof HTMLImageElement) || !(captionNode instanceof HTMLElement)) return;
+
+  imageNode.src = image;
+  imageNode.alt = alt || "模型架构图";
+  captionNode.textContent = caption || "";
+  lightbox.classList.add("is-open");
+  document.body.classList.add("lightbox-open");
+}
+
+function bindArchitectureZoom(container) {
+  if (!(container instanceof HTMLElement)) return;
+  const triggers = container.querySelectorAll(".major-version-zoom-trigger");
+  triggers.forEach((trigger) => {
+    if (!(trigger instanceof HTMLButtonElement)) return;
+    if (trigger.dataset.zoomBound === "true") return;
+    trigger.dataset.zoomBound = "true";
+    trigger.addEventListener("click", () => {
+      openArchitectureLightbox(
+        trigger.dataset.zoomImage || "",
+        trigger.dataset.zoomAlt || "",
+        trigger.dataset.zoomCaption || ""
+      );
+    });
+  });
+}
+
 function renderYearSection(year, models, vendorId) {
   if (!models.length) {
     return `
@@ -199,7 +276,16 @@ function renderMajorVersionSection(baseModel, vendorDetail) {
       <p class="major-version-summary">${escapeHtml(detail.summary || "")}</p>
       <div class="major-version-layout">
         <figure class="major-version-figure">
-          <img src="${escapeHtml(detail.architectureDiagram || "")}" alt="${escapeHtml(detail.version || "模型")} 架构图" />
+          <button
+            class="major-version-zoom-trigger"
+            type="button"
+            data-zoom-image="${escapeHtml(detail.architectureDiagram || "")}"
+            data-zoom-alt="${escapeHtml(detail.version || "模型")} 架构图"
+            data-zoom-caption="${escapeHtml(detail.architectureCaption || "")}"
+          >
+            <img src="${escapeHtml(detail.architectureDiagram || "")}" alt="${escapeHtml(detail.version || "模型")} 架构图" />
+            <span class="major-version-zoom-hint">点击放大</span>
+          </button>
           <figcaption>${escapeHtml(detail.architectureCaption || "")}</figcaption>
         </figure>
         <div class="major-version-metrics">
@@ -299,6 +385,7 @@ function renderModelDetail(vendorId, vendorDetail, modelId) {
         : '<p class="vendor-year-empty">暂无衍生模型版本。</p>'}
     </section>
   `;
+  bindArchitectureZoom(root);
 }
 
 function renderVendorDetail(vendorId, vendorDetail) {
