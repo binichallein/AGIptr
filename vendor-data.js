@@ -460,12 +460,323 @@ const QWEN_MAJOR_VERSION_DETAILS = {
   }
 };
 
-const AGIptrVendorDetails = {
-  alibaba: {
+const STANDARD_YEARS = [2022, 2023, 2024, 2025, 2026];
+
+const GENERIC_EXCLUDES = [
+  "仅统计 2022-2026 主模型",
+  "量化/蒸馏/Flash 版本",
+  "衍生变体（Chat/Instruct/Base/Preview 等）"
+];
+
+const GENERIC_VENDOR_SOURCES = {
+  openai: "OpenAI 官方发布记录（统计时间：2026-03-05）",
+  anthropic: "Anthropic 官方发布记录（统计时间：2026-03-05）",
+  "google-deepmind": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
+  meta: "Meta AI 官方发布记录（统计时间：2026-03-05）",
+  xai: "xAI 官方发布记录（统计时间：2026-03-05）",
+  mistral: "Mistral AI 官方发布记录（统计时间：2026-03-05）",
+  cohere: "Cohere 官方发布记录（统计时间：2026-03-05）",
+  microsoft: "Microsoft AI 官方发布记录（统计时间：2026-03-05）",
+  aws: "AWS 官方发布记录（统计时间：2026-03-05）",
+  nvidia: "NVIDIA AI 官方发布记录（统计时间：2026-03-05）",
+  baidu: "百度文心官方发布记录（统计时间：2026-03-05）",
+  tencent: "腾讯混元官方发布记录（统计时间：2026-03-05）",
+  bytedance: "字节豆包官方发布记录（统计时间：2026-03-05）",
+  zhipu: "智谱官方发布记录（统计时间：2026-03-05）",
+  moonshot: "月之暗面官方发布记录（统计时间：2026-03-05）",
+  minimax: "MiniMax 官方发布记录（统计时间：2026-03-05）",
+  deepseek: "DeepSeek 官方发布记录（统计时间：2026-03-05）",
+  ai01: "01.AI 官方发布记录（统计时间：2026-03-05）",
+  baichuan: "百川智能官方发布记录（统计时间：2026-03-05）",
+  iflytek: "科大讯飞官方发布记录（统计时间：2026-03-05）",
+  huawei: "华为盘古官方发布记录（统计时间：2026-03-05）",
+  sensetime: "商汤日日新官方发布记录（统计时间：2026-03-05）",
+  stepfun: "阶跃星辰官方发布记录（统计时间：2026-03-05）",
+  modelbest: "面壁智能官方发布记录（统计时间：2026-03-05）"
+};
+
+const GENERIC_VENDOR_TIMELINES_RAW = {
+  openai: `
+2022-11-30|GPT-3.5|未公开|Dense|通用|GPT
+2023-03-14|GPT-4|未公开|Dense|通用|GPT
+2024-05-13|GPT-4o|未公开|Dense|全模态|GPT
+2024-07-18|GPT-4o mini|未公开|Dense|通用|GPT
+2025-04-14|GPT-4.1|未公开|Dense|通用|GPT
+2025-04-16|o3|未公开|MoE|推理|o
+2025-04-16|o4-mini|未公开|MoE|推理|o
+`.trim(),
+  anthropic: `
+2023-03-14|Claude 1|未公开|Dense|通用|Claude
+2023-07-11|Claude 2|未公开|Dense|通用|Claude
+2024-03-04|Claude 3 Opus|未公开|Dense|通用|Claude 3
+2024-06-20|Claude 3.5 Sonnet|未公开|Dense|通用|Claude 3.5
+2024-10-22|Claude 3.5 Haiku|未公开|Dense|通用|Claude 3.5
+2025-02-24|Claude 3.7 Sonnet|未公开|Dense|推理|Claude 3.7
+`.trim(),
+  "google-deepmind": `
+2023-12-06|Gemini 1.0 Pro|未公开|MoE|多模态|Gemini 1.0
+2024-02-15|Gemini 1.5 Pro|未公开|MoE|多模态|Gemini 1.5
+2024-05-14|Gemini 1.5 Flash|未公开|MoE|多模态|Gemini 1.5
+2024-12-11|Gemini 2.0 Flash|未公开|MoE|多模态|Gemini 2.0
+2025-03-25|Gemini 2.5 Pro|未公开|MoE|多模态|Gemini 2.5
+2025-08-14|Gemini 2.5 Flash|未公开|MoE|多模态|Gemini 2.5
+`.trim(),
+  meta: `
+2023-07-18|Llama 2 70B|70B|Dense|通用|Llama 2
+2024-04-18|Llama 3 70B|70B|Dense|通用|Llama 3
+2024-07-23|Llama 3.1 405B|405B|Dense|通用|Llama 3.1
+2024-12-06|Llama 3.3 70B|70B|Dense|通用|Llama 3.3
+2025-04-05|Llama 4 Scout|未公开|MoE|多模态|Llama 4
+`.trim(),
+  xai: `
+2023-11-04|Grok-1|未公开|Dense|通用|Grok
+2024-03-29|Grok-1.5|未公开|Dense|通用|Grok
+2024-08-13|Grok-2|未公开|MoE|通用|Grok
+2025-02-17|Grok-3|未公开|MoE|推理|Grok
+`.trim(),
+  mistral: `
+2023-09-27|Mistral 7B|7B|Dense|通用|Mistral
+2023-12-11|Mixtral 8x7B|46.7B|MoE|通用|Mixtral
+2024-02-26|Mistral Large|未公开|Dense|通用|Mistral Large
+2024-07-24|Mistral Large 2|123B|Dense|通用|Mistral Large
+2025-06-04|Mistral Medium 3|未公开|Dense|通用|Mistral Medium
+`.trim(),
+  cohere: `
+2023-03-14|Command|未公开|Dense|通用|Command
+2024-03-11|Command R|35B|Dense|通用|Command R
+2024-04-04|Command R+|104B|Dense|通用|Command R
+2025-03-13|Command A|未公开|Dense|通用|Command A
+`.trim(),
+  microsoft: `
+2023-12-06|Phi-2|2.7B|Dense|通用|Phi
+2024-04-23|Phi-3 Medium|14B|Dense|通用|Phi-3
+2024-12-12|Phi-4|14B|Dense|通用|Phi-4
+2025-02-26|Phi-4-multimodal|未公开|Dense|多模态|Phi-4
+`.trim(),
+  aws: `
+2023-09-28|Amazon Titan Text G1|未公开|Dense|通用|Titan
+2024-04-30|Titan Text Premier|未公开|Dense|通用|Titan
+2024-12-03|Amazon Nova Pro|未公开|Dense|多模态|Nova
+2024-12-03|Amazon Nova Lite|未公开|Dense|多模态|Nova
+2025-01-10|Amazon Nova Micro|未公开|Dense|通用|Nova
+`.trim(),
+  nvidia: `
+2024-06-18|Nemotron-4 340B|340B|Dense|通用|Nemotron
+2024-10-15|Llama 3.1 Nemotron 70B|70B|MoE|通用|Nemotron
+2025-01-08|Llama 3.3 Nemotron Super 49B|49B|MoE|推理|Nemotron
+`.trim(),
+  baidu: `
+2023-03-16|文心一言|未公开|Dense|通用|ERNIE
+2023-10-17|ERNIE 4.0|未公开|MoE|通用|ERNIE 4
+2024-06-28|ERNIE 4.0 Turbo|未公开|MoE|通用|ERNIE 4
+2025-03-16|ERNIE 4.5|未公开|MoE|通用|ERNIE 4.5
+2025-06-30|ERNIE X1|未公开|MoE|推理|ERNIE X
+`.trim(),
+  tencent: `
+2023-09-07|Hunyuan-Large|未公开|Dense|通用|混元
+2024-05-30|Hunyuan-Pro|未公开|Dense|通用|混元
+2024-11-05|Hunyuan-Large-2024|未公开|Dense|通用|混元
+2025-02-27|Hunyuan-T1|未公开|Dense|推理|混元 T
+`.trim(),
+  bytedance: `
+2023-08-16|豆包 1.0|未公开|Dense|通用|豆包
+2024-05-15|豆包 Pro|未公开|MoE|通用|豆包 Pro
+2024-09-24|豆包 Seed 1.5|未公开|MoE|通用|豆包 Seed
+2025-05-16|豆包 Pro 32K|未公开|MoE|通用|豆包 Pro
+`.trim(),
+  zhipu: `
+2023-06-13|ChatGLM2-6B|6B|Dense|通用|GLM
+2023-10-27|GLM-4|未公开|MoE|通用|GLM-4
+2024-06-05|GLM-4-Air|未公开|MoE|通用|GLM-4
+2025-01-15|GLM-4-Plus|未公开|MoE|通用|GLM-4
+`.trim(),
+  moonshot: `
+2023-10-09|Kimi Chat|未公开|Dense|通用|Kimi
+2024-03-18|Kimi Long|未公开|Dense|通用|Kimi
+2024-10-11|Kimi k1.5|未公开|MoE|推理|Kimi
+2025-10-11|Kimi K2|未公开|MoE|推理|Kimi
+`.trim(),
+  minimax: `
+2023-06-20|ABAB-5.5|未公开|Dense|通用|ABAB
+2024-09-15|MiniMax-Text-01|456B（45.9B 激活）|MoE|通用|MiniMax Text
+2025-01-15|MiniMax-Text-01|456B（45.9B 激活）|MoE|通用|MiniMax Text
+2025-07-03|MiniMax-M1|未公开|MoE|通用|MiniMax M
+`.trim(),
+  deepseek: `
+2023-11-02|DeepSeek-Coder|33B|Dense|代码|DeepSeek Coder
+2024-05-07|DeepSeek-V2|236B（21B 激活）|MoE|通用|DeepSeek V2
+2024-12-26|DeepSeek-V3|671B（37B 激活）|MoE|通用|DeepSeek V3
+2025-01-20|DeepSeek-R1|671B（37B 激活）|MoE|推理|DeepSeek R
+`.trim(),
+  ai01: `
+2023-11-05|Yi-34B|34B|Dense|通用|Yi
+2024-05-13|Yi-1.5-34B|34B|Dense|通用|Yi 1.5
+2024-10-16|Yi-Lightning|未公开|Dense|通用|Yi
+2025-06-01|Yi-Large|未公开|Dense|通用|Yi
+`.trim(),
+  baichuan: `
+2023-06-15|Baichuan-13B|13B|Dense|通用|Baichuan
+2023-10-30|Baichuan2-53B|53B|Dense|通用|Baichuan2
+2024-05-22|Baichuan3-Turbo|未公开|MoE|通用|Baichuan3
+2024-11-20|Baichuan4-Turbo|未公开|MoE|通用|Baichuan4
+`.trim(),
+  iflytek: `
+2023-05-06|讯飞星火 V1|未公开|Dense|通用|星火
+2023-10-24|讯飞星火 V3|未公开|Dense|通用|星火
+2024-10-24|讯飞星火 4.0 Turbo|未公开|Dense|通用|星火 4.0
+2025-01-15|讯飞星火 Max|未公开|Dense|通用|星火 Max
+`.trim(),
+  huawei: `
+2023-07-07|盘古大模型 3.0|未公开|Dense|通用|盘古
+2024-06-21|盘古大模型 4.0|未公开|Dense|通用|盘古
+2025-06-20|盘古大模型 5.0|未公开|Dense|通用|盘古
+`.trim(),
+  sensetime: `
+2023-04-10|SenseNova 1.0|未公开|Dense|通用|SenseNova
+2024-04-23|SenseNova 5.0|未公开|MoE|多模态|SenseNova 5
+2025-04-10|SenseNova 5o|未公开|MoE|多模态|SenseNova 5
+`.trim(),
+  stepfun: `
+2024-03-14|Step-1|未公开|Dense|通用|Step
+2024-10-20|Step-1.5V|未公开|Dense|视觉/多模态|Step
+2025-03-10|Step-2|未公开|Dense|推理|Step
+`.trim(),
+  modelbest: `
+2023-02-28|MiniCPM-2B|2B|Dense|通用|MiniCPM
+2024-05-16|MiniCPM-Llama3-V-2.5|8B|Dense|视觉/多模态|MiniCPM-V
+2024-07-03|MiniCPM-V-2.6|8B|Dense|视觉/多模态|MiniCPM-V
+2025-08-15|MiniCPM 4.0|8B|Dense|通用|MiniCPM
+`.trim()
+};
+
+function inferGenericArchitecture(modelName, architectureHint) {
+  if (architectureHint) return architectureHint;
+  if (/(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)b/i.test(modelName)) return "MoE";
+  if (/-a(\d+(?:\.\d+)?)b/i.test(modelName)) return "MoE";
+  if (/moe|mixtral|nemotron|grok-3|r1/i.test(modelName)) return "MoE";
+  return "Dense";
+}
+
+function inferGenericType(modelName, typeHint) {
+  if (typeHint) return typeHint;
+  const lowerName = modelName.toLowerCase();
+  if (lowerName.includes("embedding")) return "Embedding";
+  if (lowerName.includes("reranker")) return "Reranker";
+  if (lowerName.includes("coder") || lowerName.includes("code")) return "代码";
+  if (lowerName.includes("math")) return "数学";
+  if (lowerName.includes("vision") || lowerName.includes("vl") || lowerName.includes("multimodal")) return "视觉/多模态";
+  if (lowerName.includes("audio") || lowerName.includes("speech") || lowerName.includes("asr") || lowerName.includes("tts")) return "语音/音频";
+  if (lowerName.includes("reason") || lowerName.includes("think") || lowerName.startsWith("o")) return "推理";
+  return "通用";
+}
+
+function inferGenericFamily(modelName, familyHint) {
+  if (familyHint) return familyHint;
+  const plain = String(modelName || "").trim();
+  const match = plain.match(/^([A-Za-z\u4e00-\u9fa5]+(?:[-\s]?\d+(?:\.\d+)?)?)/);
+  if (!match) return "未分类";
+  return match[1].replace(/\s+/g, " ").trim();
+}
+
+function inferGenericMlpStructure(architecture) {
+  const lowerArchitecture = String(architecture || "").toLowerCase();
+  if (lowerArchitecture.includes("moe")) return "MoE MLP";
+  if (lowerArchitecture.includes("dense")) return "Dense MLP";
+  return "未公开";
+}
+
+function inferGenericAttentionStructure(modelType) {
+  if (modelType === "视觉/多模态" || modelType === "多模态" || modelType === "全模态" || modelType === "语音/音频" || modelType === "图像") {
+    return "多模态注意力";
+  }
+  if (modelType === "Embedding" || modelType === "Reranker") {
+    return "检索/交叉注意力";
+  }
+  return "文本自注意力";
+}
+
+function buildGenericModelsFromTimeline(vendorId, rawTimeline) {
+  if (!rawTimeline) return [];
+  return rawTimeline
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const [releaseDate, name, paramsRaw, architectureRaw, typeRaw, familyRaw] = line.split("|").map((part) => part.trim());
+      const architecture = inferGenericArchitecture(name, architectureRaw);
+      const type = inferGenericType(name, typeRaw);
+      const params = paramsRaw || inferQwenParamsAndArchitecture(name).params || "未公开";
+      return {
+        id: `${vendorId}/${name}`,
+        name,
+        releaseDate,
+        params,
+        architecture,
+        type,
+        family: inferGenericFamily(name, familyRaw),
+        mlpStructure: inferGenericMlpStructure(architecture),
+        attentionStructure: inferGenericAttentionStructure(type),
+        paramTag: inferQwenParamTag(params),
+        isDerived: isDerivedVariantModel(name),
+        majorVersionKey: ""
+      };
+    });
+}
+
+function buildGenericModelsFromFallback(vendorId) {
+  return (window.AGIptrModels || [])
+    .filter((model) => model.vendorId === vendorId)
+    .map((model) => {
+      const architecture = model.architecture || "未公开";
+      const type = inferGenericType(model.name, "通用");
+      const params = model.params || "未公开";
+      return {
+        id: `${vendorId}/${model.name}`,
+        name: model.name,
+        releaseDate: model.releaseDate,
+        params,
+        architecture,
+        type,
+        family: inferGenericFamily(model.name),
+        mlpStructure: inferGenericMlpStructure(architecture),
+        attentionStructure: inferGenericAttentionStructure(type),
+        paramTag: inferQwenParamTag(params),
+        isDerived: isDerivedVariantModel(model.name),
+        majorVersionKey: ""
+      };
+    });
+}
+
+function buildGenericVendorDetail(vendorMeta) {
+  const rawTimeline = GENERIC_VENDOR_TIMELINES_RAW[vendorMeta.id] || "";
+  const allModels = rawTimeline
+    ? buildGenericModelsFromTimeline(vendorMeta.id, rawTimeline)
+    : buildGenericModelsFromFallback(vendorMeta.id);
+  const coreModels = allModels.filter((model) => !model.isDerived);
+  return {
+    id: vendorMeta.id,
+    name: vendorMeta.name,
+    logo: vendorMeta.logo,
+    years: STANDARD_YEARS,
+    source: GENERIC_VENDOR_SOURCES[vendorMeta.id] || `官方发布记录（统计时间：2026-03-05）`,
+    excludes: [...GENERIC_EXCLUDES],
+    models: coreModels,
+    allModels,
+    majorVersionDetails: {}
+  };
+}
+
+function buildVendorDetailsMap() {
+  const details = {};
+  (window.AGIptrVendors || []).forEach((vendorMeta) => {
+    if (vendorMeta.id === "alibaba") return;
+    details[vendorMeta.id] = buildGenericVendorDetail(vendorMeta);
+  });
+  details.alibaba = {
     id: "alibaba",
     name: "Qwen（通义千问）",
     logo: "./assets/logos/alibaba.png",
-    years: [2022, 2023, 2024, 2025, 2026],
+    years: STANDARD_YEARS,
     source: "Hugging Face · Qwen 官方账号（统计时间：2026-03-05）",
     excludes: [
       "量化版本（AWQ / GPTQ / GGUF / Int4 / Int8 / FP8 / MLX / 4bit / 6bit / 8bit）",
@@ -475,7 +786,10 @@ const AGIptrVendorDetails = {
     models: buildQwenCoreModels(QWEN_ALL_MODELS),
     allModels: QWEN_ALL_MODELS,
     majorVersionDetails: QWEN_MAJOR_VERSION_DETAILS
-  }
-};
+  };
+  return details;
+}
+
+const AGIptrVendorDetails = buildVendorDetailsMap();
 
 window.AGIptrVendorDetails = AGIptrVendorDetails;
