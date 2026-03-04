@@ -333,7 +333,8 @@ function buildQwenAllModels(rawTimeline) {
         mlpStructure: inferQwenMlpStructure(architecture),
         attentionStructure: inferQwenAttentionStructure(type),
         paramTag: inferQwenParamTag(params),
-        isDerived: isDerivedVariantModel(name)
+        isDerived: isDerivedVariantModel(name),
+        majorVersionKey: name.startsWith("Qwen3.5-") ? "Qwen3.5" : ""
       };
     });
 }
@@ -343,6 +344,101 @@ function buildQwenCoreModels(allModels) {
 }
 
 const QWEN_ALL_MODELS = buildQwenAllModels(QWEN_RELEASE_TIMELINE_RAW);
+
+const QWEN_MAJOR_VERSION_DETAILS = {
+  "Qwen3.5": {
+    version: "Qwen3.5",
+    title: "Qwen3.5 架构与技术细节",
+    summary: "Qwen3.5 采用 Gated DeltaNet 与 Gated Attention 交替堆叠，并结合稀疏 MoE（A 系列）或 Dense FFN（Dense 系列）。",
+    architectureDiagram: "./assets/diagrams/qwen3_5_architecture.svg",
+    architectureCaption: "架构示意图（依据 Qwen 官方模型卡中的 Hidden Layout 与结构参数整理）",
+    blogUrl: "https://qwen.ai/blog?id=qwen3.5",
+    docsUrl: "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+    sourceNote: "官方来源：Qwen Hugging Face 模型卡 + 官方博客入口（统计日期：2026-03-04）",
+    metricsByModelId: {
+      "Qwen/Qwen3.5-397B-A17B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "397B 总参数 / 17B 激活参数",
+        layers: "60",
+        hiddenLayout: "15 × (3 × (Gated DeltaNet → MoE) → 1 × (Gated Attention → MoE))",
+        linearHeads: "V:64 / QK:16",
+        attentionHeads: "Q:32 / KV:2",
+        experts: "512（10 Routed + 1 Shared）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-122B-A10B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "122B 总参数 / 10B 激活参数",
+        layers: "48",
+        hiddenLayout: "12 × (3 × (Gated DeltaNet → MoE) → 1 × (Gated Attention → MoE))",
+        linearHeads: "V:64 / QK:16",
+        attentionHeads: "Q:32 / KV:2",
+        experts: "256（8 Routed + 1 Shared）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-35B-A3B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "35B 总参数 / 3B 激活参数",
+        layers: "40",
+        hiddenLayout: "10 × (3 × (Gated DeltaNet → MoE) → 1 × (Gated Attention → MoE))",
+        linearHeads: "V:32 / QK:16",
+        attentionHeads: "Q:16 / KV:2",
+        experts: "256（8 Routed + 1 Shared）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-27B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "27B（Dense）",
+        layers: "64",
+        hiddenLayout: "16 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))",
+        linearHeads: "V:48 / QK:16",
+        attentionHeads: "Q:24 / KV:4",
+        experts: "无（Dense FFN）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-9B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "9B（Dense）",
+        layers: "32",
+        hiddenLayout: "8 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))",
+        linearHeads: "V:32 / QK:16",
+        attentionHeads: "Q:16 / KV:4",
+        experts: "无（Dense FFN）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-4B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "4B（Dense）",
+        layers: "32",
+        hiddenLayout: "8 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))",
+        linearHeads: "V:32 / QK:16",
+        attentionHeads: "Q:16 / KV:4",
+        experts: "无（Dense FFN）",
+        context: "262,144（可扩展至 1,010,000）"
+      },
+      "Qwen/Qwen3.5-2B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "2B（Dense）",
+        layers: "24",
+        hiddenLayout: "6 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))",
+        linearHeads: "V:16 / QK:16",
+        attentionHeads: "Q:8 / KV:2",
+        experts: "无（Dense FFN）",
+        context: "262,144"
+      },
+      "Qwen/Qwen3.5-0.8B": {
+        modelType: "Causal Language Model with Vision Encoder",
+        parameters: "0.8B（Dense）",
+        layers: "24",
+        hiddenLayout: "6 × (3 × (Gated DeltaNet → FFN) → 1 × (Gated Attention → FFN))",
+        linearHeads: "V:16 / QK:16",
+        attentionHeads: "Q:8 / KV:2",
+        experts: "无（Dense FFN）",
+        context: "262,144"
+      }
+    }
+  }
+};
 
 const AGIptrVendorDetails = {
   alibaba: {
@@ -357,7 +453,8 @@ const AGIptrVendorDetails = {
       "衍生版本（Chat / Instruct / Base / Thinking 等）"
     ],
     models: buildQwenCoreModels(QWEN_ALL_MODELS),
-    allModels: QWEN_ALL_MODELS
+    allModels: QWEN_ALL_MODELS,
+    majorVersionDetails: QWEN_MAJOR_VERSION_DETAILS
   }
 };
 

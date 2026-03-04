@@ -152,6 +152,70 @@ function findDerivedModels(baseModel, vendorDetail) {
     });
 }
 
+function majorVersionPayload(baseModel, vendorDetail) {
+  const majorKey = baseModel?.majorVersionKey;
+  if (!majorKey) return null;
+  const detail = vendorDetail?.majorVersionDetails?.[majorKey];
+  if (!detail) return null;
+
+  const metricsMap = detail.metricsByModelId || {};
+  const metrics = metricsMap[baseModel.id] || null;
+  return {
+    detail,
+    metrics
+  };
+}
+
+function renderMajorVersionSection(baseModel, vendorDetail) {
+  const payload = majorVersionPayload(baseModel, vendorDetail);
+  if (!payload) return "";
+
+  const { detail, metrics } = payload;
+  const hfUrl = `https://huggingface.co/${baseModel.id}`;
+  const metricItems = metrics
+    ? [
+        ["模型类型", metrics.modelType],
+        ["参数规模", metrics.parameters],
+        ["层数", metrics.layers],
+        ["Hidden Layout", metrics.hiddenLayout],
+        ["线性注意力头", metrics.linearHeads],
+        ["注意力头", metrics.attentionHeads],
+        ["专家配置", metrics.experts],
+        ["上下文长度", metrics.context]
+      ]
+        .filter(([, value]) => value)
+        .map(([label, value]) => `
+          <article class="major-metric-item">
+            <span class="major-metric-label">${escapeHtml(label)}</span>
+            <p class="major-metric-value">${escapeHtml(value)}</p>
+          </article>
+        `)
+        .join("")
+    : `<p class="vendor-year-empty">当前模型暂无额外结构参数。</p>`;
+
+  return `
+    <section class="major-version-panel">
+      <h2 class="vendor-year-title">${escapeHtml(detail.title || `${detail.version} 大版本信息`)}</h2>
+      <p class="major-version-summary">${escapeHtml(detail.summary || "")}</p>
+      <div class="major-version-layout">
+        <figure class="major-version-figure">
+          <img src="${escapeHtml(detail.architectureDiagram || "")}" alt="${escapeHtml(detail.version || "模型")} 架构图" />
+          <figcaption>${escapeHtml(detail.architectureCaption || "")}</figcaption>
+        </figure>
+        <div class="major-version-metrics">
+          ${metricItems}
+        </div>
+      </div>
+      <div class="major-version-links">
+        <a class="major-link" href="${escapeHtml(detail.blogUrl || "#")}" target="_blank" rel="noreferrer noopener">官方博客</a>
+        <a class="major-link" href="${escapeHtml(hfUrl)}" target="_blank" rel="noreferrer noopener">当前模型卡</a>
+        <a class="major-link" href="${escapeHtml(detail.docsUrl || hfUrl)}" target="_blank" rel="noreferrer noopener">大版本文档</a>
+      </div>
+      <p class="major-version-source">${escapeHtml(detail.sourceNote || "")}</p>
+    </section>
+  `;
+}
+
 function renderModelDetail(vendorId, vendorDetail, modelId) {
   const root = document.getElementById("model-detail");
   if (!root) return;
@@ -178,6 +242,8 @@ function renderModelDetail(vendorId, vendorDetail, modelId) {
       </tr>
     `)
     .join("");
+
+  const majorVersionSection = renderMajorVersionSection(baseModel, vendorDetail);
 
   root.innerHTML = `
     <section class="model-detail-panel">
@@ -210,6 +276,7 @@ function renderModelDetail(vendorId, vendorDetail, modelId) {
         </article>
       </div>
     </section>
+    ${majorVersionSection}
     <section class="model-derived-panel">
       <h2 class="vendor-year-title">衍生模型版本 · ${derivedModels.length} 个</h2>
       ${derivedModels.length
