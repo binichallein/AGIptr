@@ -94,7 +94,6 @@ body {
   width: 54px;
   height: 54px;
   object-fit: contain;
-  filter: grayscale(0.08) contrast(1.08);
 }
 
 .vendor-initial {
