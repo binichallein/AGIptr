@@ -259,6 +259,24 @@ function inferQwenType(modelName) {
   return "通用";
 }
 
+function inferQwenFamily(modelName) {
+  const lowerName = modelName.toLowerCase();
+  if (lowerName.startsWith("qwen3.5")) return "Qwen3.5";
+  if (lowerName.startsWith("qwen3")) return "Qwen3";
+  if (
+    lowerName.startsWith("qwen2.5")
+    || lowerName.startsWith("qwq")
+    || lowerName.startsWith("qvq")
+    || lowerName.startsWith("worldpm")
+  ) {
+    return "Qwen2.5";
+  }
+  if (lowerName.startsWith("qwen2")) return "Qwen2";
+  if (lowerName.startsWith("qwen1.5") || lowerName.startsWith("codeqwen1.5")) return "Qwen1.5";
+  if (lowerName.startsWith("qwen-") || lowerName.startsWith("qwen_")) return "Qwen1";
+  return "Qwen3";
+}
+
 function isDerivedVariantModel(modelName) {
   const lowerName = modelName.toLowerCase();
   const derivedKeywords = [
@@ -333,6 +351,7 @@ function buildQwenAllModels(rawTimeline) {
         mlpStructure: inferQwenMlpStructure(architecture),
         attentionStructure: inferQwenAttentionStructure(type),
         paramTag: inferQwenParamTag(params),
+        family: inferQwenFamily(name),
         isDerived: isDerivedVariantModel(name),
         majorVersionKey: name.startsWith("Qwen3.5-") ? "Qwen3.5" : ""
       };

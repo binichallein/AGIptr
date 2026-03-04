@@ -162,6 +162,7 @@ function renderYearSection(year, models, vendorId) {
         <td>${escapeHtml(model.params || "未公开")}</td>
         <td>${architectureChip(model)}</td>
         <td>${escapeHtml(model.type || "通用")}</td>
+        <td>${escapeHtml(model.family || "未分类")}</td>
         <td>${escapeHtml(model.mlpStructure || "未公开")}</td>
         <td>${escapeHtml(model.attentionStructure || "未公开")}</td>
       </tr>
@@ -181,6 +182,7 @@ function renderYearSection(year, models, vendorId) {
               <th>参数量</th>
               <th>架构</th>
               <th>模型类型</th>
+              <th>模型家族</th>
               <th>MLP 结构</th>
               <th>注意力结构</th>
             </tr>
@@ -435,6 +437,10 @@ function renderVendorDetail(vendorId, vendorDetail) {
         <select id="filter-type"></select>
       </div>
       <div class="vendor-filter-item">
+        <label for="filter-family">模型家族</label>
+        <select id="filter-family"></select>
+      </div>
+      <div class="vendor-filter-item">
         <label for="filter-param">模型参数</label>
         <select id="filter-param"></select>
       </div>
@@ -454,6 +460,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
 
   const yearSelect = document.getElementById("filter-year");
   const typeSelect = document.getElementById("filter-type");
+  const familySelect = document.getElementById("filter-family");
   const paramSelect = document.getElementById("filter-param");
   const mlpSelect = document.getElementById("filter-mlp");
   const attentionSelect = document.getElementById("filter-attention");
@@ -464,6 +471,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
   if (
     !yearSelect
     || !typeSelect
+    || !familySelect
     || !paramSelect
     || !mlpSelect
     || !attentionSelect
@@ -479,6 +487,18 @@ function renderVendorDetail(vendorId, vendorDetail) {
   const typeOptions = [...new Set(models.map((model) => model.type || "通用"))].sort((a, b) => a.localeCompare(b, "zh-CN"));
   createSelectOptions(typeSelect, typeOptions, "全部类型");
 
+  const familyPriority = ["Qwen1", "Qwen1.5", "Qwen2", "Qwen2.5", "Qwen3", "Qwen3.5"];
+  const familyOptions = [...new Set(models.map((model) => model.family || "未分类"))]
+    .sort((left, right) => {
+      const leftIndex = familyPriority.indexOf(left);
+      const rightIndex = familyPriority.indexOf(right);
+      if (leftIndex === -1 && rightIndex === -1) return left.localeCompare(right, "zh-CN");
+      if (leftIndex === -1) return 1;
+      if (rightIndex === -1) return -1;
+      return leftIndex - rightIndex;
+    });
+  createSelectOptions(familySelect, familyOptions, "全部家族");
+
   const paramPriority = ["<1B", "1B-10B", "10B-50B", "50B-100B", "100B+", "未公开"];
   const paramOptions = [...new Set(models.map((model) => model.paramTag || "未公开"))]
     .sort((left, right) => paramPriority.indexOf(left) - paramPriority.indexOf(right));
@@ -493,6 +513,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
   function applyFilters() {
     const selectedYear = yearSelect.value;
     const selectedType = typeSelect.value;
+    const selectedFamily = familySelect.value;
     const selectedParam = paramSelect.value;
     const selectedMlp = mlpSelect.value;
     const selectedAttention = attentionSelect.value;
@@ -501,6 +522,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
       const year = model.releaseDate.slice(0, 4);
       if (selectedYear !== "all" && year !== selectedYear) return false;
       if (selectedType !== "all" && (model.type || "通用") !== selectedType) return false;
+      if (selectedFamily !== "all" && (model.family || "未分类") !== selectedFamily) return false;
       if (selectedParam !== "all" && (model.paramTag || "未公开") !== selectedParam) return false;
       if (selectedMlp !== "all" && (model.mlpStructure || "未公开") !== selectedMlp) return false;
       if (selectedAttention !== "all" && (model.attentionStructure || "未公开") !== selectedAttention) return false;
@@ -527,13 +549,14 @@ function renderVendorDetail(vendorId, vendorDetail) {
     timelineNode.innerHTML = targetYears.map((year) => renderYearSection(year, modelMap.get(year), vendorId)).join("");
   }
 
-  [yearSelect, typeSelect, paramSelect, mlpSelect, attentionSelect].forEach((selectNode) => {
+  [yearSelect, typeSelect, familySelect, paramSelect, mlpSelect, attentionSelect].forEach((selectNode) => {
     selectNode.addEventListener("change", applyFilters);
   });
 
   resetButton.addEventListener("click", () => {
     yearSelect.value = "all";
     typeSelect.value = "all";
+    familySelect.value = "all";
     paramSelect.value = "all";
     mlpSelect.value = "all";
     attentionSelect.value = "all";
