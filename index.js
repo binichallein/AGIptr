@@ -26,7 +26,7 @@ function pickLatestModels(models) {
 function createVendorCard(vendor, latestModel) {
   const card = document.createElement("a");
   card.className = "vendor-card";
-  card.href = latestModel ? `./model.html?id=${encodeURIComponent(latestModel.id)}` : `./model.html?vendor=${encodeURIComponent(vendor.id)}`;
+  card.href = `./model.html?vendor=${encodeURIComponent(vendor.id)}`;
   card.setAttribute("aria-label", `${vendor.name} ${latestModel ? `· ${latestModel.name}` : ""}`);
 
   const logo = document.createElement("img");
