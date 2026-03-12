@@ -17,8 +17,23 @@ function formatDateLabel(rawDate) {
   }).format(parsed);
 }
 
+function readSiteData() {
+  return window.AGIptrSiteData || {
+    metadata: {},
+    vendors: [],
+    vendorDetails: {}
+  };
+}
+
 function findVendorById(vendorId) {
-  return (window.AGIptrVendors || []).find((item) => item.id === vendorId) || null;
+  return (readSiteData().vendors || []).find((item) => item.id === vendorId) || null;
+}
+
+function findModelById(modelId) {
+  const vendorDetails = readSiteData().vendorDetails || {};
+  return Object.values(vendorDetails)
+    .flatMap((detail) => detail.allModels || [])
+    .find((item) => item.id === modelId) || null;
 }
 
 function readRequestedVendorId() {
@@ -28,7 +43,7 @@ function readRequestedVendorId() {
 
   const modelId = params.get("id");
   if (!modelId) return "alibaba";
-  const model = (window.AGIptrModels || []).find((item) => item.id === modelId);
+  const model = findModelById(modelId);
   return model ? model.vendorId : "alibaba";
 }
 
@@ -200,7 +215,7 @@ function renderUnsupportedVendor(vendorId) {
   updateBackLink(vendorId, false);
   const vendor = findVendorById(vendorId);
   const vendorName = vendor ? vendor.name : vendorId;
-  root.innerHTML = `<p class="empty-state">${escapeHtml(vendorName)} 详情页待完善，当前先支持 Qwen 厂家详情（vendor=alibaba）。</p>`;
+  root.innerHTML = `<p class="empty-state">未找到 ${escapeHtml(vendorName)} 的 canonical 详情数据，请检查 generated 数据是否已更新。</p>`;
 }
 
 function findModelInVendor(vendorDetail, modelId) {
@@ -416,6 +431,11 @@ function renderVendorDetail(vendorId, vendorDetail) {
 
   const totalModels = models.length;
   const excludes = (vendorDetail.excludes || []).map((item) => escapeHtml(item)).join("；");
+  const generatedAt = readSiteData().metadata?.generatedAt || "";
+  const generatedAtLabel = generatedAt ? formatDateLabel(generatedAt) : "待生成";
+  const sourceNode = vendorDetail.sourceUrl
+    ? `<a class="model-link" href="${escapeHtml(vendorDetail.sourceUrl)}" target="_blank" rel="noreferrer noopener">${escapeHtml(vendorDetail.sourceLabel || "官方来源")}</a>`
+    : escapeHtml(vendorDetail.sourceLabel || "待补充");
 
   root.innerHTML = `
     <header class="vendor-detail-header">
@@ -424,7 +444,8 @@ function renderVendorDetail(vendorId, vendorDetail) {
         <h1 class="detail-title">${escapeHtml(headerName)} 厂家详情</h1>
         <p class="detail-id">统计区间：2022 - 2026 · 当前收录 ${totalModels} 个非衍生模型</p>
         <p class="vendor-detail-tip">已排除：${excludes || "无"}</p>
-        <p class="vendor-detail-source">数据来源：${escapeHtml(vendorDetail.source || "待补充")}</p>
+        <p class="vendor-detail-source">数据来源：${sourceNode}</p>
+        <p class="vendor-detail-source">数据更新时间：${escapeHtml(generatedAtLabel)}</p>
       </div>
     </header>
     <section class="vendor-filter-panel">
@@ -569,7 +590,7 @@ function renderVendorDetail(vendorId, vendorDetail) {
 function renderDetailPage() {
   const vendorId = readRequestedVendorId();
   const modelId = readRequestedModelId();
-  const vendorDetails = window.AGIptrVendorDetails || {};
+  const vendorDetails = readSiteData().vendorDetails || {};
   const vendorDetail = vendorDetails[vendorId];
   if (!vendorDetail) {
     renderUnsupportedVendor(vendorId);

@@ -6,21 +6,12 @@ function formatDate(date) {
   }).format(date);
 }
 
-function pickLatestModels(models) {
-  const latest = new Map();
-  models.forEach((model) => {
-    const current = latest.get(model.vendorId);
-    if (!current) {
-      latest.set(model.vendorId, model);
-      return;
-    }
-    const nextDate = new Date(model.releaseDate).getTime();
-    const currentDate = new Date(current.releaseDate).getTime();
-    if (!Number.isNaN(nextDate) && !Number.isNaN(currentDate) && nextDate > currentDate) {
-      latest.set(model.vendorId, model);
-    }
-  });
-  return latest;
+function readSiteData() {
+  return window.AGIptrSiteData || {
+    metadata: {},
+    vendors: [],
+    latestPrimaryModels: {}
+  };
 }
 
 function createVendorCard(vendor, latestModel) {
@@ -56,9 +47,9 @@ function renderVendorGrid() {
   const grid = document.getElementById("vendor-grid");
   if (!grid) return;
 
-  const latestModels = pickLatestModels(window.AGIptrModels || []);
-  (window.AGIptrVendors || []).forEach((vendor) => {
-    const card = createVendorCard(vendor, latestModels.get(vendor.id));
+  const siteData = readSiteData();
+  (siteData.vendors || []).forEach((vendor) => {
+    const card = createVendorCard(vendor, siteData.latestPrimaryModels?.[vendor.id] || null);
     grid.appendChild(card);
   });
 }
@@ -66,7 +57,8 @@ function renderVendorGrid() {
 function renderTodayDate() {
   const dateNode = document.getElementById("today-date");
   if (dateNode) {
-    dateNode.textContent = formatDate(new Date());
+    const generatedAt = readSiteData().metadata?.generatedAt;
+    dateNode.textContent = generatedAt ? formatDate(new Date(generatedAt)) : "待生成";
   }
 }
 
