@@ -3,7 +3,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { loadLegacySiteData } from "./lib/legacy-data-loader.mjs";
-import { buildCanonicalDatasetFromLegacy } from "./lib/site-data.mjs";
+import { summarizeVerificationProgress } from "./lib/site-data.mjs";
+import {
+  buildCanonicalDatasetFromRepository,
+  loadCuratedVendorData,
+  loadVerificationPlan
+} from "./lib/verification-workflow.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,11 +22,16 @@ async function writeJson(filePath, payload) {
 
 async function main() {
   const legacy = await loadLegacySiteData(repoRoot);
-  const canonical = buildCanonicalDatasetFromLegacy({
-    generatedAt: now,
-    vendors: legacy.vendors,
-    vendorDetails: legacy.vendorDetails
-  });
+  const batchPlan = await loadVerificationPlan(repoRoot);
+  const curated = await loadCuratedVendorData(repoRoot);
+  const canonical = await buildCanonicalDatasetFromRepository(repoRoot, { generatedAt: now });
+  const progress = summarizeVerificationProgress(canonical, batchPlan);
+  canonical.metadata = {
+    ...canonical.metadata,
+    curatedAt: now,
+    batchPlanVersion: batchPlan.schemaVersion,
+    curatedVendorCount: Object.keys(curated.vendors || {}).length
+  };
 
   const rawPayload = {
     importedAt: now,
@@ -40,8 +50,16 @@ async function main() {
     `- Date: ${today}`,
     `- Imported vendors: ${canonical.vendors.length}`,
     `- Imported models: ${canonical.models.length}`,
-    "- Verification status: legacy-import",
-    "- Source mode: imported from pre-existing model-data.js and vendor-data.js"
+    `- Curated vendors applied: ${Object.keys(curated.vendors || {}).length}`,
+    `- Release ready: ${progress.releaseReady}`,
+    "- Source mode: legacy import plus curated vendor overlays",
+    "",
+    "## Batch Progress",
+    "",
+    ...batchPlan.batches.map((batch) => {
+      const summary = progress.batches.find((entry) => entry.id === batch.id);
+      return `- ${batch.id}: ${summary?.vendorsVerified || 0}/${summary?.vendorsTotal || 0} verified`;
+    })
   ].join("\n");
 
   await fs.writeFile(path.join(repoRoot, `logs/reports/${today}-legacy-import.md`), `${report}\n`, "utf8");
