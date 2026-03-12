@@ -1,0 +1,512 @@
+{
+  "vendorId": "anthropic",
+  "runDate": "2026-03-12",
+  "candidates": [
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Opus 4.6",
+      "model_id_candidate": "anthropic/Claude Opus 4.6",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "2026-02-05",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": true,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-6-name",
+        "anthropic-https://www.anthropic.com/news/claude-code-security-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-6-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-6-2-date",
+        "anthropic-https://www.anthropic.com/claude/opus-1-name",
+        "anthropic-https://www.anthropic.com/claude/opus-2-date",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-1-name",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-2-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Opus 4.5",
+      "model_id_candidate": "anthropic/Claude Opus 4.5",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "2025-11-24",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-7-name",
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-6-3-name",
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-5-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-5-2-date",
+        "anthropic-https://www.anthropic.com/claude/opus-3-name",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Haiku 4.5",
+      "model_id_candidate": "anthropic/Claude Haiku 4.5",
+      "family": "Claude",
+      "variant": "haiku",
+      "release_date_candidate": "2025-10-14",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-8-name",
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-2-date",
+        "anthropic-https://www.anthropic.com/claude/haiku-6-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-7-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Sonnet 4.5",
+      "model_id_candidate": "anthropic/Claude Sonnet 4.5",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "2025-09-25",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-9-name",
+        "anthropic-https://www.anthropic.com/news/claude-sonnet-4-5-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-sonnet-4-5-2-date",
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-3-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-9-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 4",
+      "model_id_candidate": "anthropic/Claude 4",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "2025-05-22",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-11-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-5-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-6-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.5 Sonnet",
+      "model_id_candidate": "anthropic/Claude 3.5 Sonnet",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "2024-06-17",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-2-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-2-date",
+        "anthropic-https://www.anthropic.com/claude/haiku-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.5",
+      "model_id_candidate": "anthropic/Claude 3.5",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "2024-06-17",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-13-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-7-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-8-date",
+        "anthropic-https://www.anthropic.com/claude/haiku-13-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3 Haiku",
+      "model_id_candidate": "anthropic/Claude 3 Haiku",
+      "family": "Claude",
+      "variant": "haiku",
+      "release_date_candidate": "2023-11-03",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-4-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-haiku-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-haiku-2-date",
+        "anthropic-https://www.anthropic.com/claude/haiku-5-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3",
+      "model_id_candidate": "anthropic/Claude 3",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "2023-11-03",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-14-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-9-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-haiku-3-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-haiku-4-date",
+        "anthropic-https://www.anthropic.com/claude/haiku-14-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.7 Sonnet",
+      "model_id_candidate": "anthropic/Claude 3.7 Sonnet",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-1-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.5 Haiku",
+      "model_id_candidate": "anthropic/Claude 3.5 Haiku",
+      "family": "Claude",
+      "variant": "haiku",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-3-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-5-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-2-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Sonnet 4.6",
+      "model_id_candidate": "anthropic/Claude Sonnet 4.6",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Opus 4.1",
+      "model_id_candidate": "anthropic/Claude Opus 4.1",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-10-name",
+        "anthropic-https://www.anthropic.com/claude/opus-4-name",
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-6-name",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-4-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-11-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.7",
+      "model_id_candidate": "anthropic/Claude 3.7",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-12-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-7-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 2.1",
+      "model_id_candidate": "anthropic/Claude 2.1",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-15-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-6-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 2",
+      "model_id_candidate": "anthropic/Claude 2",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news-16-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 4.5",
+      "model_id_candidate": "anthropic/Claude 4.5",
+      "family": "Claude",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-opus-4-6-4-name",
+        "anthropic-https://www.anthropic.com/claude/opus-6-name",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-6-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-12-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Opus 4",
+      "model_id_candidate": "anthropic/Claude Opus 4",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/claude/opus-5-name",
+        "anthropic-https://www.anthropic.com/news/claude-sonnet-4-5-5-name",
+        "anthropic-https://www.anthropic.com/claude/opus?939688b5_page=2&e45d281a_page=1&did=-5-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3 Opus",
+      "model_id_candidate": "anthropic/Claude 3 Opus",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-3-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-4-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3 Sonnet",
+      "model_id_candidate": "anthropic/Claude 3 Sonnet",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-4-name",
+        "anthropic-https://www.anthropic.com/news/claude-3-family-2-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 3.5 Opus",
+      "model_id_candidate": "anthropic/Claude 3.5 Opus",
+      "family": "Claude",
+      "variant": "opus",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-3-5-sonnet-6-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Sonnet 4",
+      "model_id_candidate": "anthropic/Claude Sonnet 4",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-sonnet-4-5-3-name",
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-4-name",
+        "anthropic-https://www.anthropic.com/news/claude-4-2-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-8-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Sonnet 3.6",
+      "model_id_candidate": "anthropic/Claude Sonnet 3.6",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-sonnet-4-5-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Haiku 3.5",
+      "model_id_candidate": "anthropic/Claude Haiku 3.5",
+      "family": "Claude",
+      "variant": "haiku",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-haiku-4-5-5-name",
+        "anthropic-https://www.anthropic.com/claude/haiku-10-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude Sonnet 3.7",
+      "model_id_candidate": "anthropic/Claude Sonnet 3.7",
+      "family": "Claude",
+      "variant": "sonnet",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/news/claude-4-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "anthropic",
+      "model_name": "Claude 4.5 Haiku",
+      "model_id_candidate": "anthropic/Claude 4.5 Haiku",
+      "family": "Claude",
+      "variant": "haiku",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "anthropic-https://www.anthropic.com/claude/haiku-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "vendorId": "google-deepmind",
+  "runDate": "2026-03-12",
+  "candidates": [
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3.1",
+      "model_id_candidate": "google-deepmind/Gemini 3.1",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "2026-03-03",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": true,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/education/bett-2026-gemini-classroom-updates/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-6-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-7-date",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-16-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/-2-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/workspace/gemini-google-sheets-state-of-the-art/-1-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-10-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-9-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-6-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-august-2025/-2-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-6-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-6-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-6-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-4-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-5-date",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3.1 Flash",
+      "model_id_candidate": "google-deepmind/Gemini 3.1 Flash",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "2026-03-03",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-3-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/-1-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-6-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-6-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-3-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-3-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-1-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-2-date",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3.1 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 3.1 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "2026-02-19",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-1-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-2-date",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/-2-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-5-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/-1-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-2-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3 Flash",
+      "model_id_candidate": "google-deepmind/Gemini 3 Flash",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "2025-12-17",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/education/bett-2026-gemini-classroom-updates/-2-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-5-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-6-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-5-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-1-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-2-date",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-2-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3",
+      "model_id_candidate": "google-deepmind/Gemini 3",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "2025-12-17",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/education/bett-2026-gemini-classroom-updates/-4-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-8-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/-3-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-15-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/-3-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-8-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-7-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-8-date",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/deprecations-5-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-5-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/-2-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-5-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-5-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-4-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-5-date",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-6-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-pro/-3-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-6-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 3 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 3 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/education/bett-2026-gemini-classroom-updates/-1-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-3-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-3-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-2-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-1-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-1-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-pro/-1-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-2-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.0 Flash",
+      "model_id_candidate": "google-deepmind/Gemini 2.0 Flash",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-1-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-7-name",
+        "google-deepmind-https://developers.googleblog.com/introducing-gemini-2-5-flash-image/-2-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.5 Flash",
+      "model_id_candidate": "google-deepmind/Gemini 2.5 Flash",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-2-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-1-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-5-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/deprecations-2-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-1-name",
+        "google-deepmind-https://developers.googleblog.com/introducing-gemini-2-5-flash-image/-1-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.5 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 2.5 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-7-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-2-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/deprecations-1-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-august-2025/-1-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-2-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-pro/-2-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1.5 Flash",
+      "model_id_candidate": "google-deepmind/Gemini 1.5 Flash",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-8-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.0 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 2.0 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-9-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1.0 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 1.0 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-10-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1.5 Pro",
+      "model_id_candidate": "google-deepmind/Gemini 1.5 Pro",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-11-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.0",
+      "model_id_candidate": "google-deepmind/Gemini 2.0",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-12-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-11-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/deprecations-4-name",
+        "google-deepmind-https://developers.googleblog.com/introducing-gemini-2-5-flash-image/-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2.5",
+      "model_id_candidate": "google-deepmind/Gemini 2.5",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-13-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/models-9-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/-10-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/deprecations-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/google-ai-updates-august-2025/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/products/nano-banana-pro/-4-name",
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/thinking-7-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-9-name",
+        "google-deepmind-https://developers.googleblog.com/introducing-gemini-2-5-flash-image/-3-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/-7-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-pro/-4-name",
+        "google-deepmind-https://deepmind.google/models/model-cards/gemini-3-1-pro/-7-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1.5",
+      "model_id_candidate": "google-deepmind/Gemini 1.5",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-14-name",
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/google-gemini-update-may-2024/-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1.0",
+      "model_id_candidate": "google-deepmind/Gemini 1.0",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://ai.google.dev/gemini-api/docs/changelog-17-name",
+        "google-deepmind-https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 1",
+      "model_id_candidate": "google-deepmind/Gemini 1",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-7-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "google-deepmind",
+      "model_name": "Gemini 2",
+      "model_id_candidate": "google-deepmind/Gemini 2",
+      "family": "Gemini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "google-deepmind-https://blog.google/products-and-platforms/products/gemini/gemini-3/-8-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    }
+  ]
+}

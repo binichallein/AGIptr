@@ -27,6 +27,7 @@ node scripts/verify-site-data.mjs --mode=staging
 - If you are only changing import logic, edit `scripts/lib/` or the import/generate/verify scripts
 - If you are curating explicit vendor truth, edit `data/curated/vendors/*.json`
 - If you are changing rollout policy, edit `data/verification/batch-plan.json`
+- If you are discovering new official evidence, run `scripts/search-model-timelines.mjs` and review the candidate outputs before touching curated truth
 - If you need to preserve a judgment call, add a decision file under `logs/decisions/`
 
 3. Rebuild generated artifacts
@@ -71,6 +72,10 @@ NODE
 - add a decision record if any transformation is not self-evident
 - check `logs/reports/YYYY-MM-DD-verification.md` for batch progress and release readiness
 - check `logs/verification/YYYY-MM-DD-run.jsonl` for structured vendor and batch status events
+- if you ran timeline search, inspect:
+  - `data/candidates/timelines/YYYY-MM-DD/*.json`
+  - `logs/reports/YYYY-MM-DD-timeline-search.md`
+  - `logs/verification/YYYY-MM-DD-timeline-search.jsonl`
 
 7. Commit with structure
 
@@ -99,5 +104,7 @@ That means:
 - batch-a has official source overlays and model-level verification progress
 - vendor-level `verified` status is still blocked by unsourced display fields and uncurated vendors in later batches
 - `--mode=release` should fail until all 25 vendors are truly `verified`
+- the Tavily timeline search agent currently writes candidates only; it does not mutate curated truth
+- candidate latest models are only meaningful when they carry valid release dates
 
 When you start official-source curation, preserve that distinction in logs and commit messages.

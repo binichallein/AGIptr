@@ -1,7 +1,7 @@
 window.AGIptrSiteData = {
   "metadata": {
     "schemaVersion": 1,
-    "generatedAt": "2026-03-12T07:47:09.262Z",
+    "generatedAt": "2026-03-12T09:28:14.929Z",
     "mode": "staging"
   },
   "vendors": [

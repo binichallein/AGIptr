@@ -1,0 +1,471 @@
+{
+  "vendorId": "openai",
+  "runDate": "2026-03-12",
+  "candidates": [
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-5.4",
+      "model_id_candidate": "openai/GPT-5.4",
+      "family": "GPT-5.4",
+      "variant": "",
+      "release_date_candidate": "2026-03-05",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": true,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-7-name",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-2-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-1-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-2-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4o",
+      "model_id_candidate": "openai/GPT-4o",
+      "family": "GPT-4o",
+      "variant": "",
+      "release_date_candidate": "2026-01-29",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-1-name",
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-2-date",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-1-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-2-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-3-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-4-date",
+        "openai-https://openai.com/index/gpt-4-1/-6-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-4-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-1-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4.1",
+      "model_id_candidate": "openai/GPT-4.1",
+      "family": "GPT-4.1",
+      "variant": "",
+      "release_date_candidate": "2026-01-29",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-3-name",
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-4-date",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-13-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-6-name",
+        "openai-https://openai.com/index/gpt-4-1/-1-name",
+        "openai-https://openai.com/index/gpt-4-1/-2-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4.1 mini",
+      "model_id_candidate": "openai/GPT-4.1 mini",
+      "family": "GPT-4.1",
+      "variant": "mini",
+      "release_date_candidate": "2026-01-29",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-5-name",
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-6-date",
+        "openai-https://openai.com/index/gpt-4-1/-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o4-mini",
+      "model_id_candidate": "openai/o4-mini",
+      "family": "o4-mini",
+      "variant": "mini",
+      "release_date_candidate": "2026-01-29",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-10-name",
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-11-date",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-7-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-8-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o3",
+      "model_id_candidate": "openai/o3",
+      "family": "o3",
+      "variant": "",
+      "release_date_candidate": "2025-07-28",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-5-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-6-date",
+        "openai-https://openai.com/index/gpt-4-1/-13-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-8-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o4",
+      "model_id_candidate": "openai/o4",
+      "family": "o4",
+      "variant": "",
+      "release_date_candidate": "2025-07-28",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-11-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-12-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4.5",
+      "model_id_candidate": "openai/GPT-4.5",
+      "family": "GPT-4.5",
+      "variant": "",
+      "release_date_candidate": "2025-02-27",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/gpt-4-1/-8-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-1-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-2-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o1",
+      "model_id_candidate": "openai/o1",
+      "family": "o1",
+      "variant": "",
+      "release_date_candidate": "2024-12-21",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-8-name",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-9-date",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-9-name",
+        "openai-https://openai.com/index/gpt-4-1/-11-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-7-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-6-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-7-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": [
+        "release_date_conflict"
+      ]
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4o mini",
+      "model_id_candidate": "openai/GPT-4o mini",
+      "family": "GPT-4o",
+      "variant": "mini",
+      "release_date_candidate": "2024-07-18",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-7-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-1-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-2-date",
+        "openai-https://openai.com/index/gpt-4-1/-7-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-3.5 turbo",
+      "model_id_candidate": "openai/GPT-3.5 turbo",
+      "family": "GPT-3.5",
+      "variant": "turbo",
+      "release_date_candidate": "2023-08-22",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-5-name",
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-1-name",
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-2-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-3.5",
+      "model_id_candidate": "openai/GPT-3.5",
+      "family": "GPT-3.5",
+      "variant": "",
+      "release_date_candidate": "2023-08-22",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-9-name",
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-3-name",
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-4-date"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-5",
+      "model_id_candidate": "openai/GPT-5",
+      "family": "GPT-5",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-8-name",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-3-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-4-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-3-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-7-name",
+        "openai-https://openai.com/index/gpt-4-1/-10-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-6-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-5.3",
+      "model_id_candidate": "openai/GPT-5.3",
+      "family": "GPT-5.3",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-9-name",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-4-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-3-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-4-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-6-name",
+        "openai-https://openai.com/index/gpt-4-1/-9-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-5-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-4-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4",
+      "model_id_candidate": "openai/GPT-4",
+      "family": "GPT-4",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/retiring-gpt-4o-and-older-models/-12-name",
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-11-name",
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-1-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-7-name",
+        "openai-https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/-8-name",
+        "openai-https://openai.com/index/gpt-4-1/-3-name",
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-6-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-3-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-3-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-5.2",
+      "model_id_candidate": "openai/GPT-5.2",
+      "family": "GPT-5.2",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-5-name",
+        "openai-https://openai.com/index/introducing-gpt-5-4/-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-5.1",
+      "model_id_candidate": "openai/GPT-5.1",
+      "family": "GPT-5.1",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-6-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o1-preview",
+      "model_id_candidate": "openai/o1-preview",
+      "family": "o1-preview",
+      "variant": "preview",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "preview",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/o1-and-new-tools-for-developers/-10-name",
+        "openai-https://openai.com/index/openai-o1-system-card/-9-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o3-mini",
+      "model_id_candidate": "openai/o3-mini",
+      "family": "o3-mini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/introducing-o3-and-o4-mini/-10-name",
+        "openai-https://openai.com/index/gpt-4-1/-12-name",
+        "openai-https://openai.com/index/introducing-gpt-4-5/-9-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4.1 nano",
+      "model_id_candidate": "openai/GPT-4.1 nano",
+      "family": "GPT-4.1",
+      "variant": "nano",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/gpt-4-1/-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-3",
+      "model_id_candidate": "openai/GPT-3",
+      "family": "GPT-3",
+      "variant": "",
+      "release_date_candidate": "",
+      "is_primary_candidate": true,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/-5-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "GPT-4 turbo",
+      "model_id_candidate": "openai/GPT-4 turbo",
+      "family": "GPT-4",
+      "variant": "turbo",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/openai-o1-system-card/-2-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    },
+    {
+      "vendor_id": "openai",
+      "model_name": "o1-mini",
+      "model_id_candidate": "openai/o1-mini",
+      "family": "o1-mini",
+      "variant": "mini",
+      "release_date_candidate": "",
+      "is_primary_candidate": false,
+      "parent_model_candidate": null,
+      "preview_status": "general",
+      "latest_candidate": false,
+      "supporting_evidence_ids": [
+        "openai-https://openai.com/index/openai-o1-system-card/-8-name"
+      ],
+      "confidence": "primary",
+      "conflict_flags": []
+    }
+  ]
+}
