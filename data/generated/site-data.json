@@ -1,7 +1,8 @@
 {
   "metadata": {
     "schemaVersion": 1,
-    "generatedAt": "2026-03-12T07:08:25.527Z"
+    "generatedAt": "2026-03-12T07:44:51.545Z",
+    "mode": "staging"
   },
   "vendors": [
     {
@@ -10,15 +11,17 @@
       "logo": "./assets/logos/openai.png",
       "fallback": "OA",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
+            "label": "Introducing GPT-5.4",
+            "url": "https://openai.com/index/introducing-gpt-5-4/",
             "observedAt": "2026-03-05"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       }
     },
     {
@@ -27,15 +30,17 @@
       "logo": "./assets/logos/anthropic.png",
       "fallback": "AN",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Claude Sonnet 4.6 announcement",
+            "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+            "observedAt": "2026-02-17"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       }
     },
     {
@@ -44,15 +49,17 @@
       "logo": "./assets/logos/google-deepmind.svg",
       "fallback": "GD",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Gemini 2.5 Flash availability",
+            "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+            "observedAt": "2025-06-17"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       }
     },
     {
@@ -180,15 +187,17 @@
       "logo": "./assets/logos/alibaba.png",
       "fallback": "AL",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Hugging Face · Qwen 官方账号（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Qwen official homepage",
+            "url": "https://qwenlm.github.io/",
+            "observedAt": "2026-03-12"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       }
     },
     {
@@ -432,22 +441,22 @@
   ],
   "latestPrimaryModels": {
     "openai": {
-      "id": "openai/o4-mini",
+      "id": "openai/GPT-5.4",
       "vendorId": "openai",
-      "name": "o4-mini",
-      "releaseDate": "2025-04-16"
+      "name": "GPT-5.4",
+      "releaseDate": "2026-03-05"
     },
     "anthropic": {
-      "id": "anthropic/Claude 3.7 Sonnet",
+      "id": "anthropic/Claude Sonnet 4.6",
       "vendorId": "anthropic",
-      "name": "Claude 3.7 Sonnet",
-      "releaseDate": "2025-02-24"
+      "name": "Claude Sonnet 4.6",
+      "releaseDate": "2026-02-17"
     },
     "google-deepmind": {
       "id": "google-deepmind/Gemini 2.5 Flash",
       "vendorId": "google-deepmind",
       "name": "Gemini 2.5 Flash",
-      "releaseDate": "2025-08-14"
+      "releaseDate": "2025-06-17"
     },
     "meta": {
       "id": "meta/Llama 4 Scout",
@@ -600,20 +609,88 @@
         "量化/蒸馏/Flash 版本",
         "衍生变体（Chat/Instruct/Base/Preview 等）"
       ],
-      "sourceLabel": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-      "sourceUrl": "",
+      "sourceLabel": "Introducing GPT-5.4",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
+            "label": "Introducing GPT-5.4",
+            "url": "https://openai.com/index/introducing-gpt-5-4/",
             "observedAt": "2026-03-05"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       },
       "models": [
+        {
+          "id": "openai/GPT-5.4",
+          "vendorId": "openai",
+          "name": "GPT-5.4",
+          "releaseDate": "2026-03-05",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": true,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-5.4",
+                "url": "https://openai.com/index/introducing-gpt-5-4/",
+                "observedAt": "2026-03-05"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-5-4/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-5-4/"
+              ]
+            }
+          }
+        },
+        {
+          "id": "openai/GPT-5",
+          "vendorId": "openai",
+          "name": "GPT-5",
+          "releaseDate": "2025-08-07",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-5",
+                "url": "https://openai.com/index/introducing-gpt-5/",
+                "observedAt": "2025-08-07"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-5/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-5/"
+              ]
+            }
+          }
+        },
         {
           "id": "openai/o4-mini",
           "name": "o4-mini",
@@ -630,17 +707,26 @@
           "vendorId": "openai",
           "isPrimary": true,
           "parentModelId": null,
-          "isLatestPrimary": true,
+          "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing o3 and o4-mini",
+                "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+                "observedAt": "2025-04-16"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -661,15 +747,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing o3 and o4-mini",
+                "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+                "observedAt": "2025-04-16"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -690,15 +785,57 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4.1 announcement",
+                "url": "https://openai.com/index/gpt-4-1/",
+                "observedAt": "2025-04-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/gpt-4-1/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/gpt-4-1/"
+              ]
+            },
+            "batchId": "batch-a"
+          }
+        },
+        {
+          "id": "openai/GPT-4.5",
+          "vendorId": "openai",
+          "name": "GPT-4.5",
+          "releaseDate": "2025-02-27",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-4.5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-4.5",
+                "url": "https://openai.com/index/introducing-gpt-4-5/",
+                "observedAt": "2025-02-27"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-4-5/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-4-5/"
+              ]
+            }
           }
         },
         {
@@ -719,15 +856,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4o mini announcement",
+                "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+                "observedAt": "2024-07-18"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -748,15 +894,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Hello GPT-4o",
+                "url": "https://openai.com/index/hello-gpt-4o/",
+                "observedAt": "2024-05-13"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/hello-gpt-4o/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/hello-gpt-4o/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -777,15 +932,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4 announcement",
+                "url": "https://openai.com/research/gpt-4",
+                "observedAt": "2023-03-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/research/gpt-4"
+              ],
+              "releaseDate": [
+                "https://openai.com/research/gpt-4"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -806,20 +970,88 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "needs_review",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "ChatGPT launch (GPT-3.5 series)",
+                "url": "https://openai.com/blog/chatgpt/",
+                "observedAt": "2022-11-30"
               }
-            ]
+            ],
+            "fields": {},
+            "batchId": "batch-a"
           }
         }
       ],
       "allModels": [
         {
+          "id": "openai/GPT-5.4",
+          "vendorId": "openai",
+          "name": "GPT-5.4",
+          "releaseDate": "2026-03-05",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": true,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-5.4",
+                "url": "https://openai.com/index/introducing-gpt-5-4/",
+                "observedAt": "2026-03-05"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-5-4/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-5-4/"
+              ]
+            }
+          }
+        },
+        {
+          "id": "openai/GPT-5",
+          "vendorId": "openai",
+          "name": "GPT-5",
+          "releaseDate": "2025-08-07",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-5",
+                "url": "https://openai.com/index/introducing-gpt-5/",
+                "observedAt": "2025-08-07"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-5/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-5/"
+              ]
+            }
+          }
+        },
+        {
           "id": "openai/o4-mini",
           "name": "o4-mini",
           "releaseDate": "2025-04-16",
@@ -835,17 +1067,26 @@
           "vendorId": "openai",
           "isPrimary": true,
           "parentModelId": null,
-          "isLatestPrimary": true,
+          "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing o3 and o4-mini",
+                "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+                "observedAt": "2025-04-16"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -866,15 +1107,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing o3 and o4-mini",
+                "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+                "observedAt": "2025-04-16"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-o3-and-o4-mini/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -895,15 +1145,57 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4.1 announcement",
+                "url": "https://openai.com/index/gpt-4-1/",
+                "observedAt": "2025-04-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/gpt-4-1/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/gpt-4-1/"
+              ]
+            },
+            "batchId": "batch-a"
+          }
+        },
+        {
+          "id": "openai/GPT-4.5",
+          "vendorId": "openai",
+          "name": "GPT-4.5",
+          "releaseDate": "2025-02-27",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "GPT-4.5",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Introducing GPT-4.5",
+                "url": "https://openai.com/index/introducing-gpt-4-5/",
+                "observedAt": "2025-02-27"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/introducing-gpt-4-5/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/introducing-gpt-4-5/"
+              ]
+            }
           }
         },
         {
@@ -924,15 +1216,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4o mini announcement",
+                "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+                "observedAt": "2024-07-18"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -953,15 +1254,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Hello GPT-4o",
+                "url": "https://openai.com/index/hello-gpt-4o/",
+                "observedAt": "2024-05-13"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/index/hello-gpt-4o/"
+              ],
+              "releaseDate": [
+                "https://openai.com/index/hello-gpt-4o/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -982,15 +1292,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "GPT-4 announcement",
+                "url": "https://openai.com/research/gpt-4",
+                "observedAt": "2023-03-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://openai.com/research/gpt-4"
+              ],
+              "releaseDate": [
+                "https://openai.com/research/gpt-4"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1011,15 +1330,17 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "needs_review",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "OpenAI 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "ChatGPT launch (GPT-3.5 series)",
+                "url": "https://openai.com/blog/chatgpt/",
+                "observedAt": "2022-11-30"
               }
-            ]
+            ],
+            "fields": {},
+            "batchId": "batch-a"
           }
         }
       ],
@@ -1042,20 +1363,88 @@
         "量化/蒸馏/Flash 版本",
         "衍生变体（Chat/Instruct/Base/Preview 等）"
       ],
-      "sourceLabel": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-      "sourceUrl": "",
+      "sourceLabel": "Claude Sonnet 4.6 announcement",
+      "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Claude Sonnet 4.6 announcement",
+            "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+            "observedAt": "2026-02-17"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       },
       "models": [
+        {
+          "id": "anthropic/Claude Sonnet 4.6",
+          "vendorId": "anthropic",
+          "name": "Claude Sonnet 4.6",
+          "releaseDate": "2026-02-17",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "Claude 4",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": true,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Claude Sonnet 4.6 announcement",
+                "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+                "observedAt": "2026-02-17"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-sonnet-4-6"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-sonnet-4-6"
+              ]
+            }
+          }
+        },
+        {
+          "id": "anthropic/Claude Opus 4.6",
+          "vendorId": "anthropic",
+          "name": "Claude Opus 4.6",
+          "releaseDate": "2026-02-05",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "Claude 4",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Claude Opus 4.6 announcement",
+                "url": "https://www.anthropic.com/news/claude-opus-4-6",
+                "observedAt": "2026-02-05"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-opus-4-6"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-opus-4-6"
+              ]
+            }
+          }
+        },
         {
           "id": "anthropic/Claude 3.7 Sonnet",
           "name": "Claude 3.7 Sonnet",
@@ -1072,17 +1461,26 @@
           "vendorId": "anthropic",
           "isPrimary": true,
           "parentModelId": null,
-          "isLatestPrimary": true,
+          "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.7 Sonnet announcement",
+                "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+                "observedAt": "2025-02-24"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-7-sonnet"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-7-sonnet"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1103,15 +1501,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.5 models and computer use",
+                "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+                "observedAt": "2024-10-22"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/3-5-models-and-computer-use"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/3-5-models-and-computer-use"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1132,15 +1539,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.5 Sonnet announcement",
+                "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+                "observedAt": "2024-06-20"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-5-sonnet"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-5-sonnet"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1161,15 +1577,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3 family announcement",
+                "url": "https://www.anthropic.com/news/claude-3-family",
+                "observedAt": "2024-03-04"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-family"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-family"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1190,15 +1615,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 2 announcement",
+                "url": "https://www.anthropic.com/news/claude-2",
+                "observedAt": "2023-07-11"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-2"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-2"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1219,20 +1653,95 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing Claude",
+                "url": "https://www.anthropic.com/news/introducing-claude",
+                "observedAt": "2023-03-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/introducing-claude"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/introducing-claude"
+              ]
+            },
+            "batchId": "batch-a"
           }
         }
       ],
       "allModels": [
         {
+          "id": "anthropic/Claude Sonnet 4.6",
+          "vendorId": "anthropic",
+          "name": "Claude Sonnet 4.6",
+          "releaseDate": "2026-02-17",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "Claude 4",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": true,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Claude Sonnet 4.6 announcement",
+                "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+                "observedAt": "2026-02-17"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-sonnet-4-6"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-sonnet-4-6"
+              ]
+            }
+          }
+        },
+        {
+          "id": "anthropic/Claude Opus 4.6",
+          "vendorId": "anthropic",
+          "name": "Claude Opus 4.6",
+          "releaseDate": "2026-02-05",
+          "params": "未公开",
+          "architecture": "",
+          "type": "通用",
+          "family": "Claude 4",
+          "isPrimary": true,
+          "parentModelId": null,
+          "isLatestPrimary": false,
+          "verification": {
+            "verificationStatus": "verified",
+            "confidence": "primary",
+            "batchId": "batch-a",
+            "sources": [
+              {
+                "label": "Claude Opus 4.6 announcement",
+                "url": "https://www.anthropic.com/news/claude-opus-4-6",
+                "observedAt": "2026-02-05"
+              }
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-opus-4-6"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-opus-4-6"
+              ]
+            }
+          }
+        },
+        {
           "id": "anthropic/Claude 3.7 Sonnet",
           "name": "Claude 3.7 Sonnet",
           "releaseDate": "2025-02-24",
@@ -1248,17 +1757,26 @@
           "vendorId": "anthropic",
           "isPrimary": true,
           "parentModelId": null,
-          "isLatestPrimary": true,
+          "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.7 Sonnet announcement",
+                "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+                "observedAt": "2025-02-24"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-7-sonnet"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-7-sonnet"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1279,15 +1797,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.5 models and computer use",
+                "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+                "observedAt": "2024-10-22"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/3-5-models-and-computer-use"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/3-5-models-and-computer-use"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1308,15 +1835,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3.5 Sonnet announcement",
+                "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+                "observedAt": "2024-06-20"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-5-sonnet"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-5-sonnet"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1337,15 +1873,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 3 family announcement",
+                "url": "https://www.anthropic.com/news/claude-3-family",
+                "observedAt": "2024-03-04"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-3-family"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-3-family"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1366,15 +1911,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Claude 2 announcement",
+                "url": "https://www.anthropic.com/news/claude-2",
+                "observedAt": "2023-07-11"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/claude-2"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/claude-2"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1395,15 +1949,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Anthropic 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing Claude",
+                "url": "https://www.anthropic.com/news/introducing-claude",
+                "observedAt": "2023-03-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://www.anthropic.com/news/introducing-claude"
+              ],
+              "releaseDate": [
+                "https://www.anthropic.com/news/introducing-claude"
+              ]
+            },
+            "batchId": "batch-a"
           }
         }
       ],
@@ -1426,24 +1989,26 @@
         "量化/蒸馏/Flash 版本",
         "衍生变体（Chat/Instruct/Base/Preview 等）"
       ],
-      "sourceLabel": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-      "sourceUrl": "",
+      "sourceLabel": "Gemini 2.5 Flash availability",
+      "sourceUrl": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Gemini 2.5 Flash availability",
+            "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+            "observedAt": "2025-06-17"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       },
       "models": [
         {
           "id": "google-deepmind/Gemini 2.5 Flash",
           "name": "Gemini 2.5 Flash",
-          "releaseDate": "2025-08-14",
+          "releaseDate": "2025-06-17",
           "params": "未公开",
           "architecture": "MoE",
           "type": "多模态",
@@ -1458,15 +2023,24 @@
           "parentModelId": null,
           "isLatestPrimary": true,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.5 Flash availability",
+                "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+                "observedAt": "2025-06-17"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+              ],
+              "releaseDate": [
+                "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1487,15 +2061,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.5 Pro announcement",
+                "url": "https://blog.google/products/gemini/google-gemini-update-march-2025/",
+                "observedAt": "2025-03-25"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+              ],
+              "releaseDate": [
+                "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1516,15 +2099,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.0 Flash announcement",
+                "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/",
+                "observedAt": "2024-12-11"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1545,15 +2137,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 1.5 Flash announcement",
+                "url": "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/",
+                "observedAt": "2024-05-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1574,15 +2175,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 1.5 announcement",
+                "url": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+                "observedAt": "2024-02-15"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1603,15 +2213,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing Gemini",
+                "url": "https://blog.google/technology/ai/google-gemini-ai/",
+                "observedAt": "2023-12-06"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-ai/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-ai/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         }
       ],
@@ -1619,7 +2238,7 @@
         {
           "id": "google-deepmind/Gemini 2.5 Flash",
           "name": "Gemini 2.5 Flash",
-          "releaseDate": "2025-08-14",
+          "releaseDate": "2025-06-17",
           "params": "未公开",
           "architecture": "MoE",
           "type": "多模态",
@@ -1634,15 +2253,24 @@
           "parentModelId": null,
           "isLatestPrimary": true,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.5 Flash availability",
+                "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+                "observedAt": "2025-06-17"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+              ],
+              "releaseDate": [
+                "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1663,15 +2291,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.5 Pro announcement",
+                "url": "https://blog.google/products/gemini/google-gemini-update-march-2025/",
+                "observedAt": "2025-03-25"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+              ],
+              "releaseDate": [
+                "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1692,15 +2329,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 2.0 Flash announcement",
+                "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/",
+                "observedAt": "2024-12-11"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1721,15 +2367,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 1.5 Flash announcement",
+                "url": "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/",
+                "observedAt": "2024-05-14"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1750,15 +2405,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Gemini 1.5 announcement",
+                "url": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+                "observedAt": "2024-02-15"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         },
         {
@@ -1779,15 +2443,24 @@
           "parentModelId": null,
           "isLatestPrimary": false,
           "verification": {
-            "verificationStatus": "legacy-import",
-            "confidence": "legacy",
+            "verificationStatus": "verified",
+            "confidence": "primary",
             "sources": [
               {
-                "label": "Google DeepMind 官方发布记录（统计时间：2026-03-05）",
-                "url": "",
-                "observedAt": "2026-03-05"
+                "label": "Introducing Gemini",
+                "url": "https://blog.google/technology/ai/google-gemini-ai/",
+                "observedAt": "2023-12-06"
               }
-            ]
+            ],
+            "fields": {
+              "name": [
+                "https://blog.google/technology/ai/google-gemini-ai/"
+              ],
+              "releaseDate": [
+                "https://blog.google/technology/ai/google-gemini-ai/"
+              ]
+            },
+            "batchId": "batch-a"
           }
         }
       ],
@@ -1850,7 +2523,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -1879,7 +2553,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -1908,7 +2583,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -1937,7 +2613,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -1966,7 +2643,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -1997,7 +2675,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2026,7 +2705,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2055,7 +2735,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2084,7 +2765,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2113,7 +2795,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2176,7 +2859,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2205,7 +2889,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2234,7 +2919,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2263,7 +2949,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2294,7 +2981,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2323,7 +3011,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2352,7 +3041,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2381,7 +3071,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2444,7 +3135,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2473,7 +3165,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2502,7 +3195,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2531,7 +3225,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2560,7 +3255,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2591,7 +3287,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2620,7 +3317,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2649,7 +3347,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2678,7 +3377,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2707,7 +3407,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2770,7 +3471,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2799,7 +3501,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2828,7 +3531,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2857,7 +3561,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -2888,7 +3593,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2917,7 +3623,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2946,7 +3653,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -2975,7 +3683,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3038,7 +3747,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3067,7 +3777,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3096,7 +3807,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3125,7 +3837,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3156,7 +3869,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3185,7 +3899,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3214,7 +3929,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3243,7 +3959,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3306,7 +4023,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3335,7 +4053,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3364,7 +4083,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3393,7 +4113,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3422,7 +4143,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3453,7 +4175,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3482,7 +4205,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3511,7 +4235,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3540,7 +4265,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3569,7 +4295,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3632,7 +4359,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3661,7 +4389,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3690,7 +4419,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3721,7 +4451,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3750,7 +4481,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3779,7 +4511,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -3802,18 +4535,20 @@
         "Flash 版本",
         "衍生版本（Chat / Instruct / Base / Thinking 等）"
       ],
-      "sourceLabel": "Hugging Face · Qwen 官方账号（统计时间：2026-03-05）",
-      "sourceUrl": "",
+      "sourceLabel": "Qwen official homepage",
+      "sourceUrl": "https://qwenlm.github.io/",
       "verification": {
-        "verificationStatus": "legacy-import",
-        "confidence": "legacy",
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
         "sources": [
           {
-            "label": "Hugging Face · Qwen 官方账号（统计时间：2026-03-05）",
-            "url": "",
-            "observedAt": "2026-03-05"
+            "label": "Qwen official homepage",
+            "url": "https://qwenlm.github.io/",
+            "observedAt": "2026-03-12"
           }
-        ]
+        ],
+        "batchId": "batch-a",
+        "fields": {}
       },
       "models": [
         {
@@ -3842,7 +4577,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3871,7 +4607,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3900,7 +4637,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3929,7 +4667,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3958,7 +4697,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -3987,7 +4727,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4016,7 +4757,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4045,7 +4787,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4074,7 +4817,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4103,7 +4847,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4132,7 +4877,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4161,7 +4907,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4190,7 +4937,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4219,7 +4967,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4248,7 +4997,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4277,7 +5027,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4306,7 +5057,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4335,7 +5087,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4364,7 +5117,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4393,7 +5147,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4422,7 +5177,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4451,7 +5207,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4480,7 +5237,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4509,7 +5267,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4538,7 +5297,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4567,7 +5327,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4596,7 +5357,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4625,7 +5387,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4654,7 +5417,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4683,7 +5447,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4712,7 +5477,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4741,7 +5507,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4770,7 +5537,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4799,7 +5567,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4828,7 +5597,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4857,7 +5627,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4886,7 +5657,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4915,7 +5687,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4944,7 +5717,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -4973,7 +5747,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5002,7 +5777,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5031,7 +5807,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5060,7 +5837,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5089,7 +5867,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5118,7 +5897,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5147,7 +5927,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5176,7 +5957,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5205,7 +5987,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5234,7 +6017,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5263,7 +6047,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5292,7 +6077,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5321,7 +6107,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5350,7 +6137,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5379,7 +6167,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5408,7 +6197,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5437,7 +6227,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5466,7 +6257,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5495,7 +6287,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5524,7 +6317,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5553,7 +6347,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5582,7 +6377,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5611,7 +6407,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5640,7 +6437,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5669,7 +6467,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5698,7 +6497,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5727,7 +6527,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5756,7 +6557,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5785,7 +6587,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5814,7 +6617,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5843,7 +6647,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5872,7 +6677,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5901,7 +6707,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5930,7 +6737,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5959,7 +6767,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -5988,7 +6797,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6017,7 +6827,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6046,7 +6857,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6075,7 +6887,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6104,7 +6917,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6133,7 +6947,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6162,7 +6977,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6191,7 +7007,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6220,7 +7037,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6249,7 +7067,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6278,7 +7097,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6307,7 +7127,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6336,7 +7157,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6365,7 +7187,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6394,7 +7217,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6423,7 +7247,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6452,7 +7277,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6481,7 +7307,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6510,7 +7337,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6539,7 +7367,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6568,7 +7397,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6597,7 +7427,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6626,7 +7457,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6655,7 +7487,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6684,7 +7517,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6713,7 +7547,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6742,7 +7577,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6771,7 +7607,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6800,7 +7637,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6829,7 +7667,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6858,7 +7697,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6887,7 +7727,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6916,7 +7757,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6945,7 +7787,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -6974,7 +7817,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7003,7 +7847,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7032,7 +7877,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7061,7 +7907,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7090,7 +7937,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7119,7 +7967,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7148,7 +7997,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7177,7 +8027,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7206,7 +8057,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7235,7 +8087,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7264,7 +8117,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7293,7 +8147,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -7324,7 +8179,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7353,7 +8209,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7382,7 +8239,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7411,7 +8269,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7440,7 +8299,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7469,7 +8329,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7498,7 +8359,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7527,7 +8389,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7556,7 +8419,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7585,7 +8449,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7614,7 +8479,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7643,7 +8509,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7672,7 +8539,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7701,7 +8569,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7730,7 +8599,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7759,7 +8629,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7788,7 +8659,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7817,7 +8689,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7846,7 +8719,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7875,7 +8749,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7904,7 +8779,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7933,7 +8809,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7962,7 +8839,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -7991,7 +8869,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8020,7 +8899,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8049,7 +8929,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8078,7 +8959,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8107,7 +8989,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8136,7 +9019,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8165,7 +9049,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8194,7 +9079,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8223,7 +9109,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8252,7 +9139,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8281,7 +9169,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8310,7 +9199,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8339,7 +9229,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8368,7 +9259,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8397,7 +9289,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8426,7 +9319,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8455,7 +9349,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8484,7 +9379,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8513,7 +9409,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8542,7 +9439,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8571,7 +9469,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8600,7 +9499,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8629,7 +9529,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8658,7 +9559,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8687,7 +9589,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8716,7 +9619,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8745,7 +9649,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8774,7 +9679,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8803,7 +9709,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8832,7 +9739,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8861,7 +9769,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8890,7 +9799,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8919,7 +9829,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8948,7 +9859,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -8977,7 +9889,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9006,7 +9919,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9035,7 +9949,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9064,7 +9979,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9093,7 +10009,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9122,7 +10039,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9151,7 +10069,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9180,7 +10099,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9209,7 +10129,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9238,7 +10159,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9267,7 +10189,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9296,7 +10219,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9325,7 +10249,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9354,7 +10279,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9383,7 +10309,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9412,7 +10339,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9441,7 +10369,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9470,7 +10399,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9499,7 +10429,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9528,7 +10459,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9557,7 +10489,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9586,7 +10519,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9615,7 +10549,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9644,7 +10579,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9673,7 +10609,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9702,7 +10639,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9731,7 +10669,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9760,7 +10699,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9789,7 +10729,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9818,7 +10759,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9847,7 +10789,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9876,7 +10819,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9905,7 +10849,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9934,7 +10879,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9963,7 +10909,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -9992,7 +10939,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10021,7 +10969,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10050,7 +10999,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10079,7 +11029,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10108,7 +11059,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10137,7 +11089,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10166,7 +11119,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10195,7 +11149,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10224,7 +11179,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10253,7 +11209,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10282,7 +11239,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10311,7 +11269,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10340,7 +11299,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10369,7 +11329,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10398,7 +11359,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10427,7 +11389,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10456,7 +11419,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10485,7 +11449,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10514,7 +11479,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10543,7 +11509,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10572,7 +11539,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10601,7 +11569,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10630,7 +11599,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10659,7 +11629,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10688,7 +11659,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10717,7 +11689,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10746,7 +11719,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10775,7 +11749,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10804,7 +11779,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10833,7 +11809,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10862,7 +11839,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10891,7 +11869,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10920,7 +11899,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10949,7 +11929,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -10978,7 +11959,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11007,7 +11989,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11036,7 +12019,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11065,7 +12049,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11094,7 +12079,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11123,7 +12109,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11152,7 +12139,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11181,7 +12169,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11210,7 +12199,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11239,7 +12229,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11268,7 +12259,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11297,7 +12289,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11326,7 +12319,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11355,7 +12349,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11384,7 +12379,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11413,7 +12409,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11442,7 +12439,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11471,7 +12469,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11500,7 +12499,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11529,7 +12529,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11558,7 +12559,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11587,7 +12589,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11616,7 +12619,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11645,7 +12649,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11674,7 +12679,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11703,7 +12709,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11732,7 +12739,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11761,7 +12769,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11790,7 +12799,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11819,7 +12829,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11848,7 +12859,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11877,7 +12889,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11906,7 +12919,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11935,7 +12949,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11964,7 +12979,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -11993,7 +13009,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12022,7 +13039,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12051,7 +13069,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12080,7 +13099,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12109,7 +13129,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12138,7 +13159,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12167,7 +13189,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12196,7 +13219,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12225,7 +13249,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12254,7 +13279,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12283,7 +13309,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12312,7 +13339,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12341,7 +13369,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12370,7 +13399,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12399,7 +13429,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12428,7 +13459,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12457,7 +13489,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12486,7 +13519,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12515,7 +13549,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12544,7 +13579,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12573,7 +13609,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12602,7 +13639,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12631,7 +13669,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12660,7 +13699,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12689,7 +13729,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12718,7 +13759,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12747,7 +13789,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12776,7 +13819,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12805,7 +13849,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12834,7 +13879,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12863,7 +13909,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12892,7 +13939,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -12921,7 +13969,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13077,7 +14126,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13106,7 +14156,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13135,7 +14186,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13164,7 +14216,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13193,7 +14246,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13224,7 +14278,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13253,7 +14308,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13282,7 +14338,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13311,7 +14368,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13340,7 +14398,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13403,7 +14462,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13432,7 +14492,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13461,7 +14522,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13490,7 +14552,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13521,7 +14584,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13550,7 +14614,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13579,7 +14644,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13608,7 +14674,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13671,7 +14738,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13700,7 +14768,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13729,7 +14798,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13758,7 +14828,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13789,7 +14860,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13818,7 +14890,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13847,7 +14920,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13876,7 +14950,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -13939,7 +15014,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13968,7 +15044,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -13997,7 +15074,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14026,7 +15104,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14057,7 +15136,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14086,7 +15166,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14115,7 +15196,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14144,7 +15226,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14207,7 +15290,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14236,7 +15320,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14265,7 +15350,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14294,7 +15380,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14325,7 +15412,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14354,7 +15442,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14383,7 +15472,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14412,7 +15502,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14475,7 +15566,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14504,7 +15596,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14533,7 +15626,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14562,7 +15656,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14593,7 +15688,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14622,7 +15718,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14651,7 +15748,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14680,7 +15778,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14743,7 +15842,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14772,7 +15872,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14801,7 +15902,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14830,7 +15932,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -14861,7 +15964,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14890,7 +15994,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14919,7 +16024,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -14948,7 +16054,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15011,7 +16118,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15040,7 +16148,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15069,7 +16178,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15098,7 +16208,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15129,7 +16240,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15158,7 +16270,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15187,7 +16300,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15216,7 +16330,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15279,7 +16394,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15308,7 +16424,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15337,7 +16454,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15366,7 +16484,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15397,7 +16516,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15426,7 +16546,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15455,7 +16576,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15484,7 +16606,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15547,7 +16670,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15576,7 +16700,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15605,7 +16730,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15634,7 +16760,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15665,7 +16792,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15694,7 +16822,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15723,7 +16852,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15752,7 +16882,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15815,7 +16946,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15844,7 +16976,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15873,7 +17006,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -15904,7 +17038,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15933,7 +17068,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -15962,7 +17098,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16025,7 +17162,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16054,7 +17192,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16083,7 +17222,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16114,7 +17254,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16143,7 +17284,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16172,7 +17314,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16235,7 +17378,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16264,7 +17408,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16293,7 +17438,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16324,7 +17470,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16353,7 +17500,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16382,7 +17530,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16445,7 +17594,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16474,7 +17624,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16503,7 +17654,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16532,7 +17684,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],
@@ -16563,7 +17716,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16592,7 +17746,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16621,7 +17776,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         },
         {
@@ -16650,7 +17806,8 @@
                 "url": "",
                 "observedAt": "2026-03-05"
               }
-            ]
+            ],
+            "fields": {}
           }
         }
       ],

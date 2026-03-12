@@ -18,22 +18,23 @@ Update AGIptr data without reintroducing dual data sources or undocumented manua
 1. Review current canonical state
 
 ```bash
-node --test tests/site-data.test.mjs
-node scripts/verify-site-data.mjs
+node --test tests/site-data.test.mjs tests/verification-plan.test.mjs tests/verification-workflow.test.mjs
+node scripts/verify-site-data.mjs --mode=staging
 ```
 
 2. Decide update mode
 
-- If you are only changing import logic, edit scripts/lib or import scripts
-- If you are curating explicit canonical truth, edit `data/canonical/site-data.json`
+- If you are only changing import logic, edit `scripts/lib/` or the import/generate/verify scripts
+- If you are curating explicit vendor truth, edit `data/curated/vendors/*.json`
+- If you are changing rollout policy, edit `data/verification/batch-plan.json`
 - If you need to preserve a judgment call, add a decision file under `logs/decisions/`
 
 3. Rebuild generated artifacts
 
 ```bash
 node scripts/import-legacy-data.mjs
-node scripts/generate-site-data.mjs
-node scripts/verify-site-data.mjs
+node scripts/generate-site-data.mjs --mode=staging
+node scripts/verify-site-data.mjs --mode=staging
 ```
 
 4. Validate frontend entrypoints
@@ -68,6 +69,8 @@ NODE
 
 - update or create `logs/reports/YYYY-MM-DD-summary.md`
 - add a decision record if any transformation is not self-evident
+- check `logs/reports/YYYY-MM-DD-verification.md` for batch progress and release readiness
+- check `logs/verification/YYYY-MM-DD-run.jsonl` for structured vendor and batch status events
 
 7. Commit with structure
 
@@ -87,12 +90,14 @@ Commit body must include:
 
 ## Current Known Gap
 
-The present canonical dataset is still seeded from legacy repository data.
+The present canonical dataset is still seeded from legacy repository data and then selectively upgraded by curated overlays.
 
 That means:
 
 - the runtime is single-source
 - the runtime is internally consistent
-- the dataset is not yet fully upgraded to official source URLs
+- batch-a has official source overlays and model-level verification progress
+- vendor-level `verified` status is still blocked by unsourced display fields and uncurated vendors in later batches
+- `--mode=release` should fail until all 25 vendors are truly `verified`
 
 When you start official-source curation, preserve that distinction in logs and commit messages.
