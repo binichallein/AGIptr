@@ -4,6 +4,21 @@ function compareModels(left, right) {
   return right.name.localeCompare(left.name, "zh-CN");
 }
 
+function extractObservedAt(sourceLabel) {
+  const match = String(sourceLabel || "").match(/(\d{4}-\d{2}-\d{2})/);
+  return match ? match[1] : "";
+}
+
+function findParentModelId(model, primaryModels) {
+  if (model.isDerived === false) return null;
+  const candidates = primaryModels.filter((primaryModel) => {
+    return model.name === primaryModel.name || model.name.startsWith(`${primaryModel.name}-`);
+  });
+  if (!candidates.length) return null;
+  candidates.sort((left, right) => right.name.length - left.name.length);
+  return candidates[0].id;
+}
+
 function cloneModel(model) {
   return {
     ...model,
@@ -137,5 +152,103 @@ export function buildGeneratedSiteData(dataset) {
     vendors,
     latestPrimaryModels,
     vendorDetails
+  };
+}
+
+export function buildCanonicalDatasetFromLegacy({ generatedAt, vendors, vendorDetails }) {
+  const canonicalVendors = [];
+  const canonicalModels = [];
+  const vendorExtensions = {};
+
+  (vendors || []).forEach((vendor) => {
+    const detail = vendorDetails?.[vendor.id];
+    if (!detail) return;
+
+    const observedAt = extractObservedAt(detail.source);
+    const allModels = (detail.allModels || detail.models || []).map((model) => ({ ...model }));
+    const primaryIds = new Set((detail.models || []).map((model) => model.id));
+    const primaryModels = allModels.filter((model) => primaryIds.has(model.id));
+
+    let expanded = true;
+    while (expanded) {
+      expanded = false;
+      allModels.forEach((model) => {
+        if (primaryIds.has(model.id)) return;
+        if (findParentModelId(model, primaryModels)) return;
+        primaryIds.add(model.id);
+        primaryModels.push(model);
+        expanded = true;
+      });
+    }
+
+    const sortedPrimaryModels = [...primaryModels].sort(compareModels);
+    const latestPrimaryId = sortedPrimaryModels[0]?.id || "";
+
+    canonicalVendors.push({
+      id: vendor.id,
+      name: vendor.name,
+      logo: vendor.logo,
+      fallback: vendor.fallback,
+      verification: {
+        verificationStatus: "legacy-import",
+        confidence: "legacy",
+        sources: detail.source
+          ? [
+              {
+                label: detail.source,
+                url: "",
+                observedAt
+              }
+            ]
+          : []
+      }
+    });
+
+    vendorExtensions[vendor.id] = {
+      years: [...(detail.years || [])],
+      excludes: [...(detail.excludes || [])],
+      sourceLabel: detail.source || "",
+      sourceUrl: "",
+      majorVersionDetails: detail.majorVersionDetails || {}
+    };
+
+    allModels.forEach((model) => {
+      const isPrimary = primaryIds.has(model.id);
+      canonicalModels.push({
+        ...model,
+        vendorId: vendor.id,
+        isPrimary,
+        parentModelId: isPrimary ? null : findParentModelId(model, primaryModels),
+        isLatestPrimary: isPrimary && model.id === latestPrimaryId,
+        verification: {
+          verificationStatus: "legacy-import",
+          confidence: "legacy",
+          sources: detail.source
+            ? [
+                {
+                  label: detail.source,
+                  url: "",
+                  observedAt
+                }
+              ]
+            : []
+        }
+      });
+    });
+  });
+
+  return {
+    metadata: {
+      schemaVersion: 1,
+      generatedAt: generatedAt || new Date().toISOString()
+    },
+    vendors: canonicalVendors,
+    vendorExtensions,
+    models: canonicalModels.sort((left, right) => {
+      if (left.vendorId !== right.vendorId) {
+        return left.vendorId.localeCompare(right.vendorId, "zh-CN");
+      }
+      return compareModels(left, right);
+    })
   };
 }

@@ -1,7 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildGeneratedSiteData, verifyCanonicalDataset } from "../scripts/lib/site-data.mjs";
+import {
+  buildCanonicalDatasetFromLegacy,
+  buildGeneratedSiteData,
+  verifyCanonicalDataset
+} from "../scripts/lib/site-data.mjs";
 
 function createCanonicalFixture() {
   return {
@@ -174,4 +178,103 @@ test("verifyCanonicalDataset reports duplicate latest-primary flags and missing 
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((error) => /single latest primary/i.test(error)));
   assert.ok(result.errors.some((error) => /at least one source/i.test(error)));
+});
+
+test("buildCanonicalDatasetFromLegacy materializes explicit primary and parent relationships", () => {
+  const canonical = buildCanonicalDatasetFromLegacy({
+    generatedAt: "2026-03-12T00:00:00.000Z",
+    vendors: [
+      {
+        id: "alpha",
+        name: "Alpha",
+        logo: "./assets/logos/alpha.svg",
+        fallback: "AL"
+      }
+    ],
+    vendorDetails: {
+      alpha: {
+        id: "alpha",
+        name: "Alpha",
+        logo: "./assets/logos/alpha.svg",
+        years: [2025, 2026],
+        source: "Alpha official release log（统计时间：2026-03-10）",
+        excludes: ["Preview variants"],
+        models: [
+          {
+            id: "alpha/alpha-1",
+            name: "Alpha 1",
+            releaseDate: "2025-01-10"
+          },
+          {
+            id: "alpha/alpha-2",
+            name: "Alpha 2",
+            releaseDate: "2026-02-01"
+          }
+        ],
+        allModels: [
+          {
+            id: "alpha/alpha-1",
+            name: "Alpha 1",
+            releaseDate: "2025-01-10"
+          },
+          {
+            id: "alpha/alpha-2",
+            name: "Alpha 2",
+            releaseDate: "2026-02-01"
+          },
+          {
+            id: "alpha/alpha-2-chat",
+            name: "Alpha 2-chat",
+            releaseDate: "2026-02-03",
+            isDerived: true
+          }
+        ],
+        majorVersionDetails: {}
+      }
+    }
+  });
+
+  assert.equal(canonical.vendors[0].verification.verificationStatus, "legacy-import");
+  assert.equal(canonical.vendorExtensions.alpha.sourceLabel, "Alpha official release log（统计时间：2026-03-10）");
+  assert.equal(canonical.models.find((model) => model.id === "alpha/alpha-2").isLatestPrimary, true);
+  assert.equal(canonical.models.find((model) => model.id === "alpha/alpha-2-chat").parentModelId, "alpha/alpha-2");
+});
+
+test("buildCanonicalDatasetFromLegacy promotes orphan derived variants to primary models", () => {
+  const canonical = buildCanonicalDatasetFromLegacy({
+    generatedAt: "2026-03-12T00:00:00.000Z",
+    vendors: [
+      {
+        id: "alpha",
+        name: "Alpha",
+        logo: "./assets/logos/alpha.svg",
+        fallback: "AL"
+      }
+    ],
+    vendorDetails: {
+      alpha: {
+        id: "alpha",
+        name: "Alpha",
+        logo: "./assets/logos/alpha.svg",
+        years: [2026],
+        source: "Alpha official release log（统计时间：2026-03-10）",
+        excludes: [],
+        models: [],
+        allModels: [
+          {
+            id: "alpha/alpha-vision-instruct",
+            name: "Alpha-Vision-Instruct",
+            releaseDate: "2026-02-03",
+            isDerived: true
+          }
+        ],
+        majorVersionDetails: {}
+      }
+    }
+  });
+
+  const importedModel = canonical.models[0];
+  assert.equal(importedModel.isPrimary, true);
+  assert.equal(importedModel.parentModelId, null);
+  assert.equal(importedModel.isLatestPrimary, true);
 });
