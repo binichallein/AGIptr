@@ -110,3 +110,45 @@ test("normalizeEvidenceToTimelineCandidates flags conflicting release dates", ()
   assert.equal(candidate.model_name, "Claude Sonnet 4.6");
   assert.ok(candidate.conflict_flags.includes("release_date_conflict"));
 });
+
+test("normalizeEvidenceToTimelineCandidates only marks latest on candidates with a valid release date", () => {
+  const candidates = normalizeEvidenceToTimelineCandidates({
+    vendorId: "anthropic",
+    officialDomains: ["anthropic.com"],
+    evidenceItems: [
+      {
+        evidence_id: "1",
+        vendor_id: "anthropic",
+        source_url: "https://www.anthropic.com/news/claude-sonnet-4-6",
+        source_domain: "anthropic.com",
+        fact_type: "model_name",
+        fact_value: "Claude Sonnet 4.6",
+        model_name_raw: "Claude Sonnet 4.6",
+        observed_at: "2026-03-12"
+      },
+      {
+        evidence_id: "2",
+        vendor_id: "anthropic",
+        source_url: "https://www.anthropic.com/news/claude-3-7-sonnet",
+        source_domain: "anthropic.com",
+        fact_type: "model_name",
+        fact_value: "Claude 3.7 Sonnet",
+        model_name_raw: "Claude 3.7 Sonnet",
+        observed_at: "2025-02-24"
+      },
+      {
+        evidence_id: "3",
+        vendor_id: "anthropic",
+        source_url: "https://www.anthropic.com/news/claude-3-7-sonnet",
+        source_domain: "anthropic.com",
+        fact_type: "release_date",
+        fact_value: "2025-02-24",
+        model_name_raw: "Claude 3.7 Sonnet",
+        observed_at: "2025-02-24"
+      }
+    ]
+  });
+
+  assert.equal(candidates.find((candidate) => candidate.model_name === "Claude Sonnet 4.6").latest_candidate, false);
+  assert.equal(candidates.find((candidate) => candidate.model_name === "Claude 3.7 Sonnet").latest_candidate, true);
+});

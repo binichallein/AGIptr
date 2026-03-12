@@ -22,7 +22,9 @@ function getVariant(modelName) {
 }
 
 function compareDatesDesc(left, right) {
-  return new Date(right).getTime() - new Date(left).getTime();
+  const rightValue = Number.isNaN(new Date(right).getTime()) ? 0 : new Date(right).getTime();
+  const leftValue = Number.isNaN(new Date(left).getTime()) ? 0 : new Date(left).getTime();
+  return rightValue - leftValue;
 }
 
 export function normalizeEvidenceToTimelineCandidates({ vendorId, officialDomains, evidenceItems }) {
@@ -63,8 +65,9 @@ export function normalizeEvidenceToTimelineCandidates({ vendorId, officialDomain
   });
 
   candidates.sort((left, right) => compareDatesDesc(left.release_date_candidate, right.release_date_candidate));
-  if (candidates[0]) {
-    candidates[0].latest_candidate = true;
+  const latestDatedCandidate = candidates.find((candidate) => candidate.release_date_candidate);
+  if (latestDatedCandidate) {
+    latestDatedCandidate.latest_candidate = true;
   }
   return candidates;
 }

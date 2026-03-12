@@ -132,13 +132,35 @@ async function collectVendorEvidence({
     }
   }
 
-  return [...resultsByUrl.values()].flatMap((result) =>
-    extractEvidenceFromSearchDocument({
+  const evidence = [];
+  for (const result of resultsByUrl.values()) {
+    let resultEvidence = extractEvidenceFromSearchDocument({
       vendorId,
       result,
       knownModelNames
-    })
-  );
+    });
+    const hasReleaseDate = resultEvidence.some((item) => item.fact_type === "release_date");
+    if (!hasReleaseDate) {
+      const fallbackHtml = await fetchTimelineDocument({
+        url: result.url,
+        officialDomains: vendorConfig.officialDomains,
+        fetchImpl
+      });
+      if (fallbackHtml) {
+        resultEvidence = extractEvidenceFromSearchDocument({
+          vendorId,
+          result: {
+            ...result,
+            raw_content: `${result.raw_content || ""}\n${fallbackHtml}`.trim()
+          },
+          knownModelNames
+        });
+      }
+    }
+    evidence.push(...resultEvidence);
+  }
+
+  return evidence;
 }
 
 export async function buildTimelineSearchRunContext({ repoRoot, args = [], env = process.env }) {

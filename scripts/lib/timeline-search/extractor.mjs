@@ -30,7 +30,7 @@ const MODEL_PATTERNS = {
 };
 
 function toIsoDate(value) {
-  const directMatch = String(value || "").match(/\b(20\d{2}-\d{2}-\d{2})\b/);
+  const directMatch = String(value || "").match(/\b(20\d{2}-\d{2}-\d{2})(?:T|\b)/);
   if (directMatch) return directMatch[1];
 
   const monthPattern = new RegExp(
