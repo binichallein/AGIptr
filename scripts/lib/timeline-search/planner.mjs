@@ -6,11 +6,13 @@ function expandTemplate(template, replacements) {
 }
 
 export function buildTimelineQueryPlan(config) {
-  const queries = [];
+  const discoverQueries = [];
+  const supplementQueries = [];
+  const verifyQueries = [];
 
   (config.queryTemplates?.discover || []).forEach((template) => {
     (config.families || []).forEach((family) => {
-      queries.push({
+      discoverQueries.push({
         intent: "discover",
         q: expandTemplate(template, { family })
       });
@@ -20,7 +22,7 @@ export function buildTimelineQueryPlan(config) {
   (config.queryTemplates?.supplement || []).forEach((template) => {
     (config.families || []).forEach((family) => {
       (config.variants || []).forEach((variant) => {
-        queries.push({
+        supplementQueries.push({
           intent: "supplement",
           q: expandTemplate(template, { family, variant })
         });
@@ -30,13 +32,14 @@ export function buildTimelineQueryPlan(config) {
 
   (config.queryTemplates?.verify || []).forEach((template) => {
     (config.families || []).forEach((family) => {
-      queries.push({
+      verifyQueries.push({
         intent: "verify",
         q: expandTemplate(template, { family })
       });
     });
   });
 
+  const queries = [...discoverQueries, ...verifyQueries, ...supplementQueries];
   const deduped = [];
   const seen = new Set();
   for (const query of queries) {
@@ -48,6 +51,6 @@ export function buildTimelineQueryPlan(config) {
 
   return {
     vendorId: config.id,
-    queries: deduped
+    queries: config.queryBudget ? deduped.slice(0, config.queryBudget) : deduped
   };
 }

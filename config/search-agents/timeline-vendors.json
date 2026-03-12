@@ -4,7 +4,8 @@
     "openai": {
       "displayName": "OpenAI",
       "officialDomains": [
-        "openai.com"
+        "openai.com",
+        "www.openai.com"
       ],
       "families": [
         "GPT",
@@ -12,6 +13,7 @@
         "o3",
         "o4"
       ],
+      "queryBudget": 18,
       "variants": [
         "mini",
         "turbo",
@@ -36,11 +38,13 @@
     "anthropic": {
       "displayName": "Anthropic",
       "officialDomains": [
-        "anthropic.com"
+        "anthropic.com",
+        "www.anthropic.com"
       ],
       "families": [
         "Claude"
       ],
+      "queryBudget": 12,
       "variants": [
         "opus",
         "sonnet",
@@ -72,6 +76,7 @@
       "families": [
         "Gemini"
       ],
+      "queryBudget": 12,
       "variants": [
         "flash",
         "pro",

@@ -38,3 +38,29 @@ export function extractFollowableLinks({ html, baseUrl, officialDomains, current
 
   return links;
 }
+
+export async function fetchTimelineDocument({
+  url,
+  officialDomains,
+  fetchImpl = fetch,
+  timeoutMs = 8000
+}) {
+  if (!canFetchTimelineUrl(url, officialDomains)) {
+    return "";
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetchImpl(url, { signal: controller.signal });
+    if (!response.ok) {
+      return "";
+    }
+    return await response.text();
+  } catch {
+    return "";
+  } finally {
+    clearTimeout(timeout);
+  }
+}

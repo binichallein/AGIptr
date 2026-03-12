@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { canFetchTimelineUrl, extractFollowableLinks } from "../scripts/lib/timeline-search/fetcher.mjs";
+import { canFetchTimelineUrl, extractFollowableLinks, fetchTimelineDocument } from "../scripts/lib/timeline-search/fetcher.mjs";
 
 test("canFetchTimelineUrl only accepts allowlisted official domains", () => {
   const officialDomains = ["openai.com"];
@@ -29,4 +29,20 @@ test("extractFollowableLinks keeps official links and respects hop limit metadat
     ["https://openai.com/index/gpt-5/", "https://openai.com/index/gpt-4-5/"]
   );
   assert.ok(links.every((link) => link.depth === 2));
+});
+
+test("fetchTimelineDocument returns empty text when the request times out", async () => {
+  const text = await fetchTimelineDocument({
+    url: "https://openai.com/index/gpt-5/",
+    officialDomains: ["openai.com"],
+    timeoutMs: 10,
+    fetchImpl: async (_url, options) =>
+      new Promise((_, reject) => {
+        options.signal.addEventListener("abort", () => {
+          reject(new Error("aborted"));
+        });
+      })
+  });
+
+  assert.equal(text, "");
 });
