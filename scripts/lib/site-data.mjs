@@ -4,6 +4,50 @@ function compareModels(left, right) {
   return right.name.localeCompare(left.name, "zh-CN");
 }
 
+function cloneDataset(dataset) {
+  return {
+    metadata: { ...(dataset?.metadata || {}) },
+    vendors: (dataset?.vendors || []).map(cloneVendor),
+    vendorExtensions: Object.fromEntries(
+      Object.entries(dataset?.vendorExtensions || {}).map(([vendorId, extension]) => [
+        vendorId,
+        {
+          ...extension,
+          years: [...(extension?.years || [])],
+          excludes: [...(extension?.excludes || [])],
+          majorVersionDetails: extension?.majorVersionDetails || {}
+        }
+      ])
+    ),
+    models: (dataset?.models || []).map(cloneModel)
+  };
+}
+
+function mergeVerification(base = {}, override = {}) {
+  return {
+    ...base,
+    ...override,
+    sources: override.sources ? [...override.sources] : [...(base.sources || [])],
+    fields: {
+      ...(base.fields || {}),
+      ...(override.fields || {})
+    }
+  };
+}
+
+function hasSourceUrl(record) {
+  return (record?.verification?.sources || []).some((source) => Boolean(source?.url));
+}
+
+function verifyModelFieldCoverage(model, fields, errors) {
+  fields.forEach((field) => {
+    const fieldSources = model.verification?.fields?.[field] || [];
+    if (!fieldSources.length) {
+      errors.push(`Verified model ${model.id} must define field verification for ${field}`);
+    }
+  });
+}
+
 function extractObservedAt(sourceLabel) {
   const match = String(sourceLabel || "").match(/(\d{4}-\d{2}-\d{2})/);
   return match ? match[1] : "";
@@ -24,7 +68,10 @@ function cloneModel(model) {
     ...model,
     verification: {
       ...(model.verification || {}),
-      sources: [...(model.verification?.sources || [])]
+      sources: [...(model.verification?.sources || [])],
+      fields: {
+        ...(model.verification?.fields || {})
+      }
     }
   };
 }
@@ -44,16 +91,26 @@ function verifyCoreSources(record, label, errors, requireVerifiedSources) {
   const sources = record?.verification?.sources || [];
   if (!sources.length) {
     errors.push(`${label} must include at least one source`);
+    return;
+  }
+  if (record?.verification?.verificationStatus !== "legacy-import" && !hasSourceUrl(record)) {
+    errors.push(`${label} must include at least one source URL`);
   }
 }
 
 export function verifyCanonicalDataset(dataset, options = {}) {
-  const { requireVerifiedSources = false } = options;
+  const {
+    requireVerifiedSources = false,
+    requiredVerifiedModelFields = [],
+    requiredVendorVerifiedModelFields = []
+  } = options;
   const errors = [];
   const warnings = [];
   const vendors = dataset?.vendors || [];
   const models = dataset?.models || [];
+  const vendorExtensions = dataset?.vendorExtensions || {};
   const vendorIds = new Set();
+  const verifiedVendorIds = new Set();
 
   vendors.forEach((vendor) => {
     if (vendorIds.has(vendor.id)) {
@@ -62,6 +119,15 @@ export function verifyCanonicalDataset(dataset, options = {}) {
     }
     vendorIds.add(vendor.id);
     verifyCoreSources(vendor, `Vendor ${vendor.id}`, errors, requireVerifiedSources);
+    if (vendor.verification?.verificationStatus === "verified") {
+      verifiedVendorIds.add(vendor.id);
+      if (!vendorExtensions[vendor.id]?.sourceUrl) {
+        errors.push(`Verified vendor ${vendor.id} must define vendorExtensions.sourceUrl`);
+      }
+      if (!vendor.verification?.batchId) {
+        errors.push(`Verified vendor ${vendor.id} must define verification.batchId`);
+      }
+    }
   });
 
   const latestPrimaryCount = new Map();
@@ -78,6 +144,17 @@ export function verifyCanonicalDataset(dataset, options = {}) {
 
     if (!model.isPrimary && !model.parentModelId) {
       errors.push(`Derived model ${model.id} must define parentModelId`);
+    }
+
+    if (model.verification?.verificationStatus === "verified") {
+      verifyModelFieldCoverage(model, requiredVerifiedModelFields, errors);
+    }
+
+    if (verifiedVendorIds.has(model.vendorId)) {
+      if (model.verification?.verificationStatus !== "verified") {
+        errors.push(`Verified vendor ${model.vendorId} requires verified model ${model.id}`);
+      }
+      verifyModelFieldCoverage(model, requiredVendorVerifiedModelFields, errors);
     }
   });
 
@@ -101,11 +178,20 @@ export function verifyCanonicalDataset(dataset, options = {}) {
 }
 
 export function buildGeneratedSiteData(dataset) {
+  const options = arguments[1] || {};
+  const mode = options.mode || "staging";
   const vendors = (dataset?.vendors || []).map(cloneVendor);
   const models = (dataset?.models || []).map(cloneModel);
   const vendorExtensions = dataset?.vendorExtensions || {};
   const vendorDetails = {};
   const latestPrimaryModels = {};
+
+  if (mode === "release") {
+    const notVerified = vendors.filter((vendor) => vendor.verification?.verificationStatus !== "verified");
+    if (notVerified.length) {
+      throw new Error("Release mode requires all vendors to be verified");
+    }
+  }
 
   vendors.forEach((vendor) => {
     const extension = vendorExtensions[vendor.id] || {};
@@ -147,11 +233,130 @@ export function buildGeneratedSiteData(dataset) {
   return {
     metadata: {
       schemaVersion: dataset?.metadata?.schemaVersion || 1,
-      generatedAt: dataset?.metadata?.generatedAt || new Date().toISOString()
+      generatedAt: dataset?.metadata?.generatedAt || new Date().toISOString(),
+      mode
     },
     vendors,
     latestPrimaryModels,
     vendorDetails
+  };
+}
+
+export function applyCuratedVendorData(dataset, curatedData = {}) {
+  const nextDataset = cloneDataset(dataset);
+  const curatedVendors = curatedData.vendors || {};
+
+  Object.entries(curatedVendors).forEach(([vendorId, payload]) => {
+    const vendor = nextDataset.vendors.find((entry) => entry.id === vendorId);
+    if (!vendor) return;
+
+    if (payload.vendorVerification) {
+      vendor.verification = mergeVerification(vendor.verification, payload.vendorVerification);
+    }
+
+    if (payload.vendorExtension) {
+      nextDataset.vendorExtensions[vendorId] = {
+        ...(nextDataset.vendorExtensions[vendorId] || {}),
+        ...payload.vendorExtension
+      };
+    }
+
+    const modelOverrides = payload.models || {};
+    const existingModelIds = new Set(
+      nextDataset.models
+        .filter((model) => model.vendorId === vendorId)
+        .map((model) => model.id)
+    );
+
+    nextDataset.models = nextDataset.models.map((model) => {
+      if (model.vendorId !== vendorId || !Object.hasOwn(modelOverrides, model.id)) {
+        return model;
+      }
+      const override = modelOverrides[model.id];
+      return {
+        ...model,
+        ...Object.fromEntries(Object.entries(override).filter(([key]) => key !== "verification")),
+        verification: override.verification
+          ? mergeVerification(model.verification, override.verification)
+          : model.verification
+      };
+    });
+
+    Object.entries(modelOverrides).forEach(([modelId, override]) => {
+      if (existingModelIds.has(modelId)) return;
+      nextDataset.models.push({
+        ...Object.fromEntries(Object.entries(override).filter(([key]) => key !== "verification")),
+        id: override.id || modelId,
+        vendorId: override.vendorId || vendorId,
+        verification: mergeVerification({}, override.verification || {})
+      });
+    });
+
+    const latestPrimaryModels = nextDataset.models.filter(
+      (model) => model.vendorId === vendorId && model.isPrimary && model.isLatestPrimary
+    );
+    if (latestPrimaryModels.length > 1) {
+      latestPrimaryModels
+        .sort(compareModels)
+        .forEach((model, index) => {
+          model.isLatestPrimary = index === 0;
+        });
+    }
+  });
+
+  nextDataset.models.sort((left, right) => {
+    if (left.vendorId !== right.vendorId) {
+      return left.vendorId.localeCompare(right.vendorId, "zh-CN");
+    }
+    return compareModels(left, right);
+  });
+
+  return nextDataset;
+}
+
+export function summarizeVerificationProgress(dataset, batchPlan = {}) {
+  const vendorBatchMap = new Map();
+  const batches = (batchPlan?.batches || []).map((batch) => {
+    batch.vendors.forEach((vendorId) => vendorBatchMap.set(vendorId, batch.id));
+    return {
+      id: batch.id,
+      name: batch.name,
+      vendorsTotal: batch.vendors.length,
+      vendorsVerified: 0,
+      statusCounts: {
+        verified: 0,
+        needs_review: 0,
+        "legacy-import": 0,
+        conflict: 0,
+        unknown: 0
+      }
+    };
+  });
+
+  const vendors = (dataset?.vendors || []).map((vendor) => {
+    const batchId = vendor.verification?.batchId || vendorBatchMap.get(vendor.id) || "";
+    return {
+      id: vendor.id,
+      batchId,
+      verificationStatus: vendor.verification?.verificationStatus || "unknown"
+    };
+  });
+
+  batches.forEach((batch) => {
+    const batchVendors = vendors.filter((vendor) => vendor.batchId === batch.id);
+    batch.vendorsVerified = batchVendors.filter((vendor) => vendor.verificationStatus === "verified").length;
+    batchVendors.forEach((vendor) => {
+      const status = Object.hasOwn(batch.statusCounts, vendor.verificationStatus)
+        ? vendor.verificationStatus
+        : "unknown";
+      batch.statusCounts[status] += 1;
+    });
+  });
+
+  return {
+    releaseReady: vendors.every((vendor) => vendor.verificationStatus === "verified"),
+    vendors,
+    batches
   };
 }
 

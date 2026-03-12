@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "releasePolicy": {
+    "mode": "all-vendors-must-be-verified",
+    "requiredVerifiedModelFields": [
+      "name",
+      "releaseDate"
+    ],
+    "requiredVendorVerifiedModelFields": [
+      "name",
+      "releaseDate",
+      "params",
+      "architecture",
+      "type",
+      "family"
+    ]
+  },
+  "batches": [
+    {
+      "id": "batch-a",
+      "name": "Pilot",
+      "goal": "Use one complex vendor plus three common vendors to validate the curated workflow.",
+      "vendors": [
+        "alibaba",
+        "openai",
+        "anthropic",
+        "google-deepmind"
+      ]
+    },
+    {
+      "id": "batch-b",
+      "name": "Overseas Core",
+      "goal": "Apply the common official-source workflow to overseas mid-complexity vendors.",
+      "vendors": [
+        "meta",
+        "xai",
+        "mistral",
+        "cohere",
+        "microsoft",
+        "aws",
+        "nvidia"
+      ]
+    },
+    {
+      "id": "batch-c",
+      "name": "China Core",
+      "goal": "Migrate the remaining Chinese vendors onto the same verified pipeline.",
+      "vendors": [
+        "baidu",
+        "tencent",
+        "bytedance",
+        "zhipu",
+        "moonshot",
+        "minimax",
+        "deepseek",
+        "ai01",
+        "baichuan",
+        "iflytek",
+        "huawei",
+        "sensetime",
+        "stepfun",
+        "modelbest"
+      ]
+    },
+    {
+      "id": "batch-d",
+      "name": "Release Gate",
+      "goal": "Run the full-site release gate once batches A-C are complete.",
+      "vendors": []
+    }
+  ]
+}

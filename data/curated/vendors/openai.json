@@ -1,0 +1,266 @@
+{
+  "vendorId": "openai",
+  "vendorVerification": {
+    "verificationStatus": "needs_review",
+    "confidence": "primary",
+    "batchId": "batch-a",
+    "sources": [
+      {
+        "label": "Introducing GPT-5.4",
+        "url": "https://openai.com/index/introducing-gpt-5-4/",
+        "observedAt": "2026-03-05"
+      }
+    ]
+  },
+  "vendorExtension": {
+    "sourceLabel": "Introducing GPT-5.4",
+    "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/"
+  },
+  "models": {
+    "openai/GPT-3.5": {
+      "verification": {
+        "verificationStatus": "needs_review",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "ChatGPT launch (GPT-3.5 series)",
+            "url": "https://openai.com/blog/chatgpt/",
+            "observedAt": "2022-11-30"
+          }
+        ]
+      }
+    },
+    "openai/GPT-4": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "GPT-4 announcement",
+            "url": "https://openai.com/research/gpt-4",
+            "observedAt": "2023-03-14"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/research/gpt-4"
+          ],
+          "releaseDate": [
+            "https://openai.com/research/gpt-4"
+          ]
+        }
+      }
+    },
+    "openai/GPT-4o": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Hello GPT-4o",
+            "url": "https://openai.com/index/hello-gpt-4o/",
+            "observedAt": "2024-05-13"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/hello-gpt-4o/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/hello-gpt-4o/"
+          ]
+        }
+      }
+    },
+    "openai/GPT-4o mini": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "GPT-4o mini announcement",
+            "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+            "observedAt": "2024-07-18"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+          ]
+        }
+      }
+    },
+    "openai/GPT-4.1": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "GPT-4.1 announcement",
+            "url": "https://openai.com/index/gpt-4-1/",
+            "observedAt": "2025-04-14"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/gpt-4-1/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/gpt-4-1/"
+          ]
+        }
+      }
+    },
+    "openai/o3": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing o3 and o4-mini",
+            "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+            "observedAt": "2025-04-16"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/introducing-o3-and-o4-mini/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/introducing-o3-and-o4-mini/"
+          ]
+        }
+      }
+    },
+    "openai/o4-mini": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing o3 and o4-mini",
+            "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+            "observedAt": "2025-04-16"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/introducing-o3-and-o4-mini/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/introducing-o3-and-o4-mini/"
+          ]
+        }
+      }
+    },
+    "openai/GPT-4.5": {
+      "id": "openai/GPT-4.5",
+      "vendorId": "openai",
+      "name": "GPT-4.5",
+      "releaseDate": "2025-02-27",
+      "params": "未公开",
+      "architecture": "",
+      "type": "通用",
+      "family": "GPT-4.5",
+      "isPrimary": true,
+      "parentModelId": null,
+      "isLatestPrimary": false,
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing GPT-4.5",
+            "url": "https://openai.com/index/introducing-gpt-4-5/",
+            "observedAt": "2025-02-27"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/introducing-gpt-4-5/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/introducing-gpt-4-5/"
+          ]
+        }
+      }
+    },
+    "openai/GPT-5": {
+      "id": "openai/GPT-5",
+      "vendorId": "openai",
+      "name": "GPT-5",
+      "releaseDate": "2025-08-07",
+      "params": "未公开",
+      "architecture": "",
+      "type": "通用",
+      "family": "GPT-5",
+      "isPrimary": true,
+      "parentModelId": null,
+      "isLatestPrimary": false,
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing GPT-5",
+            "url": "https://openai.com/index/introducing-gpt-5/",
+            "observedAt": "2025-08-07"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/introducing-gpt-5/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/introducing-gpt-5/"
+          ]
+        }
+      }
+    },
+    "openai/GPT-5.4": {
+      "id": "openai/GPT-5.4",
+      "vendorId": "openai",
+      "name": "GPT-5.4",
+      "releaseDate": "2026-03-05",
+      "params": "未公开",
+      "architecture": "",
+      "type": "通用",
+      "family": "GPT-5",
+      "isPrimary": true,
+      "parentModelId": null,
+      "isLatestPrimary": true,
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing GPT-5.4",
+            "url": "https://openai.com/index/introducing-gpt-5-4/",
+            "observedAt": "2026-03-05"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://openai.com/index/introducing-gpt-5-4/"
+          ],
+          "releaseDate": [
+            "https://openai.com/index/introducing-gpt-5-4/"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "vendorId": "anthropic",
+  "vendorVerification": {
+    "verificationStatus": "needs_review",
+    "confidence": "primary",
+    "batchId": "batch-a",
+    "sources": [
+      {
+        "label": "Claude Sonnet 4.6 announcement",
+        "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+        "observedAt": "2026-02-17"
+      }
+    ]
+  },
+  "vendorExtension": {
+    "sourceLabel": "Claude Sonnet 4.6 announcement",
+    "sourceUrl": "https://www.anthropic.com/news/claude-sonnet-4-6"
+  },
+  "models": {
+    "anthropic/Claude 1": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing Claude",
+            "url": "https://www.anthropic.com/news/introducing-claude",
+            "observedAt": "2023-03-14"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/introducing-claude"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/introducing-claude"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude 2": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude 2 announcement",
+            "url": "https://www.anthropic.com/news/claude-2",
+            "observedAt": "2023-07-11"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-2"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-2"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude 3 Opus": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude 3 family announcement",
+            "url": "https://www.anthropic.com/news/claude-3-family",
+            "observedAt": "2024-03-04"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-3-family"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-3-family"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude 3.5 Sonnet": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude 3.5 Sonnet announcement",
+            "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+            "observedAt": "2024-06-20"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-3-5-sonnet"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-3-5-sonnet"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude 3.5 Haiku": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude 3.5 models and computer use",
+            "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+            "observedAt": "2024-10-22"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/3-5-models-and-computer-use"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/3-5-models-and-computer-use"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude 3.7 Sonnet": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude 3.7 Sonnet announcement",
+            "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+            "observedAt": "2025-02-24"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-3-7-sonnet"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-3-7-sonnet"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude Opus 4.6": {
+      "id": "anthropic/Claude Opus 4.6",
+      "vendorId": "anthropic",
+      "name": "Claude Opus 4.6",
+      "releaseDate": "2026-02-05",
+      "params": "未公开",
+      "architecture": "",
+      "type": "通用",
+      "family": "Claude 4",
+      "isPrimary": true,
+      "parentModelId": null,
+      "isLatestPrimary": false,
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude Opus 4.6 announcement",
+            "url": "https://www.anthropic.com/news/claude-opus-4-6",
+            "observedAt": "2026-02-05"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-opus-4-6"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-opus-4-6"
+          ]
+        }
+      }
+    },
+    "anthropic/Claude Sonnet 4.6": {
+      "id": "anthropic/Claude Sonnet 4.6",
+      "vendorId": "anthropic",
+      "name": "Claude Sonnet 4.6",
+      "releaseDate": "2026-02-17",
+      "params": "未公开",
+      "architecture": "",
+      "type": "通用",
+      "family": "Claude 4",
+      "isPrimary": true,
+      "parentModelId": null,
+      "isLatestPrimary": true,
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Claude Sonnet 4.6 announcement",
+            "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+            "observedAt": "2026-02-17"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://www.anthropic.com/news/claude-sonnet-4-6"
+          ],
+          "releaseDate": [
+            "https://www.anthropic.com/news/claude-sonnet-4-6"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "vendorId": "google-deepmind",
+  "vendorVerification": {
+    "verificationStatus": "needs_review",
+    "confidence": "primary",
+    "batchId": "batch-a",
+    "sources": [
+      {
+        "label": "Gemini 2.5 Flash availability",
+        "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+        "observedAt": "2025-06-17"
+      }
+    ]
+  },
+  "vendorExtension": {
+    "sourceLabel": "Gemini 2.5 Flash availability",
+    "sourceUrl": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+  },
+  "models": {
+    "google-deepmind/Gemini 1.0 Pro": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Introducing Gemini",
+            "url": "https://blog.google/technology/ai/google-gemini-ai/",
+            "observedAt": "2023-12-06"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://blog.google/technology/ai/google-gemini-ai/"
+          ],
+          "releaseDate": [
+            "https://blog.google/technology/ai/google-gemini-ai/"
+          ]
+        }
+      }
+    },
+    "google-deepmind/Gemini 1.5 Pro": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Gemini 1.5 announcement",
+            "url": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+            "observedAt": "2024-02-15"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+          ],
+          "releaseDate": [
+            "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/"
+          ]
+        }
+      }
+    },
+    "google-deepmind/Gemini 1.5 Flash": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Gemini 1.5 Flash announcement",
+            "url": "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/",
+            "observedAt": "2024-05-14"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+          ],
+          "releaseDate": [
+            "https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/"
+          ]
+        }
+      }
+    },
+    "google-deepmind/Gemini 2.0 Flash": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Gemini 2.0 Flash announcement",
+            "url": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/",
+            "observedAt": "2024-12-11"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+          ],
+          "releaseDate": [
+            "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+          ]
+        }
+      }
+    },
+    "google-deepmind/Gemini 2.5 Pro": {
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Gemini 2.5 Pro announcement",
+            "url": "https://blog.google/products/gemini/google-gemini-update-march-2025/",
+            "observedAt": "2025-03-25"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+          ],
+          "releaseDate": [
+            "https://blog.google/products/gemini/google-gemini-update-march-2025/"
+          ]
+        }
+      }
+    },
+    "google-deepmind/Gemini 2.5 Flash": {
+      "releaseDate": "2025-06-17",
+      "verification": {
+        "verificationStatus": "verified",
+        "confidence": "primary",
+        "batchId": "batch-a",
+        "sources": [
+          {
+            "label": "Gemini 2.5 Flash availability",
+            "url": "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/",
+            "observedAt": "2025-06-17"
+          }
+        ],
+        "fields": {
+          "name": [
+            "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+          ],
+          "releaseDate": [
+            "https://developers.googleblog.com/en/gemini-2-5-model-family-expands/"
+          ]
+        }
+      }
+    }
+  }
+}
