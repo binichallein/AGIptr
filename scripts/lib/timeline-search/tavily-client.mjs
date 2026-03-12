@@ -1,9 +1,43 @@
-const TAVILY_ENDPOINT = "https://api.tavily.com/search";
+const TAVILY_SEARCH_ENDPOINT = "https://api.tavily.com/search";
+const TAVILY_EXTRACT_ENDPOINT = "https://api.tavily.com/extract";
 
 function wait(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
+}
+
+async function postToTavily({ endpoint, payload, fetchImpl = fetch, maxRetries = 1 }) {
+  let lastError;
+  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    try {
+      const response = await fetchImpl(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const error = new Error(`Tavily request failed with status ${response.status}`);
+        error.status = response.status;
+        throw error;
+      }
+
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+      const timeout = error?.cause?.code === "UND_ERR_CONNECT_TIMEOUT";
+      const retryableStatus = [429, 432].includes(error?.status);
+      if ((!timeout && !retryableStatus) || attempt === maxRetries) {
+        throw error;
+      }
+      await wait(retryableStatus ? 1000 * (attempt + 1) : 300 * (attempt + 1));
+    }
+  }
+
+  throw lastError;
 }
 
 export async function searchWithTavily({
@@ -14,39 +48,44 @@ export async function searchWithTavily({
   fetchImpl = fetch,
   maxRetries = 1
 }) {
-  let lastError;
-  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
-    try {
-      const response = await fetchImpl(TAVILY_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          api_key: apiKey,
-          query,
-          search_depth: "advanced",
-          max_results: maxResults,
-          include_domains: includeDomains,
-          include_raw_content: true
-        })
-      });
+  const payload = await postToTavily({
+    endpoint: TAVILY_SEARCH_ENDPOINT,
+    payload: {
+      api_key: apiKey,
+      query,
+      search_depth: "advanced",
+      max_results: maxResults,
+      include_domains: includeDomains,
+      include_raw_content: true
+    },
+    fetchImpl,
+    maxRetries
+  });
 
-      if (!response.ok) {
-        throw new Error(`Tavily search failed with status ${response.status}`);
-      }
+  return payload.results || [];
+}
 
-      const payload = await response.json();
-      return payload.results || [];
-    } catch (error) {
-      lastError = error;
-      const timeout = error?.cause?.code === "UND_ERR_CONNECT_TIMEOUT";
-      if (!timeout || attempt === maxRetries) {
-        throw error;
-      }
-      await wait(300 * (attempt + 1));
-    }
-  }
+export async function extractWithTavily({
+  apiKey,
+  urls = [],
+  query = "",
+  fetchImpl = fetch,
+  maxRetries = 1
+}) {
+  const payload = await postToTavily({
+    endpoint: TAVILY_EXTRACT_ENDPOINT,
+    payload: {
+      api_key: apiKey,
+      urls,
+      query,
+      extract_depth: "advanced",
+      format: "text",
+      chunks_per_source: query ? 3 : undefined,
+      timeout: 60
+    },
+    fetchImpl,
+    maxRetries
+  });
 
-  throw lastError;
+  return payload.results || [];
 }

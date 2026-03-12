@@ -5,6 +5,10 @@ function expandTemplate(template, replacements) {
   );
 }
 
+function normalizeDomainForSiteQuery(domain) {
+  return String(domain || "").replace(/^www\./, "");
+}
+
 export function buildTimelineQueryPlan(config) {
   const discoverQueries = [];
   const supplementQueries = [];
@@ -53,4 +57,34 @@ export function buildTimelineQueryPlan(config) {
     vendorId: config.id,
     queries: config.queryBudget ? deduped.slice(0, config.queryBudget) : deduped
   };
+}
+
+export function buildExactModelFollowUpQueries({
+  officialDomains = [],
+  unresolvedModelNames = [],
+  followUpBudget = 0
+}) {
+  const siteDomain = normalizeDomainForSiteQuery(officialDomains[0] || "");
+  if (!siteDomain || !followUpBudget) {
+    return [];
+  }
+
+  const deduped = [];
+  const seen = new Set();
+  for (const modelName of unresolvedModelNames || []) {
+    const normalizedName = String(modelName || "").trim();
+    if (!normalizedName) continue;
+    const key = normalizedName.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push({
+      intent: "follow-up",
+      q: `site:${siteDomain} "${normalizedName}"`
+    });
+    if (deduped.length >= followUpBudget) {
+      break;
+    }
+  }
+
+  return deduped;
 }

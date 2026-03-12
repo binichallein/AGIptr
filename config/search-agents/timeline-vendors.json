@@ -14,6 +14,7 @@
         "o4"
       ],
       "queryBudget": 18,
+      "followUpBudget": 6,
       "variants": [
         "mini",
         "turbo",
@@ -45,6 +46,7 @@
         "Claude"
       ],
       "queryBudget": 12,
+      "followUpBudget": 8,
       "variants": [
         "opus",
         "sonnet",
@@ -77,6 +79,7 @@
         "Gemini"
       ],
       "queryBudget": 12,
+      "followUpBudget": 6,
       "variants": [
         "flash",
         "pro",

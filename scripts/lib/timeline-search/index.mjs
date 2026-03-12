@@ -2,12 +2,12 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { loadTimelineVendorConfig } from "./config.mjs";
-import { extractEvidenceFromSearchDocument } from "./extractor.mjs";
+import { extractEvidenceFromSearchDocument, extractFallbackDateEvidenceFromHtml } from "./extractor.mjs";
 import { canFetchTimelineUrl, fetchTimelineDocument } from "./fetcher.mjs";
 import { normalizeEvidenceToTimelineCandidates } from "./normalizer.mjs";
-import { buildTimelineQueryPlan } from "./planner.mjs";
+import { buildExactModelFollowUpQueries, buildTimelineQueryPlan } from "./planner.mjs";
 import { diffTimelineCandidatesAgainstCanonical, renderTimelineDiffReport } from "./reporter.mjs";
-import { searchWithTavily } from "./tavily-client.mjs";
+import { extractWithTavily, searchWithTavily } from "./tavily-client.mjs";
 
 async function ensureDir(filePath) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -71,6 +71,7 @@ async function collectVendorEvidence({
   canonicalDataset,
   apiKey,
   searchClient = searchWithTavily,
+  extractClient = extractWithTavily,
   fetchImpl = fetch,
   verificationEvents,
   runTimestamp
@@ -82,85 +83,145 @@ async function collectVendorEvidence({
   const resultsByUrl = new Map();
   const knownModelNames = buildKnownModelNames(canonicalDataset, vendorId);
 
-  for (const query of plan.queries) {
-    verificationEvents.push({
-      event_type: "search_query",
-      vendor_id: vendorId,
-      model_id: "",
-      field: query.intent,
-      old_value: "",
-      new_value: query.q,
-      source_url: "",
-      confidence: "",
-      decision_reason: "planned vendor query",
-      actor: "timeline-search",
-      timestamp: runTimestamp
-    });
-
-    const results = await searchClient({
-      apiKey,
-      query: query.q,
-      includeDomains: vendorConfig.officialDomains
-    });
-
-    for (const rawResult of results) {
-      const result = normalizeSearchResult(rawResult);
-      if (!canFetchTimelineUrl(result.url, vendorConfig.officialDomains)) {
-        continue;
-      }
-      if (!result.raw_content) {
-        result.raw_content = await fetchTimelineDocument({
-          url: result.url,
-          officialDomains: vendorConfig.officialDomains,
-          fetchImpl
-        });
-      }
-      resultsByUrl.set(result.url, result);
+  async function executeQueries(queries = []) {
+    for (const query of queries) {
       verificationEvents.push({
-        event_type: "search_result",
+        event_type: "search_query",
         vendor_id: vendorId,
         model_id: "",
         field: query.intent,
         old_value: "",
-        new_value: result.title || result.url,
-        source_url: result.url,
-        confidence: "primary",
-        decision_reason: "official-domain search hit",
+        new_value: query.q,
+        source_url: "",
+        confidence: "",
+        decision_reason: "planned vendor query",
         actor: "timeline-search",
         timestamp: runTimestamp
       });
+
+      const results = await searchClient({
+        apiKey,
+        query: query.q,
+        includeDomains: vendorConfig.officialDomains
+      });
+
+      for (const rawResult of results) {
+        const result = normalizeSearchResult(rawResult);
+        if (!canFetchTimelineUrl(result.url, vendorConfig.officialDomains)) {
+          continue;
+        }
+        if (!result.raw_content) {
+          result.raw_content = await fetchTimelineDocument({
+            url: result.url,
+            officialDomains: vendorConfig.officialDomains,
+            fetchImpl
+          });
+        }
+        resultsByUrl.set(result.url, result);
+        verificationEvents.push({
+          event_type: "search_result",
+          vendor_id: vendorId,
+          model_id: "",
+          field: query.intent,
+          old_value: "",
+          new_value: result.title || result.url,
+          source_url: result.url,
+          confidence: "primary",
+          decision_reason: "official-domain search hit",
+          actor: "timeline-search",
+          timestamp: runTimestamp
+        });
+      }
     }
   }
 
-  const evidence = [];
-  for (const result of resultsByUrl.values()) {
-    let resultEvidence = extractEvidenceFromSearchDocument({
-      vendorId,
-      result,
-      knownModelNames
-    });
-    const hasReleaseDate = resultEvidence.some((item) => item.fact_type === "release_date");
-    if (!hasReleaseDate) {
-      const fallbackHtml = await fetchTimelineDocument({
+  function collectEvidenceFromResults() {
+    const evidence = [];
+
+    for (const result of resultsByUrl.values()) {
+      const resultEvidence = extractEvidenceFromSearchDocument({
+        vendorId,
+        result,
+        knownModelNames
+      });
+      const modelNames = [...new Set(
+        resultEvidence
+          .filter((item) => item.fact_type === "model_name")
+          .map((item) => item.model_name_raw || item.fact_value)
+          .filter(Boolean)
+      )];
+      const fallbackHtmlPromise = fetchTimelineDocument({
         url: result.url,
         officialDomains: vendorConfig.officialDomains,
         fetchImpl
       });
-      if (fallbackHtml) {
-        resultEvidence = extractEvidenceFromSearchDocument({
-          vendorId,
-          result: {
-            ...result,
-            raw_content: `${result.raw_content || ""}\n${fallbackHtml}`.trim()
-          },
-          knownModelNames
-        });
-      }
+      const extractPromise = modelNames.length
+        ? extractClient({
+            apiKey,
+            urls: [result.url],
+            query: `${modelNames.join(", ")} release date`
+          }).catch(() => [])
+        : Promise.resolve([]);
+      evidence.push(
+        Promise.all([fallbackHtmlPromise, extractPromise]).then(([fallbackHtml, extractedResults]) => {
+          const extractedContent = (extractedResults || [])
+            .map((item) => item.raw_content || "")
+            .filter(Boolean)
+            .join("\n");
+          return [
+            ...resultEvidence,
+            ...extractFallbackDateEvidenceFromHtml({
+              vendorId,
+              result,
+              existingEvidence: resultEvidence,
+              html: extractedContent,
+              sourceType: "tavily-extract"
+            }),
+            ...extractFallbackDateEvidenceFromHtml({
+              vendorId,
+              result,
+              existingEvidence: resultEvidence,
+              html: fallbackHtml || "",
+              sourceType: "html-fallback"
+            })
+          ];
+        })
+      );
     }
-    evidence.push(...resultEvidence);
+
+    return Promise.all(evidence).then((chunks) => chunks.flatMap((chunk) => chunk));
+  }
+
+  await executeQueries(plan.queries);
+
+  let evidence = await collectEvidenceFromResults();
+  const followUpQueries = buildExactModelFollowUpQueries({
+    vendorId,
+    officialDomains: vendorConfig.officialDomains,
+    unresolvedModelNames: collectFollowUpModelNames(evidence),
+    followUpBudget: vendorConfig.followUpBudget || 0
+  });
+
+  if (followUpQueries.length) {
+    await executeQueries(followUpQueries);
+    evidence = await collectEvidenceFromResults();
   }
 
   return evidence;
+}
+
+function collectFollowUpModelNames(evidenceItems = []) {
+  const seen = new Set();
+  const names = [];
+  for (const item of evidenceItems) {
+    const modelName = item.model_name_raw || item.fact_value;
+    if (!modelName || !/\d/.test(modelName)) continue;
+    const key = modelName.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    names.push(modelName);
+  }
+  return names;
 }
 
 export async function buildTimelineSearchRunContext({ repoRoot, args = [], env = process.env }) {
@@ -223,6 +284,7 @@ export async function runTimelineSearch({
   args = [],
   env = process.env,
   searchClient = searchWithTavily,
+  extractClient = extractWithTavily,
   fetchImpl = fetch
 }) {
   const context = await buildTimelineSearchRunContext({ repoRoot, args, env });
@@ -240,6 +302,7 @@ export async function runTimelineSearch({
       canonicalDataset,
       apiKey: context.apiKey,
       searchClient,
+      extractClient,
       fetchImpl,
       verificationEvents,
       runTimestamp

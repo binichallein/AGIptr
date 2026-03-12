@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildTimelineQueryPlan } from "../scripts/lib/timeline-search/planner.mjs";
+import { buildExactModelFollowUpQueries, buildTimelineQueryPlan } from "../scripts/lib/timeline-search/planner.mjs";
 
 test("buildTimelineQueryPlan emits discover supplement and verify queries for each vendor", () => {
   const config = {
@@ -41,4 +41,24 @@ test("buildTimelineQueryPlan respects a query budget when provided", () => {
   assert.ok(plan.queries.length <= 12);
   assert.ok(plan.queries.some((query) => query.intent === "discover"));
   assert.ok(plan.queries.some((query) => query.intent === "verify"));
+});
+
+test("buildExactModelFollowUpQueries emits bounded exact phrase queries for unresolved models", () => {
+  const queries = buildExactModelFollowUpQueries({
+    vendorId: "anthropic",
+    officialDomains: ["www.anthropic.com"],
+    unresolvedModelNames: ["Claude Sonnet 4.6", "Claude Haiku 4.5", "Claude Opus 4.6"],
+    followUpBudget: 2
+  });
+
+  assert.deepEqual(queries, [
+    {
+      intent: "follow-up",
+      q: 'site:anthropic.com "Claude Sonnet 4.6"'
+    },
+    {
+      intent: "follow-up",
+      q: 'site:anthropic.com "Claude Haiku 4.5"'
+    }
+  ]);
 });

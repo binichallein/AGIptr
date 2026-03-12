@@ -152,3 +152,79 @@ test("normalizeEvidenceToTimelineCandidates only marks latest on candidates with
   assert.equal(candidates.find((candidate) => candidate.model_name === "Claude Sonnet 4.6").latest_candidate, false);
   assert.equal(candidates.find((candidate) => candidate.model_name === "Claude 3.7 Sonnet").latest_candidate, true);
 });
+
+test("normalizeEvidenceToTimelineCandidates does not misclassify Gemini as mini", () => {
+  const [candidate] = normalizeEvidenceToTimelineCandidates({
+    vendorId: "google-deepmind",
+    officialDomains: ["blog.google"],
+    evidenceItems: [
+      {
+        evidence_id: "1",
+        vendor_id: "google-deepmind",
+        source_url: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+        source_domain: "blog.google",
+        fact_type: "model_name",
+        fact_value: "Gemini 3.1 Pro",
+        model_name_raw: "Gemini 3.1 Pro",
+        observed_at: "2026-02-19"
+      },
+      {
+        evidence_id: "2",
+        vendor_id: "google-deepmind",
+        source_url: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+        source_domain: "blog.google",
+        fact_type: "release_date",
+        fact_value: "2026-02-19",
+        model_name_raw: "Gemini 3.1 Pro",
+        observed_at: "2026-02-19"
+      }
+    ]
+  });
+
+  assert.equal(candidate.model_name, "Gemini 3.1 Pro");
+  assert.equal(candidate.variant, "pro");
+  assert.equal(candidate.is_primary_candidate, false);
+});
+
+test("normalizeEvidenceToTimelineCandidates prefers introduction dates over later mention dates", () => {
+  const [candidate] = normalizeEvidenceToTimelineCandidates({
+    vendorId: "openai",
+    officialDomains: ["openai.com"],
+    evidenceItems: [
+      {
+        evidence_id: "1",
+        vendor_id: "openai",
+        source_url: "https://openai.com/index/hello-gpt-4o/",
+        source_domain: "openai.com",
+        fact_type: "model_name",
+        fact_value: "GPT-4o",
+        model_name_raw: "GPT-4o",
+        observed_at: "2024-05-13"
+      },
+      {
+        evidence_id: "2",
+        vendor_id: "openai",
+        source_url: "https://openai.com/index/hello-gpt-4o/",
+        source_domain: "openai.com",
+        fact_type: "release_date",
+        fact_value: "2024-05-13",
+        model_name_raw: "GPT-4o",
+        observed_at: "2024-05-13"
+      },
+      {
+        evidence_id: "3",
+        vendor_id: "openai",
+        source_url: "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+        source_domain: "openai.com",
+        fact_type: "release_date",
+        fact_value: "2026-01-29",
+        model_name_raw: "GPT-4o",
+        observed_at: "2026-01-29"
+      }
+    ]
+  });
+
+  assert.equal(candidate.model_name, "GPT-4o");
+  assert.equal(candidate.release_date_candidate, "2024-05-13");
+  assert.ok(candidate.conflict_flags.includes("release_date_conflict"));
+});
