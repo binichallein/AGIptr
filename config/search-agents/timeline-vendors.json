@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "vendors": {
+    "openai": {
+      "displayName": "OpenAI",
+      "officialDomains": [
+        "openai.com"
+      ],
+      "families": [
+        "GPT",
+        "o1",
+        "o3",
+        "o4"
+      ],
+      "variants": [
+        "mini",
+        "turbo",
+        "preview",
+        "nano",
+        "reasoning"
+      ],
+      "queryTemplates": {
+        "discover": [
+          "site:openai.com {family} announcement",
+          "site:openai.com {family} release notes"
+        ],
+        "supplement": [
+          "site:openai.com {family} {variant} release",
+          "site:openai.com {family} {variant} announcement"
+        ],
+        "verify": [
+          "site:openai.com latest {family} model"
+        ]
+      }
+    },
+    "anthropic": {
+      "displayName": "Anthropic",
+      "officialDomains": [
+        "anthropic.com"
+      ],
+      "families": [
+        "Claude"
+      ],
+      "variants": [
+        "opus",
+        "sonnet",
+        "haiku",
+        "preview"
+      ],
+      "queryTemplates": {
+        "discover": [
+          "site:anthropic.com {family} announcement",
+          "site:anthropic.com {family} release"
+        ],
+        "supplement": [
+          "site:anthropic.com {family} {variant} release",
+          "site:anthropic.com {family} {variant} announcement"
+        ],
+        "verify": [
+          "site:anthropic.com latest {family} model"
+        ]
+      }
+    },
+    "google-deepmind": {
+      "displayName": "Google DeepMind",
+      "officialDomains": [
+        "blog.google",
+        "developers.googleblog.com",
+        "ai.google.dev",
+        "deepmind.google"
+      ],
+      "families": [
+        "Gemini"
+      ],
+      "variants": [
+        "flash",
+        "pro",
+        "ultra",
+        "nano",
+        "thinking",
+        "preview"
+      ],
+      "queryTemplates": {
+        "discover": [
+          "site:blog.google {family} announcement",
+          "site:deepmind.google {family} announcement"
+        ],
+        "supplement": [
+          "site:developers.googleblog.com {family} {variant} release",
+          "site:ai.google.dev {family} {variant} model"
+        ],
+        "verify": [
+          "site:blog.google latest {family} model",
+          "site:ai.google.dev latest {family} model"
+        ]
+      }
+    }
+  }
+}
