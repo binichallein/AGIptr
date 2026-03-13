@@ -7,6 +7,10 @@
         "openai.com",
         "www.openai.com"
       ],
+      "excludedDomains": [
+        "community.openai.com",
+        "help.openai.com"
+      ],
       "families": [
         "GPT",
         "o1",
@@ -24,15 +28,15 @@
       ],
       "queryTemplates": {
         "discover": [
-          "site:openai.com {family} announcement",
-          "site:openai.com {family} release notes"
+          "site:openai.com/index {family} announcement",
+          "site:openai.com/index {family} release notes"
         ],
         "supplement": [
-          "site:openai.com {family} {variant} release",
-          "site:openai.com {family} {variant} announcement"
+          "site:openai.com/index {family} {variant} release",
+          "site:openai.com/index {family} {variant} announcement"
         ],
         "verify": [
-          "site:openai.com latest {family} model"
+          "site:openai.com/index latest {family} model"
         ]
       }
     },

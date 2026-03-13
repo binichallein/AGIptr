@@ -10,14 +10,17 @@ test("searchWithTavily retries a timeout once before succeeding", async () => {
     apiKey: "test-key",
     query: "site:openai.com GPT announcement",
     includeDomains: ["openai.com"],
+    excludeDomains: ["community.openai.com"],
     maxResults: 2,
-    fetchImpl: async () => {
+    fetchImpl: async (_url, request) => {
       attempts += 1;
       if (attempts === 1) {
         const error = new TypeError("fetch failed");
         error.cause = { code: "UND_ERR_CONNECT_TIMEOUT" };
         throw error;
       }
+      const payload = JSON.parse(request.body);
+      assert.deepEqual(payload.exclude_domains, ["community.openai.com"]);
       return {
         ok: true,
         async json() {

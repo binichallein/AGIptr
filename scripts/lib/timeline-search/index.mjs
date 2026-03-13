@@ -2,7 +2,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { loadTimelineVendorConfig } from "./config.mjs";
-import { extractEvidenceFromSearchDocument, extractFallbackDateEvidenceFromHtml } from "./extractor.mjs";
+import {
+  extractEvidenceFromSearchDocument,
+  extractFallbackDateEvidenceFromHtml,
+  isLikelyExactModelPage
+} from "./extractor.mjs";
 import { canFetchTimelineUrl, fetchTimelineDocument } from "./fetcher.mjs";
 import { normalizeEvidenceToTimelineCandidates } from "./normalizer.mjs";
 import { buildExactModelFollowUpQueries, buildTimelineQueryPlan } from "./planner.mjs";
@@ -65,6 +69,20 @@ function normalizeSearchResult(result) {
   };
 }
 
+function buildExtractQuery({ result, modelNames = [] }) {
+  const title = String(result?.title || "").trim();
+  if (title) {
+    return `${title} release date announcement`;
+  }
+
+  const dedupedModelNames = [...new Set(modelNames.filter(Boolean))];
+  if (!dedupedModelNames.length) {
+    return "";
+  }
+
+  return `${dedupedModelNames.join(", ")} release date`;
+}
+
 async function collectVendorEvidence({
   vendorId,
   vendorConfig,
@@ -102,7 +120,8 @@ async function collectVendorEvidence({
       const results = await searchClient({
         apiKey,
         query: query.q,
-        includeDomains: vendorConfig.officialDomains
+        includeDomains: vendorConfig.officialDomains,
+        excludeDomains: vendorConfig.excludedDomains || []
       });
 
       for (const rawResult of results) {
@@ -155,11 +174,14 @@ async function collectVendorEvidence({
         officialDomains: vendorConfig.officialDomains,
         fetchImpl
       });
-      const extractPromise = modelNames.length
+      const extractPromise = modelNames.length && isLikelyExactModelPage({ result, modelNames })
         ? extractClient({
             apiKey,
             urls: [result.url],
-            query: `${modelNames.join(", ")} release date`
+            query: buildExtractQuery({
+              result,
+              modelNames
+            })
           }).catch(() => [])
         : Promise.resolve([]);
       evidence.push(
@@ -198,7 +220,7 @@ async function collectVendorEvidence({
   const followUpQueries = buildExactModelFollowUpQueries({
     vendorId,
     officialDomains: vendorConfig.officialDomains,
-    unresolvedModelNames: collectFollowUpModelNames(evidence),
+    unresolvedModelNames: collectFollowUpModelNames(evidence, knownModelNames),
     followUpBudget: vendorConfig.followUpBudget || 0
   });
 
@@ -210,18 +232,64 @@ async function collectVendorEvidence({
   return evidence;
 }
 
-function collectFollowUpModelNames(evidenceItems = []) {
-  const seen = new Set();
-  const names = [];
+function hasExactPageEvidence(modelName, items = []) {
+  return items.some((item) =>
+    isLikelyExactModelPage({
+      result: {
+        title: item.source_title || "",
+        url: item.source_url || ""
+      },
+      modelNames: [modelName]
+    })
+  );
+}
+
+function collectFollowUpModelNames(evidenceItems = [], knownModelNames = []) {
+  const grouped = new Map();
+  const knownModelNameSet = new Set((knownModelNames || []).map((modelName) => String(modelName).toLowerCase()));
+
   for (const item of evidenceItems) {
     const modelName = item.model_name_raw || item.fact_value;
     if (!modelName || !/\d/.test(modelName)) continue;
     const key = modelName.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    names.push(modelName);
+    const current = grouped.get(key) || {
+      modelName,
+      firstSeen: grouped.size,
+      items: []
+    };
+    current.items.push(item);
+    grouped.set(key, current);
   }
-  return names;
+
+  return [...grouped.values()]
+    .map(({ modelName, firstSeen, items }) => {
+      const releaseDates = new Set(
+        items
+          .filter((item) => item.fact_type === "release_date" && item.fact_value)
+          .map((item) => item.fact_value)
+      );
+      const hasConflict = releaseDates.size > 1;
+      const hasReleaseDate = releaseDates.size > 0;
+      const exactPage = hasExactPageEvidence(modelName, items);
+      const knownModel = knownModelNameSet.has(modelName.toLowerCase());
+
+      return {
+        modelName,
+        firstSeen,
+        score:
+          (hasConflict ? 100 : 0) +
+          (!exactPage ? 50 : 0) +
+          (!hasReleaseDate ? 20 : 0) +
+          (knownModel ? 10 : 0)
+      };
+    })
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+      return left.firstSeen - right.firstSeen;
+    })
+    .map((item) => item.modelName);
 }
 
 export async function buildTimelineSearchRunContext({ repoRoot, args = [], env = process.env }) {

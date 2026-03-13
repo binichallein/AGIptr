@@ -32,4 +32,8 @@ test("loadTimelineVendorConfig loads exactly three timeline vendors with officia
   assert.ok(config.vendors.openai.variants.includes("mini"));
   assert.ok(config.vendors.anthropic.variants.includes("sonnet"));
   assert.ok(config.vendors["google-deepmind"].variants.includes("flash"));
+  assert.deepEqual(config.vendors.openai.excludedDomains, ["community.openai.com", "help.openai.com"]);
+  assert.ok(config.vendors.openai.queryTemplates.discover.every((template) => template.startsWith("site:openai.com/index")));
+  assert.ok(config.vendors.openai.queryTemplates.supplement.every((template) => template.startsWith("site:openai.com/index")));
+  assert.ok(config.vendors.openai.queryTemplates.verify.every((template) => template.startsWith("site:openai.com/index")));
 });

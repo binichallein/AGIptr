@@ -205,6 +205,7 @@ function isListingPage(result) {
     /\/news(?:$|\?)/,
     /\/products\/gemini\/?(?:$|\?)/,
     /\/docs\/(?:models|changelog|deprecations)(?:$|\?)/,
+    /\/index\/retiring-/,
     /\/workspace\//,
     /\/google-ai-updates-/,
     /\/bett-/,
@@ -239,6 +240,14 @@ function getTitleMatchedModels(modelNames, result) {
   return new Set(
     modelNames.filter((modelName) => hasExactModelMatch(result.title || "", modelName) || hasUrlModelSlugMatch(result.url || "", modelName))
   );
+}
+
+export function isLikelyExactModelPage({ result, modelNames = [] }) {
+  if (isListingPage(result)) {
+    return false;
+  }
+
+  return getTitleMatchedModels(modelNames, result).size > 0;
 }
 
 function computeReleaseDateScore({ modelName, sourceUrl, sourceTitle }) {

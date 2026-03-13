@@ -44,6 +44,7 @@ export async function searchWithTavily({
   apiKey,
   query,
   includeDomains = [],
+  excludeDomains = [],
   maxResults = 3,
   fetchImpl = fetch,
   maxRetries = 1
@@ -56,6 +57,7 @@ export async function searchWithTavily({
       search_depth: "advanced",
       max_results: maxResults,
       include_domains: includeDomains,
+      exclude_domains: excludeDomains,
       include_raw_content: true
     },
     fetchImpl,
